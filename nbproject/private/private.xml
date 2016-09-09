@@ -4,15 +4,9 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/C:/Users/LIUYIYU/Desktop/CPSS_D1/src/com/ouc/cpss/view/PurInfoFrame.java</file>
-            <file>file:/C:/Users/LIUYIYU/Desktop/CPSS_D1/src/com/ouc/cpss/view/PurInFrame.java</file>
-            <file>file:/C:/Users/LIUYIYU/Desktop/CPSS_D1/src/com/ouc/cpss/dao/BaseDao.java</file>
-            <file>file:/C:/Users/LIUYIYU/Desktop/CPSS_D1/src/com/ouc/cpss/util/StringUtil.java</file>
-            <file>file:/C:/Users/LIUYIYU/Desktop/CPSS_D1/src/com/ouc/cpss/biz/PurchaseBizImpl.java</file>
-            <file>file:/C:/Users/LIUYIYU/Desktop/CPSS_D1/src/com/ouc/cpss/po/ViewPurchase.java</file>
-            <file>file:/C:/Users/LIUYIYU/Desktop/CPSS_D1/src/com/ouc/cpss/biz/PurchaseBiz.java</file>
-            <file>file:/C:/Users/LIUYIYU/Desktop/CPSS_D1/src/com/ouc/cpss/view/PurReturnFrame.java</file>
-            <file>file:/C:/Users/LIUYIYU/Desktop/CPSS_D1/src/com/ouc/cpss/po/Purchase.java</file>
-            <file>file:/C:/Users/LIUYIYU/Desktop/CPSS_D1/src/com/ouc/cpss/view/MainFrame.java</file>
+            <file>file:/C:/Users/LIUYIYU/Desktop/CPSS_D1/src/com/ouc/cpss/util/ExportExcelPurchase.java</file>
+            <file>file:/C:/Users/LIUYIYU/Desktop/CPSS_D1/src/com/ouc/cpss/util/ExportExcelPurreturn.java</file>
+            <file>file:/C:/Users/LIUYIYU/Desktop/CPSS_D1/src/com/ouc/cpss/view/PurReturnInfoFrame.java</file>
         </group>
     </open-files>
 </project-private>

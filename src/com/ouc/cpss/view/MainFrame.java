@@ -62,10 +62,12 @@ public class MainFrame extends javax.swing.JFrame {
         itemPurIn = new javax.swing.JMenuItem();
         itemPurReturn = new javax.swing.JMenuItem();
         itemPurQuery = new javax.swing.JMenuItem();
+        jMenuItem5 = new javax.swing.JMenuItem();
         SellMenu = new javax.swing.JMenu();
         jMenuItem8 = new javax.swing.JMenuItem();
         itemSelrt = new javax.swing.JMenuItem();
         itemSelQuery = new javax.swing.JMenuItem();
+        jMenuItem6 = new javax.swing.JMenuItem();
         countMenu = new javax.swing.JMenu();
         jMenuItem11 = new javax.swing.JMenuItem();
         jMenuItem12 = new javax.swing.JMenuItem();
@@ -146,6 +148,14 @@ public class MainFrame extends javax.swing.JFrame {
         });
         PurMenu.add(itemPurQuery);
 
+        jMenuItem5.setText("退货查询");
+        jMenuItem5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem5ActionPerformed(evt);
+            }
+        });
+        PurMenu.add(jMenuItem5);
+
         jMenuBar1.add(PurMenu);
 
         SellMenu.setText("销售管理");
@@ -168,6 +178,14 @@ public class MainFrame extends javax.swing.JFrame {
             }
         });
         SellMenu.add(itemSelQuery);
+
+        jMenuItem6.setText("退货查询");
+        jMenuItem6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem6ActionPerformed(evt);
+            }
+        });
+        SellMenu.add(jMenuItem6);
 
         jMenuBar1.add(SellMenu);
 
@@ -265,6 +283,14 @@ public class MainFrame extends javax.swing.JFrame {
         showFrame(SelReturnFrame.class);
     }//GEN-LAST:event_itemSelrtActionPerformed
 
+    private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
+        showFrame(PurReturnInfoFrame.class);
+    }//GEN-LAST:event_jMenuItem5ActionPerformed
+
+    private void jMenuItem6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem6ActionPerformed
+        showFrame(SelReturnInfoFrame.class);
+    }//GEN-LAST:event_jMenuItem6ActionPerformed
+
     public void showFrame(Class clazz) {
         try {
             // new 对象
@@ -349,6 +375,8 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;
+    private javax.swing.JMenuItem jMenuItem5;
+    private javax.swing.JMenuItem jMenuItem6;
     private javax.swing.JMenuItem jMenuItem8;
     private com.ouc.cpss.view.MainDeskPane mainDeskPane2;
     // End of variables declaration//GEN-END:variables

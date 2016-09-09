@@ -8,6 +8,7 @@ package com.ouc.cpss.biz;
 
 
 import com.ouc.cpss.po.Selreturn;
+import com.ouc.cpss.po.ViewSelReturn;
 import java.util.List;
 
 /**
@@ -31,6 +32,6 @@ public interface SelreturnBiz {
 	public List<Selreturn> findAll();
 
 	// 6 模糊查询销售退货信息
-	public List<Selreturn> findByCondition(String condition);
+	public List<ViewSelReturn> findByCondition(String start, String end, String condition);
     
 }

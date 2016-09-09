@@ -8,6 +8,7 @@ package com.ouc.cpss.biz;
 
 import com.ouc.cpss.dao.SelreturnDao;
 import com.ouc.cpss.po.Selreturn;
+import com.ouc.cpss.po.ViewSelReturn;
 
 import java.util.List;
 
@@ -60,12 +61,12 @@ public class SelreturnBizImpl implements SelreturnBiz{
     }
 
     @Override
-    public List<Selreturn> findByCondition(String condition) {
-    String sql = "select * from selreturn where state = 1";
-                if(condition.length()>0){
-                    sql += " and concat() like '%" + condition + "%'";
-                }
-		return (List<Selreturn>) sdao.query(sql,Selreturn.class);      
+    public List<ViewSelReturn> findByCondition(String start, String end, String condition) {
+        String sql = "select * from view_selreturn where srtdate between '" + start + "' and '" + end + "'";
+        if (condition != null && condition.length() > 0) {
+            sql += " and concat(proname,type, cusname) like '%" + condition + "%'";
+        }
+	return (List<ViewSelReturn>) sdao.query(sql,ViewSelReturn.class);      
     }
     
 }
