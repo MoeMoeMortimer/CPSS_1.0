@@ -5,12 +5,25 @@
  */
 package com.ouc.cpss.view;
 
+import com.ouc.cpss.biz.*;
+import com.ouc.cpss.util.ExportEmpProExcel;
+import com.ouc.cpss.vo.ViewEmp;
+import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Vector;
+import javax.swing.JFileChooser;
+import javax.swing.filechooser.FileFilter;
+import javax.swing.filechooser.FileNameExtensionFilter;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author Administrator
  */
 public class EmpSelProFrame extends javax.swing.JInternalFrame {
-
+    static List<ViewEmp> list = new ArrayList<ViewEmp>();
+    ViewEmpBiz  vbiz = new ViewEmpBizImpl();
     /**
      * Creates new form EmpSelProFrame
      */
@@ -27,82 +40,178 @@ public class EmpSelProFrame extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jButton1 = new javax.swing.JButton();
-        jTextField1 = new javax.swing.JTextField();
+        btnSearch = new javax.swing.JButton();
+        txtCondition = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        tblEmp = new javax.swing.JTable();
+        btnChart = new javax.swing.JButton();
+        dateStart = new com.ouc.cpss.util.DateChooserJButton();
+        dateEnd = new com.ouc.cpss.util.DateChooserJButton();
+        jLabel1 = new javax.swing.JLabel();
+        btnClose = new javax.swing.JButton();
 
         setClosable(true);
         setIconifiable(true);
         setMaximizable(true);
-        setTitle("统计每个销售员的销售信息");
+        setTitle("统计每个销售员的销售商品明细");
 
-        jButton1.setText("查询");
+        btnSearch.setText("查询");
+        btnSearch.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSearchActionPerformed(evt);
+            }
+        });
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tblEmp.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "销售员编号", "销售员姓名", "销售信息编号", "商品名", "商品型号", "销售数量", "销售单价", "销售总金额"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(tblEmp);
 
-        jButton2.setText("打印报表");
+        btnChart.setText("打印报表");
+        btnChart.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnChartActionPerformed(evt);
+            }
+        });
 
-        jButton3.setText("关闭");
+        jLabel1.setText("--");
+
+        btnClose.setText("关闭");
+        btnClose.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCloseActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(28, 28, 28)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 723, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(43, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(317, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(43, 43, 43)
-                        .addComponent(jButton1)
-                        .addGap(149, 149, 149))
+                        .addComponent(dateStart, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLabel1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(dateEnd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(26, 26, 26)
+                        .addComponent(txtCondition, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(39, 39, 39)
+                        .addComponent(btnSearch)
+                        .addGap(84, 84, 84))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jButton2)
-                        .addGap(41, 41, 41)
-                        .addComponent(jButton3)
-                        .addGap(62, 62, 62))))
+                        .addComponent(btnChart)
+                        .addGap(63, 63, 63)
+                        .addComponent(btnClose)
+                        .addGap(83, 83, 83))))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(33, 33, 33)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 723, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(30, 30, 30)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1))
-                .addGap(18, 18, 18)
+                    .addComponent(txtCondition, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnSearch)
+                    .addComponent(dateEnd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1)
+                    .addComponent(dateStart, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 343, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addGap(26, 26, 26)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton2)
-                    .addComponent(jButton3))
-                .addContainerGap(47, Short.MAX_VALUE))
+                    .addComponent(btnChart)
+                    .addComponent(btnClose))
+                .addContainerGap(55, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnChartActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnChartActionPerformed
+        JFileChooser savefile = new JFileChooser();//文件选择对话框
+        FileFilter filter = new FileNameExtensionFilter("Excel文件(*.xls)", "xls");
+        savefile.addChoosableFileFilter(filter); 
+        savefile.setFileFilter(filter); //添加过滤器
+        //打开文件选择对话框，showSaveDialog是保存，showOpenDialog是打开
+        int flag = savefile.showSaveDialog(this); 
+        File file = null;
+        //如果点击了保存按钮
+        if (flag == JFileChooser.APPROVE_OPTION) {
+        file = savefile.getSelectedFile();//所选择的文件名（手写或选择）
+        System.out.println("文件名：" + file.getAbsolutePath());
+        String filename = file.getAbsolutePath();
+        //截取文件扩展名（文件名长度后4位）
+        String ftype = filename.substring(filename.length()-4);
+        if(!ftype.equals(".xls")){
+            //如果用户没有填写扩展名，自动添加扩展名.xls
+            file = new File(filename+".xls");
+        }
+        }
+        //集合获取数据，输出到文件：ExportExcel类的printSale方法
+        ExportEmpProExcel.printSale(list, file); //list是要导出到excel的数据集合，来自于数据库查询
+    
+    }//GEN-LAST:event_btnChartActionPerformed
+
+    private void btnSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchActionPerformed
+       //1 获得条件
+        String condition = this.txtCondition.getText().trim();
+        String start = this.dateStart.getText();
+        String end = this.dateEnd.getText();
+
+        //2 通过查询业务获得商品集合
+        list = vbiz.findByCondition(start,end,condition);
+        //3 显示在表格
+        showOnPurchaseTable(list);
+    }//GEN-LAST:event_btnSearchActionPerformed
+
+    private void btnCloseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCloseActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_btnCloseActionPerformed
+
+    private void showOnPurchaseTable(List<ViewEmp> list) {
+         // 1. 获取表格(tblProduct)模型
+        DefaultTableModel dtm = (DefaultTableModel) this.tblEmp.getModel();
+        // 2. 清空表格信息
+        while (dtm.getRowCount() > 0) {
+            dtm.removeRow(0);
+        }
+        // 3.显示数据
+
+        for (ViewEmp v : list) {
+            Vector vt = new Vector();
+            vt.add(v.getEmpid());
+            vt.add(v.getEname());
+            vt.add(v.getSelid());
+            vt.add(v.getProname());
+            vt.add(v.getType());
+            vt.add(v.getSelcount());
+            vt.add(v.getSelprice());
+            vt.add(v.getTotalprice());
+            dtm.addRow(vt);
+        }
+
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
+    private javax.swing.JButton btnChart;
+    private javax.swing.JButton btnClose;
+    private javax.swing.JButton btnSearch;
+    private com.ouc.cpss.util.DateChooserJButton dateEnd;
+    private com.ouc.cpss.util.DateChooserJButton dateStart;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JTable tblEmp;
+    private javax.swing.JTextField txtCondition;
     // End of variables declaration//GEN-END:variables
 }

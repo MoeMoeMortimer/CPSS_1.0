@@ -12,7 +12,7 @@ package com.ouc.cpss.biz;
 import java.util.List;
 
 import com.ouc.cpss.po.Purchase;
-import com.ouc.cpss.po.ViewPurchase;
+import com.ouc.cpss.vo.ViewPurchase;
 import java.math.BigDecimal;
 import java.sql.Date;
 

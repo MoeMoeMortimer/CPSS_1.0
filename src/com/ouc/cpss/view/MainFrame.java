@@ -12,27 +12,43 @@ import java.beans.PropertyVetoException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JInternalFrame;
+import com.ouc.cpss.biz.UserBiz;
+import com.ouc.cpss.biz.UserBizImpl;
+import javax.swing.JDesktopPane;
+import javax.swing.JOptionPane;
 
 /**
  *
  * @author Administrator
  */
 public class MainFrame extends javax.swing.JFrame {
+
     public static User user;
+
     /**
      * Creates new form MainFrame
      */
     public MainFrame() {
         initComponents();
         LocationUtil.setFullScreen(this);
-//        this.setTitle(user.getUsername()+"-"+user.getRole());
-//        // 权限
-//        if(user.getRole().equals()){
-//            // 只有查看基本资料的权限
-//            this.PurMenu.setEnabled(false);
-//            this.SellMenu.setEnabled(false);
-//            this.countMenu.setEnabled(false);
+        this.btnLogin.setEnabled(false);
+        //标题栏显示用户登录信息
+//        //this.setTitle(user.getUsname() + "-" + user.getPosition());
+//        //权限
+//        if (user.getPosition().equals("销售员")) {
+//            this.menuBasic.setEnabled(false);
+//            this.menuPurchase.setEnabled(false);
+//            this.menuCount.setEnabled(false);
+//            this.btnCustomer.setEnabled(false);
+//            this.btnEmployee.setEnabled(false);
+//            this.btnProduct.setEnabled(false);
+//            this.btnSupplier.setEnabled(false);
+//        } else if (user.getPosition().equals("基本资料管理员")) {
+//            this.menuSell.setEnabled(false);
+//            this.menuPurchase.setEnabled(false);
+//            this.menuCount.setEnabled(false);
 //        }
+
     }
 
     /**
@@ -53,22 +69,22 @@ public class MainFrame extends javax.swing.JFrame {
         btnLogout = new javax.swing.JButton();
         mainDeskPane2 = new com.ouc.cpss.view.MainDeskPane();
         jMenuBar1 = new javax.swing.JMenuBar();
-        jMenu1 = new javax.swing.JMenu();
+        menuBasic = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
         jMenuItem2 = new javax.swing.JMenuItem();
         jMenuItem3 = new javax.swing.JMenuItem();
         jMenuItem4 = new javax.swing.JMenuItem();
-        PurMenu = new javax.swing.JMenu();
+        menuPurchase = new javax.swing.JMenu();
         itemPurIn = new javax.swing.JMenuItem();
         itemPurReturn = new javax.swing.JMenuItem();
         itemPurQuery = new javax.swing.JMenuItem();
         jMenuItem5 = new javax.swing.JMenuItem();
-        SellMenu = new javax.swing.JMenu();
-        jMenuItem8 = new javax.swing.JMenuItem();
+        menuSell = new javax.swing.JMenu();
+        itemSelout = new javax.swing.JMenuItem();
         itemSelrt = new javax.swing.JMenuItem();
         itemSelQuery = new javax.swing.JMenuItem();
-        jMenuItem6 = new javax.swing.JMenuItem();
-        countMenu = new javax.swing.JMenu();
+        itemSelrtInfo = new javax.swing.JMenuItem();
+        menuCount = new javax.swing.JMenu();
         jMenuItem11 = new javax.swing.JMenuItem();
         jMenuItem12 = new javax.swing.JMenuItem();
         jMenuItem13 = new javax.swing.JMenuItem();
@@ -80,12 +96,32 @@ public class MainFrame extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         btnProduct.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/ouc/cpss/img/product.gif"))); // NOI18N
+        btnProduct.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnProductActionPerformed(evt);
+            }
+        });
 
         btnSupplier.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/ouc/cpss/img/supplier.gif"))); // NOI18N
+        btnSupplier.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSupplierActionPerformed(evt);
+            }
+        });
 
         btnCustomer.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/ouc/cpss/img/customer.gif"))); // NOI18N
+        btnCustomer.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCustomerActionPerformed(evt);
+            }
+        });
 
         btnEmployee.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/ouc/cpss/img/salesman.gif"))); // NOI18N
+        btnEmployee.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEmployeeActionPerformed(evt);
+            }
+        });
 
         btnLogin.setText("登录");
         btnLogin.addActionListener(new java.awt.event.ActionListener() {
@@ -95,34 +131,64 @@ public class MainFrame extends javax.swing.JFrame {
         });
 
         btnRegister.setText("注册");
+        btnRegister.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRegisterActionPerformed(evt);
+            }
+        });
 
         btnLogout.setText("注销");
+        btnLogout.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLogoutActionPerformed(evt);
+            }
+        });
 
-        jMenu1.setText("基本资料管理");
+        menuBasic.setText("基本资料管理");
 
         jMenuItem1.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_P, java.awt.event.InputEvent.CTRL_MASK));
         jMenuItem1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/ouc/cpss/img/productmnu.gif"))); // NOI18N
         jMenuItem1.setText("商品管理");
-        jMenu1.add(jMenuItem1);
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
+        menuBasic.add(jMenuItem1);
 
         jMenuItem2.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_E, java.awt.event.InputEvent.CTRL_MASK));
         jMenuItem2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/ouc/cpss/img/salesmanmnu.gif"))); // NOI18N
         jMenuItem2.setText("员工管理");
-        jMenu1.add(jMenuItem2);
+        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem2ActionPerformed(evt);
+            }
+        });
+        menuBasic.add(jMenuItem2);
 
         jMenuItem3.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_C, java.awt.event.InputEvent.CTRL_MASK));
         jMenuItem3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/ouc/cpss/img/customermnu.gif"))); // NOI18N
         jMenuItem3.setText("买家管理");
-        jMenu1.add(jMenuItem3);
+        jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem3ActionPerformed(evt);
+            }
+        });
+        menuBasic.add(jMenuItem3);
 
         jMenuItem4.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_S, java.awt.event.InputEvent.CTRL_MASK));
         jMenuItem4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/ouc/cpss/img/suppliernum.gif"))); // NOI18N
         jMenuItem4.setText("供应商管理");
-        jMenu1.add(jMenuItem4);
+        jMenuItem4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem4ActionPerformed(evt);
+            }
+        });
+        menuBasic.add(jMenuItem4);
 
-        jMenuBar1.add(jMenu1);
+        jMenuBar1.add(menuBasic);
 
-        PurMenu.setText("采购管理");
+        menuPurchase.setText("采购管理");
 
         itemPurIn.setText("采购入库");
         itemPurIn.addActionListener(new java.awt.event.ActionListener() {
@@ -130,7 +196,7 @@ public class MainFrame extends javax.swing.JFrame {
                 itemPurInActionPerformed(evt);
             }
         });
-        PurMenu.add(itemPurIn);
+        menuPurchase.add(itemPurIn);
 
         itemPurReturn.setText("采购退货");
         itemPurReturn.addActionListener(new java.awt.event.ActionListener() {
@@ -138,7 +204,7 @@ public class MainFrame extends javax.swing.JFrame {
                 itemPurReturnActionPerformed(evt);
             }
         });
-        PurMenu.add(itemPurReturn);
+        menuPurchase.add(itemPurReturn);
 
         itemPurQuery.setText("采购查询");
         itemPurQuery.addActionListener(new java.awt.event.ActionListener() {
@@ -146,7 +212,7 @@ public class MainFrame extends javax.swing.JFrame {
                 itemPurQueryActionPerformed(evt);
             }
         });
-        PurMenu.add(itemPurQuery);
+        menuPurchase.add(itemPurQuery);
 
         jMenuItem5.setText("退货查询");
         jMenuItem5.addActionListener(new java.awt.event.ActionListener() {
@@ -154,14 +220,19 @@ public class MainFrame extends javax.swing.JFrame {
                 jMenuItem5ActionPerformed(evt);
             }
         });
-        PurMenu.add(jMenuItem5);
+        menuPurchase.add(jMenuItem5);
 
-        jMenuBar1.add(PurMenu);
+        jMenuBar1.add(menuPurchase);
 
-        SellMenu.setText("销售管理");
+        menuSell.setText("销售管理");
 
-        jMenuItem8.setText("销售出库");
-        SellMenu.add(jMenuItem8);
+        itemSelout.setText("销售出库");
+        itemSelout.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                itemSeloutActionPerformed(evt);
+            }
+        });
+        menuSell.add(itemSelout);
 
         itemSelrt.setText("销售退货");
         itemSelrt.addActionListener(new java.awt.event.ActionListener() {
@@ -169,7 +240,7 @@ public class MainFrame extends javax.swing.JFrame {
                 itemSelrtActionPerformed(evt);
             }
         });
-        SellMenu.add(itemSelrt);
+        menuSell.add(itemSelrt);
 
         itemSelQuery.setText("销售查询");
         itemSelQuery.addActionListener(new java.awt.event.ActionListener() {
@@ -177,42 +248,72 @@ public class MainFrame extends javax.swing.JFrame {
                 itemSelQueryActionPerformed(evt);
             }
         });
-        SellMenu.add(itemSelQuery);
+        menuSell.add(itemSelQuery);
 
-        jMenuItem6.setText("退货查询");
-        jMenuItem6.addActionListener(new java.awt.event.ActionListener() {
+        itemSelrtInfo.setText("退货查询");
+        itemSelrtInfo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem6ActionPerformed(evt);
+                itemSelrtInfoActionPerformed(evt);
             }
         });
-        SellMenu.add(jMenuItem6);
+        menuSell.add(itemSelrtInfo);
 
-        jMenuBar1.add(SellMenu);
+        jMenuBar1.add(menuSell);
 
-        countMenu.setText("统计管理");
+        menuCount.setText("统计管理");
 
         jMenuItem11.setText("供应商交易记录");
-        countMenu.add(jMenuItem11);
+        jMenuItem11.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem11ActionPerformed(evt);
+            }
+        });
+        menuCount.add(jMenuItem11);
 
         jMenuItem12.setText("买家交易记录");
-        countMenu.add(jMenuItem12);
+        jMenuItem12.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem12ActionPerformed(evt);
+            }
+        });
+        menuCount.add(jMenuItem12);
 
         jMenuItem13.setText("商品库存查询");
-        countMenu.add(jMenuItem13);
+        jMenuItem13.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem13ActionPerformed(evt);
+            }
+        });
+        menuCount.add(jMenuItem13);
 
         jMenuItem14.setText("商品销售Top10");
-        countMenu.add(jMenuItem14);
+        menuCount.add(jMenuItem14);
 
-        jMenuItem15.setText("销售员销售商品");
-        countMenu.add(jMenuItem15);
+        jMenuItem15.setText("销售员每月销售总额统计");
+        jMenuItem15.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem15ActionPerformed(evt);
+            }
+        });
+        menuCount.add(jMenuItem15);
 
-        jMenuItem16.setText("销售员销售额");
-        countMenu.add(jMenuItem16);
+        jMenuItem16.setText("销售员销售商品明细");
+        jMenuItem16.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem16ActionPerformed(evt);
+            }
+        });
+        menuCount.add(jMenuItem16);
 
         jMenuItem17.setText("每月总利润");
-        countMenu.add(jMenuItem17);
+        jMenuItem17.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem17ActionPerformed(evt);
+            }
+        });
+        menuCount.add(jMenuItem17);
 
-        jMenuBar1.add(countMenu);
+        jMenuBar1.add(menuCount);
 
         setJMenuBar(jMenuBar1);
 
@@ -276,7 +377,10 @@ public class MainFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_itemSelQueryActionPerformed
 
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
-        // TODO add your handling code here:
+        // 登录
+        this.dispose();
+        LoginFrame lf = new LoginFrame();
+        lf.setVisible(true);
     }//GEN-LAST:event_btnLoginActionPerformed
 
     private void itemSelrtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemSelrtActionPerformed
@@ -287,9 +391,87 @@ public class MainFrame extends javax.swing.JFrame {
         showFrame(PurReturnInfoFrame.class);
     }//GEN-LAST:event_jMenuItem5ActionPerformed
 
-    private void jMenuItem6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem6ActionPerformed
+    private void itemSelrtInfoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemSelrtInfoActionPerformed
         showFrame(SelReturnInfoFrame.class);
-    }//GEN-LAST:event_jMenuItem6ActionPerformed
+    }//GEN-LAST:event_itemSelrtInfoActionPerformed
+
+    private void btnLogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogoutActionPerformed
+        // 注销
+        JOptionPane.showMessageDialog(this, "注销成功！");
+        this.menuBasic.setEnabled(false);
+        this.menuSell.setEnabled(false);
+        this.menuPurchase.setEnabled(false);
+        this.menuCount.setEnabled(false);
+        this.btnCustomer.setEnabled(false);
+        this.btnEmployee.setEnabled(false);
+        this.btnProduct.setEnabled(false);
+        this.btnSupplier.setEnabled(false);
+        this.btnLogin.setEnabled(true);
+    }//GEN-LAST:event_btnLogoutActionPerformed
+
+    private void btnRegisterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegisterActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnRegisterActionPerformed
+
+    private void itemSeloutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemSeloutActionPerformed
+        showFrame(SelOutFrame.class);
+    }//GEN-LAST:event_itemSeloutActionPerformed
+
+    private void btnProductActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProductActionPerformed
+        showFrame(ProductFrame.class);
+    }//GEN-LAST:event_btnProductActionPerformed
+
+    private void btnEmployeeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEmployeeActionPerformed
+        showFrame(EmployeeFrame.class);
+    }//GEN-LAST:event_btnEmployeeActionPerformed
+
+    private void btnCustomerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCustomerActionPerformed
+        showFrame(CustomerFrame.class);
+    }//GEN-LAST:event_btnCustomerActionPerformed
+
+    private void btnSupplierActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSupplierActionPerformed
+        showFrame(SupplierFrame.class);
+    }//GEN-LAST:event_btnSupplierActionPerformed
+
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+        showFrame(ProductFrame.class);
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
+
+    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+        showFrame(EmployeeFrame.class);
+    }//GEN-LAST:event_jMenuItem2ActionPerformed
+
+    private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
+        showFrame(CustomerFrame.class);
+    }//GEN-LAST:event_jMenuItem3ActionPerformed
+
+    private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
+        showFrame(SupplierFrame.class);
+    }//GEN-LAST:event_jMenuItem4ActionPerformed
+
+    private void jMenuItem15ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem15ActionPerformed
+        showFrame(EmpSaleFrame.class);
+    }//GEN-LAST:event_jMenuItem15ActionPerformed
+
+    private void jMenuItem17ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem17ActionPerformed
+        showFrame(ProfitFrame.class);
+    }//GEN-LAST:event_jMenuItem17ActionPerformed
+
+    private void jMenuItem12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem12ActionPerformed
+        showFrame(CusTradeFrame.class);
+    }//GEN-LAST:event_jMenuItem12ActionPerformed
+
+    private void jMenuItem11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem11ActionPerformed
+        showFrame(SupTradeFrame.class);
+    }//GEN-LAST:event_jMenuItem11ActionPerformed
+
+    private void jMenuItem13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem13ActionPerformed
+        showFrame(StorecountFrame.class);
+    }//GEN-LAST:event_jMenuItem13ActionPerformed
+
+    private void jMenuItem16ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem16ActionPerformed
+        showFrame(EmpSelProFrame.class);
+    }//GEN-LAST:event_jMenuItem16ActionPerformed
 
     public void showFrame(Class clazz) {
         try {
@@ -347,8 +529,6 @@ public class MainFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JMenu PurMenu;
-    private javax.swing.JMenu SellMenu;
     private javax.swing.JButton btnCustomer;
     private javax.swing.JButton btnEmployee;
     private javax.swing.JButton btnLogin;
@@ -356,13 +536,13 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JButton btnProduct;
     private javax.swing.JButton btnRegister;
     private javax.swing.JButton btnSupplier;
-    private javax.swing.JMenu countMenu;
     private javax.swing.JMenuItem itemPurIn;
     private javax.swing.JMenuItem itemPurQuery;
     private javax.swing.JMenuItem itemPurReturn;
     private javax.swing.JMenuItem itemSelQuery;
+    private javax.swing.JMenuItem itemSelout;
     private javax.swing.JMenuItem itemSelrt;
-    private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenuItem itemSelrtInfo;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem11;
@@ -376,8 +556,10 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JMenuItem jMenuItem5;
-    private javax.swing.JMenuItem jMenuItem6;
-    private javax.swing.JMenuItem jMenuItem8;
     private com.ouc.cpss.view.MainDeskPane mainDeskPane2;
+    private javax.swing.JMenu menuBasic;
+    private javax.swing.JMenu menuCount;
+    private javax.swing.JMenu menuPurchase;
+    private javax.swing.JMenu menuSell;
     // End of variables declaration//GEN-END:variables
 }

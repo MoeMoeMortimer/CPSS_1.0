@@ -66,8 +66,7 @@ public class Customer {
 	}
 	@Override
 	public String toString() {
-		return "客户编号：" + cusid + ", 客户姓名：" + cusname + ", 淘宝昵称：" + tbid + 
-				", 客户电话：" + custel + ", 客户邮箱："
-				+ cusemail + ", 客户地址：" + cusaddr ;
+		return cusname;
 	}    
+        
 }

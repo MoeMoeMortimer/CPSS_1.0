@@ -9,15 +9,16 @@ package com.ouc.cpss.biz;
 import com.ouc.cpss.dao.BaseDao;
 import com.ouc.cpss.dao.SellsDao;
 import com.ouc.cpss.po.Sells;
-import com.ouc.cpss.po.ViewSell;
+import com.ouc.cpss.vo.ViewSell;
 import java.math.BigDecimal;
 import java.sql.Connection;
 import java.sql.Date;
+import java.sql.SQLException;
 import java.util.List;
 
 /**
  *
- * @author Administrator
+ * @author LIUYIYU
  */
 public class SellsBizImpl implements SellsBiz{
     //引入Dao
@@ -100,6 +101,32 @@ public class SellsBizImpl implements SellsBiz{
             }
         }
         return result;
+    }
+    
+    @Override
+    public boolean sellOut(Object[][] sells, Object[][] stocks) {
+        boolean result = true;
+        String sql1 = "insert into sells(selid,proid,empid,cusid,seldate,selcount,selprice,state) values(?,?,?,?,?,?,?,1)";
+        String sql2 = "update product set nowcount=nowcount-? where proid=?";//库存增加
+        Connection conn = new BaseDao().getConnection();//获得连接
+        
+        try {
+             conn.setAutoCommit(false);//***设置不自动提交
+             
+             sdao.batchUpdate(conn, sql1, sells);//批量添加采购表
+             sdao.batchUpdate(conn, sql2, stocks);//更新商品库存
+             
+             conn.commit();     //***提交事务,涉及到多个表，要一起提交
+        } catch (Exception e) {
+           try {
+               result = false;
+               conn.rollback(); //回滚事务
+           } catch (SQLException ex) {
+              ex.printStackTrace();
+           }
+            e.printStackTrace();
+        }
+       return result;
     }
 
     @Override

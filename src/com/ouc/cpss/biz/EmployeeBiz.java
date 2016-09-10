@@ -6,6 +6,7 @@
 package com.ouc.cpss.biz;
 
 import com.ouc.cpss.po.Employee;
+import com.ouc.cpss.vo.ViewEmpsel;
 import java.util.List;
 
 /**
@@ -28,4 +29,10 @@ public interface EmployeeBiz {
     
     //7.子查询从view_sell表里找到对用的销售员工
     public Employee findBySubquery(int selid);
+    
+    //8.统计每月销售员销售信息
+    public List<ViewEmpsel> findByCondition(Integer mon, String conditions) ;
+    
+    //9.统计每月销售员销售信息生成Top10图表
+    public List<ViewEmpsel> findByCondition(Integer mon) ;
 }

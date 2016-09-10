@@ -5,14 +5,21 @@
  */
 package com.ouc.cpss.view;
 
+import com.ouc.cpss.biz.UserBiz;
+import com.ouc.cpss.biz.UserBizImpl;
+import com.ouc.cpss.po.User;
+import com.ouc.cpss.util.StringUtil;
+import javax.swing.JOptionPane;
+
 /**
  *
- * @author su
+ * @author 晨晨
  */
-public class RegisterFrame extends javax.swing.JInternalFrame {
-
+public class RegisterFrame extends javax.swing.JFrame {
+    //引入biz
+    UserBiz ubiz = new UserBizImpl();
     /**
-     * Creates new form Register
+     * Creates new form RegisterFrame
      */
     public RegisterFrame() {
         initComponents();
@@ -35,156 +42,300 @@ public class RegisterFrame extends javax.swing.JInternalFrame {
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
-        txtUser = new javax.swing.JTextField();
-        cobIdtentity = new javax.swing.JComboBox();
-        txtPswd = new javax.swing.JTextField();
-        txtPswd2 = new javax.swing.JTextField();
-        txtUsername = new javax.swing.JTextField();
-        txtId = new javax.swing.JTextField();
-        txtTel = new javax.swing.JTextField();
-        txtMail = new javax.swing.JTextField();
+        comPosition = new javax.swing.JComboBox();
+        txtPswd = new javax.swing.JPasswordField();
+        txtPswd2 = new javax.swing.JPasswordField();
+        txtUsname = new javax.swing.JTextField();
+        txtRealName = new javax.swing.JTextField();
+        txtIdNumber = new javax.swing.JTextField();
+        txtUsTel = new javax.swing.JTextField();
+        txtUsEmail = new javax.swing.JTextField();
+        btnRegister = new javax.swing.JButton();
+        btnCancel = new javax.swing.JButton();
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        jLabel11 = new javax.swing.JLabel();
 
-        setClosable(true);
-        setIconifiable(true);
-        setTitle("注册");
-        setToolTipText("");
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("用户注册");
 
         jLabel1.setText("用户名：");
 
-        jLabel2.setText("用户身份：");
+        jLabel2.setText("密码：");
 
-        jLabel3.setText("密码：");
+        jLabel3.setText("确认密码：");
 
-        jLabel4.setText("确认密码：");
+        jLabel4.setText("真实姓名：");
 
-        jLabel5.setText("真实姓名：");
+        jLabel5.setText("身份证号：");
 
-        jLabel6.setText("身份证号：");
+        jLabel6.setText("联系电话：");
 
-        jLabel7.setText("联系电话：");
+        jLabel7.setText("邮箱地址：");
 
-        jLabel8.setText("电子邮箱：");
+        jLabel8.setText("身份：");
 
-        cobIdtentity.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "老板", "销售员", "采购员" }));
+        comPosition.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "总管理员", "基本资料管理员", "销售员" }));
+
+        btnRegister.setText("注册");
+        btnRegister.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRegisterActionPerformed(evt);
+            }
+        });
+
+        btnCancel.setText("取消");
+        btnCancel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCancelActionPerformed(evt);
+            }
+        });
 
         jLabel9.setText("（以root开头，再加任意6位数字）");
 
         jLabel10.setText("（密码由6-18的数字或字母组成）");
 
-        jButton1.setText("注册");
-
-        jButton2.setText("取消");
+        jLabel11.setText("（两次密码需一致）");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(70, Short.MAX_VALUE)
+                .addGap(76, 76, 76)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel8)
+                    .addComponent(jLabel7)
+                    .addComponent(jLabel6)
+                    .addComponent(jLabel5)
+                    .addComponent(jLabel4)
+                    .addComponent(jLabel3)
+                    .addComponent(jLabel2)
+                    .addComponent(jLabel1))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel5)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(txtUsername))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel4)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(txtPswd2))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel1)
-                                .addGap(26, 26, 26)
-                                .addComponent(txtUser, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel2)
-                                    .addComponent(jLabel3))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(cobIdtentity, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtPswd))))
+                        .addGap(38, 38, 38)
+                        .addComponent(comPosition, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel9)
-                            .addComponent(jLabel10)))
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addGroup(layout.createSequentialGroup()
-                            .addComponent(jButton1)
-                            .addGap(210, 210, 210)
-                            .addComponent(jButton2))
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                .addComponent(jLabel8)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(txtMail))
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                .addComponent(jLabel7)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(txtTel))
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                .addComponent(jLabel6)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(txtId, javax.swing.GroupLayout.PREFERRED_SIZE, 333, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(txtPswd2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 173, Short.MAX_VALUE)
+                                    .addComponent(txtPswd, javax.swing.GroupLayout.Alignment.LEADING))
+                                .addGap(18, 18, 18)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel10)
+                                    .addComponent(jLabel11)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(txtUsname, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(jLabel9))
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(txtUsEmail, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 333, Short.MAX_VALUE)
+                                .addComponent(txtUsTel, javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(txtIdNumber, javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(txtRealName, javax.swing.GroupLayout.Alignment.LEADING)))))
+                .addContainerGap(19, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(130, 130, 130)
+                .addComponent(btnRegister)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnCancel)
+                .addGap(130, 130, 130))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(49, 49, 49)
+                .addGap(44, 44, 44)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
-                    .addComponent(txtUser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtUsname, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel9))
-                .addGap(18, 18, 18)
+                .addGap(24, 24, 24)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(cobIdtentity, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
                     .addComponent(txtPswd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel10))
-                .addGap(18, 18, 18)
+                .addGap(27, 27, 27)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel3)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(txtPswd2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel11)))
+                .addGap(21, 21, 21)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
-                    .addComponent(txtPswd2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                    .addComponent(txtRealName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(24, 24, 24)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
-                    .addComponent(txtUsername, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                    .addComponent(txtIdNumber, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(24, 24, 24)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
-                    .addComponent(txtId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                    .addComponent(txtUsTel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(24, 24, 24)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
-                    .addComponent(txtTel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                    .addComponent(txtUsEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(24, 24, 24)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel8)
-                    .addComponent(txtMail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
+                    .addComponent(comPosition, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2))
-                .addContainerGap())
+                    .addComponent(btnRegister)
+                    .addComponent(btnCancel))
+                .addContainerGap(29, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnRegisterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegisterActionPerformed
+          //注册用户    
+        //1.获取用户信息
+        String usname = this.txtUsname.getText().trim();
+        char[] pswd1 = this.txtPswd.getPassword();
+        String password1 = new String(pswd1);//将字符型数组转成字符串
+        char[] pswd2 = this.txtPswd2.getPassword();
+        String password2 = new String(pswd2);//将字符型数组转成字符串
+        String realname = this.txtRealName.getText().trim();
+        String idnumber = this.txtIdNumber.getText().trim();
+        String ustel = this.txtUsTel.getText().trim();
+        String usemail = this.txtUsEmail.getText().trim();
+        String position = (String) this.comPosition.getSelectedItem();
+
+        //数据格式验证(使用StringUtil)
+        //1.验证非空
+        if(StringUtil.checkLength(usname) == false){
+            JOptionPane.showMessageDialog(this, "用户名不能为空！");
+            return;
+        }
+        if(StringUtil.checkLength(password1) == false){
+            JOptionPane.showMessageDialog(this, "密码不能为空！");
+            return;
+        }
+        if(StringUtil.checkLength(realname) == false){
+            JOptionPane.showMessageDialog(this, "真实姓名不能为空！");
+            return;
+        }
+        if(StringUtil.checkLength(idnumber) == false){
+            JOptionPane.showMessageDialog(this, "身份证号不能为空！");
+            return;
+        }
+        //2.格式验证
+        if(StringUtil.checkUsname(usname) == false){
+            JOptionPane.showMessageDialog(this, "用户名格式不正确！");
+            return;
+        }  
+        if(StringUtil.checkPassword(password1) == false){
+            JOptionPane.showMessageDialog(this, "密码格式不正确！");
+            return;
+        }
+        if(!password1.equals(password2)){
+            JOptionPane.showMessageDialog(this, "两次密码不一致！");
+            return;
+        }
+        if(StringUtil.checkRealname(realname) == false){
+            JOptionPane.showMessageDialog(this, "姓名格式不正确！");
+            return;
+        }       
+        if(StringUtil.checkUsid(idnumber) == false){
+            JOptionPane.showMessageDialog(this, "身份证号格式不正确！");
+            return;
+        }
+        if(StringUtil.checkUstel(ustel) == false){
+            JOptionPane.showMessageDialog(this, "联系电话格式不正确！");
+            return;           
+        }
+        if(StringUtil.checkUsemail(usemail) == false){
+            JOptionPane.showMessageDialog(this, "邮箱格式不正确！");
+            return;           
+        }        
+        //组合对象
+        User u = new User(null,usname,password1,realname,idnumber,ustel,usemail,position);
+        //调用业务类
+        //验证用户名是否存在
+        User newu = ubiz.findByUsname(usname);
+        if(newu != null){
+            JOptionPane.showMessageDialog(this, "用户名已存在！");
+            //清空面板信息
+            clearInput();
+            return;              
+        }
+        else{
+            boolean result = ubiz.add(u);
+            if(result == true){
+                JOptionPane.showMessageDialog(this, "注册成功！");
+                this.dispose(); //注册界面消失
+             }
+            else{
+                JOptionPane.showMessageDialog(this, "注册失败！");
+             }
+            //清空面板信息
+            clearInput(); 
+        }
+    }//GEN-LAST:event_btnRegisterActionPerformed
+
+    private void btnCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelActionPerformed
+        // 取消/退出
+        this.dispose();
+    }//GEN-LAST:event_btnCancelActionPerformed
+    private void clearInput() {
+       this.txtUsname.setText("");
+       this.txtPswd.setText("");
+       this.txtRealName.setText("");
+       this.txtIdNumber.setText("");
+       this.txtUsTel.setText("");
+       this.txtUsEmail.setText("");
+    } 
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String args[]) {
+        /* Set the Nimbus look and feel */
+        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         */
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ClassNotFoundException ex) {
+            java.util.logging.Logger.getLogger(RegisterFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(RegisterFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(RegisterFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(RegisterFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+
+        /* Create and display the form */
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new RegisterFrame().setVisible(true);
+            }
+        });
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JComboBox cobIdtentity;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JButton btnCancel;
+    private javax.swing.JButton btnRegister;
+    private javax.swing.JComboBox comPosition;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -193,12 +344,12 @@ public class RegisterFrame extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JTextField txtId;
-    private javax.swing.JTextField txtMail;
-    private javax.swing.JTextField txtPswd;
-    private javax.swing.JTextField txtPswd2;
-    private javax.swing.JTextField txtTel;
-    private javax.swing.JTextField txtUser;
-    private javax.swing.JTextField txtUsername;
+    private javax.swing.JTextField txtIdNumber;
+    private javax.swing.JPasswordField txtPswd;
+    private javax.swing.JPasswordField txtPswd2;
+    private javax.swing.JTextField txtRealName;
+    private javax.swing.JTextField txtUsEmail;
+    private javax.swing.JTextField txtUsTel;
+    private javax.swing.JTextField txtUsname;
     // End of variables declaration//GEN-END:variables
 }

@@ -5,7 +5,7 @@
  */
 package com.ouc.cpss.util;
 
-import com.ouc.cpss.po.ViewPurReturn;
+import com.ouc.cpss.vo.ViewPurReturn;
 import java.io.File;
 import java.io.IOException;
 import java.util.List;

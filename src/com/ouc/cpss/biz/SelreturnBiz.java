@@ -8,7 +8,7 @@ package com.ouc.cpss.biz;
 
 
 import com.ouc.cpss.po.Selreturn;
-import com.ouc.cpss.po.ViewSelReturn;
+import com.ouc.cpss.vo.ViewSelReturn;
 import java.util.List;
 
 /**

@@ -5,7 +5,7 @@
  */
 package com.ouc.cpss.util;
 
-import com.ouc.cpss.po.ViewPurchase;
+import com.ouc.cpss.vo.ViewPurchase;
 import java.io.File;
 import java.io.IOException;
 import java.math.BigDecimal;

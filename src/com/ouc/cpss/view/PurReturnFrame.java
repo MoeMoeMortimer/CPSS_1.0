@@ -11,7 +11,7 @@ import com.ouc.cpss.biz.SupplierBiz;
 import com.ouc.cpss.biz.SupplierBizImpl;
 import com.ouc.cpss.po.Purchase;
 import com.ouc.cpss.po.Supplier;
-import com.ouc.cpss.po.ViewPurchase;
+import com.ouc.cpss.vo.ViewPurchase;
 import java.math.BigDecimal;
 import java.util.Date;
 import java.util.List;

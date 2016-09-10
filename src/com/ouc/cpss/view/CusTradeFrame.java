@@ -5,12 +5,25 @@
  */
 package com.ouc.cpss.view;
 
+import com.ouc.cpss.vo.ViewCusTrade;
+import com.ouc.cpss.biz.CusTradeBiz;
+import com.ouc.cpss.biz.CusTradeBizImpl;
+import com.ouc.cpss.util.ExportCusTradeExcel;
+import java.io.File;
+import java.util.List;
+import java.util.Vector;
+import javax.swing.JFileChooser;
+import javax.swing.filechooser.FileFilter;
+import javax.swing.filechooser.FileNameExtensionFilter;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author su
  */
 public class CusTradeFrame extends javax.swing.JInternalFrame {
-
+    CusTradeBiz ctbiz = new CusTradeBizImpl();
+    static List<ViewCusTrade> list;
     /**
      * Creates new form CusTradeFrame
      */
@@ -28,13 +41,14 @@ public class CusTradeFrame extends javax.swing.JInternalFrame {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        btnSearch = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        dateChooserJButton3 = new com.ouc.cpss.util.DateChooserJButton();
-        dateChooserJButton4 = new com.ouc.cpss.util.DateChooserJButton();
+        tblCusTrade = new javax.swing.JTable();
+        btnExportExel = new javax.swing.JButton();
+        dateStart = new com.ouc.cpss.util.DateChooserJButton();
+        dateEnd = new com.ouc.cpss.util.DateChooserJButton();
+        txtCondition = new javax.swing.JTextField();
+        jComboBox1 = new javax.swing.JComboBox();
 
         setClosable(true);
         setIconifiable(true);
@@ -44,74 +58,149 @@ public class CusTradeFrame extends javax.swing.JInternalFrame {
 
         jLabel1.setText("--");
 
-        jButton1.setText("查询");
+        btnSearch.setText("查询");
+        btnSearch.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSearchActionPerformed(evt);
+            }
+        });
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tblCusTrade.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "买家编号", "买家名称", "购买金额"
+                "买家编号", "买家姓名", "淘宝昵称", "购买金额"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(tblCusTrade);
 
-        jButton2.setText("导出报表");
+        btnExportExel.setText("导出报表");
+        btnExportExel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnExportExelActionPerformed(evt);
+            }
+        });
 
-        jButton3.setText("取消");
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "买家姓名", "淘宝昵称" }));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(422, 422, 422)
-                .addComponent(dateChooserJButton3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel1)
-                .addGap(8, 8, 8)
-                .addComponent(dateChooserJButton4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jButton1)
-                .addContainerGap(99, Short.MAX_VALUE))
             .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(166, 166, 166)
+                .addComponent(dateStart, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30)
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(dateEnd, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(txtCondition, javax.swing.GroupLayout.DEFAULT_SIZE, 172, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnSearch)
+                .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton2)
-                .addGap(76, 76, 76)
-                .addComponent(jButton3)
-                .addContainerGap())
+                .addComponent(btnExportExel)
+                .addGap(24, 24, 24))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(jButton1)
-                    .addComponent(dateChooserJButton3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(dateChooserJButton4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(8, 8, 8)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel1)
+                            .addComponent(btnSearch)
+                            .addComponent(txtCondition, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(dateEnd, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(dateStart, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 341, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton2)
-                    .addComponent(jButton3))
-                .addGap(31, 31, 31))
+                .addGap(37, 37, 37)
+                .addComponent(btnExportExel)
+                .addGap(39, 39, 39))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    //查询按钮
+    private void btnSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchActionPerformed
+        // 根据时间段或名称查询
+        //按条件查询采购单
+        //1获取条件
+        String start = this.dateStart.getText();
+        String end = this.dateEnd.getText();
+        String conditions = this.txtCondition.getText().trim();
+        //调用业务
+        list = ctbiz.findByCondition(start, end, conditions);
+        //显示在表格中
+        showOnTable(list);
+    }//GEN-LAST:event_btnSearchActionPerformed
+
+    //导出报表
+    private void btnExportExelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExportExelActionPerformed
+        JFileChooser savefile = new JFileChooser();//文件选择对话框
+        FileFilter filter = new FileNameExtensionFilter("Excel文件(*.xls)", "xls");
+        savefile.addChoosableFileFilter(filter);//添加过滤器
+        savefile.setFileFilter(filter);
+        //打开文件选择对话框，showSaveDialog是保存，showOpenDialog是打开
+        int flag = savefile.showSaveDialog(this); 
+        File file = null;
+        //如果点击了保存按钮
+        if (flag == JFileChooser.APPROVE_OPTION) {
+        file = savefile.getSelectedFile();//所选择的文件名（手写或选择）
+        //System.out.println("文件名：" + file.getAbsolutePath());
+        String filename = file.getAbsolutePath();
+        //截取文件扩展名（文件名长度后4位）
+        String ftype = filename.substring(filename.length()-4);
+        if(!ftype.equals(".xls")){
+            //如果用户没有填写扩展名，自动添加扩展名.xls
+            file = new File(filename+".xls");
+        }
+        //集合获取数据，输出到文件：ExportExcel类的printSale方法
+        ExportCusTradeExcel.printSale(list, file); //psalelist是要导出到excel的数据集合，来自有数据库查询
+        }
+    }//GEN-LAST:event_btnExportExelActionPerformed
+    
+    public void showOnTable(List<ViewCusTrade> list){
+        //将制定的list数据显示到表上
+        //1.获取指定表格（tblProduct）模型
+        DefaultTableModel dtm = (DefaultTableModel) this.tblCusTrade.getModel();
+        //2.清空表格信息
+        while(dtm.getRowCount() > 0){
+            dtm.removeRow(0);
+        }
+        //3.显示表格
+        for(ViewCusTrade vstc : list){
+            Vector vt = new Vector();
+            vt.add(vstc.getCusid());
+            vt.add(vstc.getCusname());
+            vt.add(vstc.getTbid());
+            vt.add(vstc.getTotalmoney());
+            dtm.addRow(vt);
+        }
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private com.ouc.cpss.util.DateChooserJButton dateChooserJButton3;
-    private com.ouc.cpss.util.DateChooserJButton dateChooserJButton4;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
+    private javax.swing.JButton btnExportExel;
+    private javax.swing.JButton btnSearch;
+    private com.ouc.cpss.util.DateChooserJButton dateEnd;
+    private com.ouc.cpss.util.DateChooserJButton dateStart;
+    private javax.swing.JComboBox jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable tblCusTrade;
+    private javax.swing.JTextField txtCondition;
     // End of variables declaration//GEN-END:variables
 }

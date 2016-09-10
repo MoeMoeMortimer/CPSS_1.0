@@ -38,7 +38,7 @@ public class CustomerBizImpl implements CustomerBiz {
         String sql = "update customer set cusname=?,tbid=?,custel=?,cusemail=?,cusaddr=? where cusid=?";
         //params中的参数是按顺序逐个给？赋值，所以需要注意数据表顺序
         Object[] params = {c.getCusname(), c.getTbid(), c.getCustel(),
-            c.getCusemail(), c.getCusaddr()};
+            c.getCusemail(), c.getCusaddr(),c.getCusid()};
         return cdao.update(sql, params);
     }
 

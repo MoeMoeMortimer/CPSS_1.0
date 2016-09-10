@@ -7,7 +7,7 @@ package com.ouc.cpss.view;
 
 import com.ouc.cpss.biz.SelreturnBiz;
 import com.ouc.cpss.biz.SelreturnBizImpl;
-import com.ouc.cpss.po.ViewSelReturn;
+import com.ouc.cpss.vo.ViewSelReturn;
 import com.ouc.cpss.util.ExportExcelSelreturn;
 import java.io.File;
 import java.math.BigDecimal;

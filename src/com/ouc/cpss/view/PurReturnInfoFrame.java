@@ -7,8 +7,8 @@ package com.ouc.cpss.view;
 
 import com.ouc.cpss.biz.PurReturnBiz;
 import com.ouc.cpss.biz.PurReturnBizImpl;
-import com.ouc.cpss.po.ViewPurReturn;
-import com.ouc.cpss.po.ViewSelReturn;
+import com.ouc.cpss.vo.ViewPurReturn;
+import com.ouc.cpss.vo.ViewSelReturn;
 import com.ouc.cpss.util.ExportExcelPurreturn;
 import java.io.File;
 import java.util.List;

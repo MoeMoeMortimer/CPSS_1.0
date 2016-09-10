@@ -6,7 +6,7 @@
 package com.ouc.cpss.biz;
 
 import com.ouc.cpss.po.Sells;
-import com.ouc.cpss.po.ViewSell;
+import com.ouc.cpss.vo.ViewSell;
 import java.math.BigDecimal;
 import java.sql.Date;
 import java.util.List;
@@ -33,6 +33,11 @@ public interface SellsBiz {
 
 	// 6 模糊查询销售信息
 	public List<ViewSell> findByCondition(String start, String end, String conditions);
+        
+        // 7 销售出库
+        public boolean sellOut(Object[][] sells,Object[][] stocks);
+        
+        
         // 8 销售退货
         public boolean sellsReturn(int selid, int proid, int cusid, int srtcount, BigDecimal srtprice, BigDecimal srttotal, Date srtdate);
        

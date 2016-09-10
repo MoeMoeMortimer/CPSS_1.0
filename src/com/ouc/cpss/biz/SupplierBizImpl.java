@@ -36,7 +36,7 @@ public class SupplierBizImpl implements SupplierBiz {
     public boolean update(Supplier s) {
         String sql = "update supplier set supname=?,suptel=?,supaddr=? where supid=?";
         //params中的参数是按顺序逐个给？赋值，所以需要注意数据表顺序
-        Object[] params = {s.getSupname(), s.getSuptel(), s.getSupaddr()};
+        Object[] params = {s.getSupname(), s.getSuptel(), s.getSupaddr(),s.getSupid()};
         return sdao.update(sql, params);
     }
 

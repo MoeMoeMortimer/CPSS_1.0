@@ -6,7 +6,7 @@
 package com.ouc.cpss.biz;
 
 import com.ouc.cpss.dao.PurreturnDao;
-import com.ouc.cpss.po.ViewPurReturn;
+import com.ouc.cpss.vo.ViewPurReturn;
 import java.util.List;
 
 /**

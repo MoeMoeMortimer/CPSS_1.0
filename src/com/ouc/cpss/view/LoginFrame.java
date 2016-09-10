@@ -8,19 +8,27 @@ package com.ouc.cpss.view;
 import com.ouc.cpss.biz.UserBiz;
 import com.ouc.cpss.biz.UserBizImpl;
 import com.ouc.cpss.po.User;
+import com.ouc.cpss.util.FrameUtil;
+import com.ouc.cpss.util.LocationUtil;
+import com.ouc.cpss.util.StringUtil;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JInternalFrame;
 import javax.swing.JOptionPane;
 
 /**
  *
- * @author su
+ * @author 晨晨
  */
-public class LoginFrame extends javax.swing.JInternalFrame {
-    UserBiz ubiz = new UserBizImpl();
+public class LoginFrame extends javax.swing.JFrame {
+    //引入biz
+    UserBiz ubiz = new UserBizImpl();    
     /**
-     * Creates new form Login
+     * Creates new form TryFrame
      */
     public LoginFrame() {
         initComponents();
+        LocationUtil.setScreenCenter(this); //窗口居中
     }
 
     /**
@@ -34,16 +42,14 @@ public class LoginFrame extends javax.swing.JInternalFrame {
 
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        txtUser = new javax.swing.JTextField();
-        txtPwd = new javax.swing.JPasswordField();
+        txtUsname = new javax.swing.JTextField();
         btnLogin = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        comboIden = new javax.swing.JComboBox();
-        jLabel3 = new javax.swing.JLabel();
+        btnRegister = new javax.swing.JButton();
+        btnExit = new javax.swing.JButton();
+        txtPswd = new javax.swing.JPasswordField();
+        btnUpdatePswd = new javax.swing.JButton();
 
-        setClosable(true);
-        setIconifiable(true);
-        setTitle("登录");
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel1.setText("用户名：");
 
@@ -56,87 +62,194 @@ public class LoginFrame extends javax.swing.JInternalFrame {
             }
         });
 
-        jButton2.setText("修改密码");
+        btnRegister.setText("注册");
+        btnRegister.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRegisterActionPerformed(evt);
+            }
+        });
 
-        comboIden.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "老板", "销售员", "采购员" }));
+        btnExit.setText("退出");
+        btnExit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnExitActionPerformed(evt);
+            }
+        });
 
-        jLabel3.setText("用户身份：");
+        btnUpdatePswd.setText("修改密码");
+        btnUpdatePswd.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnUpdatePswdActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(43, 43, 43)
+                .addGap(59, 59, 59)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel3))
-                        .addGap(35, 35, 35)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(comboIden, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(txtPwd, javax.swing.GroupLayout.DEFAULT_SIZE, 207, Short.MAX_VALUE)
-                                .addComponent(txtUser)))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
+                        .addGap(12, 12, 12)
                         .addComponent(btnLogin)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 57, Short.MAX_VALUE)
-                        .addComponent(jButton2)
-                        .addGap(163, 163, 163))))
+                        .addGap(0, 272, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(0, 118, Short.MAX_VALUE)
+                        .addComponent(btnRegister)
+                        .addGap(50, 50, 50)
+                        .addComponent(btnExit)
+                        .addGap(59, 59, 59))))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(36, 36, 36)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel2)
+                    .addComponent(jLabel1))
+                .addGap(22, 22, 22)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(txtPswd, javax.swing.GroupLayout.DEFAULT_SIZE, 177, Short.MAX_VALUE)
+                    .addComponent(txtUsname))
+                .addGap(18, 18, 18)
+                .addComponent(btnUpdatePswd)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(29, 29, 29)
+                .addGap(82, 82, 82)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(comboIden, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(40, 40, 40)
+                    .addComponent(txtUsname, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 56, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(txtUser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(36, 36, 36)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(txtPwd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(31, 31, 31)
+                    .addComponent(txtPswd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnUpdatePswd)
+                    .addComponent(jLabel2))
+                .addGap(59, 59, 59)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnLogin)
-                    .addComponent(jButton2))
-                .addContainerGap(37, Short.MAX_VALUE))
+                    .addComponent(btnRegister)
+                    .addComponent(btnExit))
+                .addGap(41, 41, 41))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
-        String username = this.txtUser.getText().trim();
-        char[] pwdc = this.txtPwd.getPassword();
-        String password = new String(pwdc);
-        // 验证
-        User user = ubiz.userLogin(username, password);
+        // 登录
+        //获取用户名和密码
+        String usname = this.txtUsname.getText().trim();
+        char[] pswd = this.txtPswd.getPassword();
+        String password = new String(pswd);
+        //调用业务类
+        //非空验证
+        if(StringUtil.checkLength(usname) == false){
+            JOptionPane.showMessageDialog(this, "用户名不能为空！");
+            return;
+        }
+        if(StringUtil.checkLength(password) == false){
+            JOptionPane.showMessageDialog(this, "密码不能为空！");
+            return;
+        }
+        //验证用户名是否存在
+       // User newu = ubiz.userlogin(usname,password);
+        User user = ubiz.findByUsname(usname);
         if(user == null){
-            JOptionPane.showMessageDialog(this, "您输入的用户名或密码错误！");
-        } else {
-            MainFrame mf = new MainFrame();
-            mf.user = user;
-            
+            JOptionPane.showMessageDialog(this, "用户名不存在！");
+            //清空面板信息
+            clearInput();
+            return;              
+        }
+        else{
+            if(user.getPswd().equals(password)){   
+                //打开主界面，并将登录对象传递给主界面
+                //先传值
+                //MainFrame.user = user;
+                //MainFrame mf = new MainFrame();
+                //mf.setVisible(true);
+                this.dispose(); //关闭登录界面
+            }
+            else{
+                JOptionPane.showMessageDialog(this, "密码错误！");  
+                this.txtPswd.setText("");
+                return;
+            }
         }
         
     }//GEN-LAST:event_btnLoginActionPerformed
 
+    private void btnExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExitActionPerformed
+        //退出
+        this.dispose();   
+    }//GEN-LAST:event_btnExitActionPerformed
+
+    private void btnRegisterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegisterActionPerformed
+        // 注册
+        RegisterFrame rf = new RegisterFrame();
+        rf.setVisible(true);
+    }//GEN-LAST:event_btnRegisterActionPerformed
+
+    private void btnUpdatePswdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdatePswdActionPerformed
+        // 修改密码
+        UpdatePswdFrame upf = new UpdatePswdFrame();
+        upf.setVisible(true);
+    }//GEN-LAST:event_btnUpdatePswdActionPerformed
+    private void clearInput() {
+       this.txtUsname.setText("");
+       this.txtPswd.setText("");
+    } 
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String args[]) {
+        /* Set the Nimbus look and feel */
+        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         */
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ClassNotFoundException ex) {
+            java.util.logging.Logger.getLogger(LoginFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(LoginFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(LoginFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(LoginFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+
+        /* Create and display the form */
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new LoginFrame().setVisible(true);
+            }
+        });
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnExit;
     private javax.swing.JButton btnLogin;
-    private javax.swing.JComboBox comboIden;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JButton btnRegister;
+    private javax.swing.JButton btnUpdatePswd;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JPasswordField txtPwd;
-    private javax.swing.JTextField txtUser;
+    private javax.swing.JPasswordField txtPswd;
+    private javax.swing.JTextField txtUsname;
     // End of variables declaration//GEN-END:variables
 }

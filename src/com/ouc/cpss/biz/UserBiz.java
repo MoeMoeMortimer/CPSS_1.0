@@ -6,11 +6,20 @@
 package com.ouc.cpss.biz;
 
 import com.ouc.cpss.po.User;
+import java.util.List;
 
 /**
  *
- * @author LIUYIYU
+ * @author 晨晨
  */
-public interface UserBiz {
-    public User userLogin(String username, String password);
+public interface UserBiz{
+    //1.增加用户信息
+    public boolean add(User u);
+    //2.修改用户密码
+    public boolean update(User u);
+    //3.查询用户名是否已经存在
+    public User findByUsname(String usname);	//返回集合
+    //4.登录
+   // public User userlogin(String usname,String pswd);
+
 }

@@ -5,17 +5,32 @@
  */
 package com.ouc.cpss.view;
 
+
+import com.ouc.cpss.biz.CustomerBiz;
+import com.ouc.cpss.biz.CustomerBizImpl;
+import com.ouc.cpss.po.Customer;
+import com.ouc.cpss.util.StringUtil;
+import java.math.BigDecimal;
+import java.util.List;
+import java.util.Vector;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author su
  */
 public class CustomerFrame extends javax.swing.JInternalFrame {
 
+    CustomerBiz cusbiz = new CustomerBizImpl();
     /**
      * Creates new form CustomerFrame
      */
     public CustomerFrame() {
         initComponents();
+        //初始化保存按钮
+        this.btnSave.setEnabled(false);
+        this.btnDelete.setEnabled(false);
     }
 
     /**
@@ -27,10 +42,10 @@ public class CustomerFrame extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jTextField1 = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        txtCondition = new javax.swing.JTextField();
+        btnSearch = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tblCustomer = new javax.swing.JTable();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -38,18 +53,18 @@ public class CustomerFrame extends javax.swing.JInternalFrame {
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
-        jTextField4 = new javax.swing.JTextField();
-        jTextField5 = new javax.swing.JTextField();
-        jTextField6 = new javax.swing.JTextField();
-        jTextField7 = new javax.swing.JTextField();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
-        jButton6 = new javax.swing.JButton();
-        jButton7 = new javax.swing.JButton();
+        txtCusid = new javax.swing.JTextField();
+        txtCusname = new javax.swing.JTextField();
+        txtTbid = new javax.swing.JTextField();
+        txtCustel = new javax.swing.JTextField();
+        txtCuszip = new javax.swing.JTextField();
+        txtCusaddr = new javax.swing.JTextField();
+        btnClose = new javax.swing.JButton();
+        btnCancel = new javax.swing.JButton();
+        btnSave = new javax.swing.JButton();
+        btnDelete = new javax.swing.JButton();
+        btnAdd = new javax.swing.JButton();
+        btnLoad = new javax.swing.JButton();
         jLabel7 = new javax.swing.JLabel();
 
         setClosable(true);
@@ -57,9 +72,14 @@ public class CustomerFrame extends javax.swing.JInternalFrame {
         setMaximizable(true);
         setTitle("买家管理");
 
-        jButton1.setText("搜索");
+        btnSearch.setText("搜索");
+        btnSearch.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSearchActionPerformed(evt);
+            }
+        });
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tblCustomer.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -67,7 +87,12 @@ public class CustomerFrame extends javax.swing.JInternalFrame {
                 "买家编号", "姓名", "淘宝昵称", "联系电话", "邮编", "送货地址"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        tblCustomer.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblCustomerMouseClicked(evt);
+            }
+        });
+        jScrollPane1.setViewportView(tblCustomer);
 
         jLabel1.setForeground(new java.awt.Color(255, 0, 0));
         jLabel1.setText("编号");
@@ -82,6 +107,8 @@ public class CustomerFrame extends javax.swing.JInternalFrame {
 
         jLabel6.setText("淘宝昵称");
 
+        txtCusid.setEditable(false);
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -95,26 +122,26 @@ public class CustomerFrame extends javax.swing.JInternalFrame {
                             .addComponent(jLabel1))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jTextField5, javax.swing.GroupLayout.DEFAULT_SIZE, 178, Short.MAX_VALUE)
-                            .addComponent(jTextField2))
+                            .addComponent(txtCustel, javax.swing.GroupLayout.DEFAULT_SIZE, 178, Short.MAX_VALUE)
+                            .addComponent(txtCusid))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLabel4)
                             .addComponent(jLabel5))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtCuszip, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(txtCusname, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(36, 36, 36)
                                 .addComponent(jLabel6)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(txtTbid, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel3)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField7)))
+                        .addComponent(txtCusaddr)))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -125,33 +152,63 @@ public class CustomerFrame extends javax.swing.JInternalFrame {
                     .addComponent(jLabel1)
                     .addComponent(jLabel4)
                     .addComponent(jLabel6)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtCusid, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtCusname, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtTbid, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(28, 28, 28)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(jLabel5)
-                    .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtCustel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtCuszip, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtCusaddr, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(20, 20, 20))
         );
 
-        jButton2.setText("退出");
+        btnClose.setText("退出");
+        btnClose.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCloseActionPerformed(evt);
+            }
+        });
 
-        jButton3.setText("取消");
+        btnCancel.setText("取消");
+        btnCancel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCancelActionPerformed(evt);
+            }
+        });
 
-        jButton4.setText("修改/保存");
+        btnSave.setText("修改/保存");
+        btnSave.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSaveActionPerformed(evt);
+            }
+        });
 
-        jButton5.setText("删除");
+        btnDelete.setText("删除");
+        btnDelete.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDeleteActionPerformed(evt);
+            }
+        });
 
-        jButton6.setText("新增");
+        btnAdd.setText("新增");
+        btnAdd.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAddActionPerformed(evt);
+            }
+        });
 
-        jButton7.setText("载入");
+        btnLoad.setText("载入");
+        btnLoad.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLoadActionPerformed(evt);
+            }
+        });
 
         jLabel7.setForeground(new java.awt.Color(255, 0, 0));
         jLabel7.setText("注意：红色字体处不可修改");
@@ -164,25 +221,25 @@ public class CustomerFrame extends javax.swing.JInternalFrame {
             .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtCondition, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(30, 30, 30)
-                .addComponent(jButton1)
+                .addComponent(btnSearch)
                 .addGap(29, 29, 29))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(49, 49, 49)
                 .addComponent(jLabel7)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton7)
+                .addComponent(btnLoad)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton6)
+                .addComponent(btnAdd)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton5)
+                .addComponent(btnDelete)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton4)
+                .addComponent(btnSave)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton3)
+                .addComponent(btnCancel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton2)
+                .addComponent(btnClose)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -190,20 +247,20 @@ public class CustomerFrame extends javax.swing.JInternalFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1))
+                    .addComponent(txtCondition, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnSearch))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton2)
-                    .addComponent(jButton3)
-                    .addComponent(jButton4)
-                    .addComponent(jButton5)
-                    .addComponent(jButton6)
-                    .addComponent(jButton7)
+                    .addComponent(btnClose)
+                    .addComponent(btnCancel)
+                    .addComponent(btnSave)
+                    .addComponent(btnDelete)
+                    .addComponent(btnAdd)
+                    .addComponent(btnLoad)
                     .addComponent(jLabel7))
                 .addContainerGap(23, Short.MAX_VALUE))
         );
@@ -211,15 +268,210 @@ public class CustomerFrame extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    //模糊查询
+    private void btnSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchActionPerformed
+       // 模糊查询
+        String condition = this.txtCondition.getText().trim();
+        List<Customer> list = cusbiz.findByCondition(condition);
+            //显示list中的信息
+            showOnTable(list);
+    }//GEN-LAST:event_btnSearchActionPerformed
+
+    private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
+         // 新增买家
+        //获取买家信息
+        String cusname = this.txtCusname.getText().trim();
+        String Tbid = this.txtTbid.getText().trim();  //淘宝昵称
+        String custel = this.txtCustel.getText().trim(); //联系电话
+        String cuszip = this.txtCuszip.getText().trim();///邮政编码
+        String cusaddr= this.txtCusaddr.getText().trim();
+        //数据格式验证(StringUtil)
+        //1验证非空
+        if(StringUtil.checkLength(cusname) == false){
+            JOptionPane.showMessageDialog(this, "姓名不能为空");
+            return;
+        }
+        if(StringUtil.checkLength(Tbid) == false){
+            JOptionPane.showMessageDialog(this, "淘宝昵称不能为空");
+            return;
+        }
+        if(StringUtil.checkLength(custel) == false){
+            JOptionPane.showMessageDialog(this, "联系电话不能为空");
+            return;
+        }
+        if(StringUtil.checkLength(cuszip) == false){
+            JOptionPane.showMessageDialog(this, "邮政编码不能为空");
+            return;
+        }
+        if(StringUtil.checkLength(cusaddr) == false){
+            JOptionPane.showMessageDialog(this, "送货地址不能为空");
+            return;
+        }
+       
+        
+        //组合对象
+        Customer c = new Customer(null,cusname,Tbid,custel,cuszip,cusaddr);
+        //调用业务类
+        boolean result = cusbiz.add(c);
+        if(result == true){
+            JOptionPane.showMessageDialog(this, "添加成功");
+             List<Customer> list = cusbiz.findAll();
+            //显示list的信息
+            showOnTable(list);
+        }
+        else
+            JOptionPane.showMessageDialog(this, "添加失败");
+        //清孔面板信息
+        clearInput();
+    }//GEN-LAST:event_btnAddActionPerformed
+
+    //鼠标点击选中表的某一行
+    private void tblCustomerMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblCustomerMouseClicked
+        // 鼠标选中某行，该行信息显示到输入面板
+        int row = this.tblCustomer.getSelectedRow();//表示被选中的那一行
+        //获取每一列的值
+        this.txtCusid.setText(this.tblCustomer.getValueAt(row, 0)+"");
+        this.txtCusname.setText(this.tblCustomer.getValueAt(row, 1)+"");
+        this.txtTbid.setText(this.tblCustomer.getValueAt(row, 2)+"");
+        this.txtCustel.setText(this.tblCustomer.getValueAt(row, 3)+"");
+        this.txtCuszip.setText(this.tblCustomer.getValueAt(row, 4)+"");
+        this.txtCusaddr.setText(this.tblCustomer.getValueAt(row, 5)+"");
+        //保存  删除按钮可用
+        this.btnSave.setEnabled(true);
+        this.btnDelete.setEnabled(true);
+    }//GEN-LAST:event_tblCustomerMouseClicked
+
+    //修改/保存按钮
+    private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
+        // 修改商品
+        // 新增商品
+        //获取买家信息
+        int cusid = Integer.parseInt(this.txtCusid.getText().trim());
+        String cusname = this.txtCusname.getText().trim();
+        String Tbid = this.txtTbid.getText().trim();  //淘宝昵称
+        String custel = this.txtCustel.getText().trim(); //联系电话
+        String cuszip = this.txtCuszip.getText().trim();///邮政编码
+        String cusaddr= this.txtCusaddr.getText().trim();
+        //1验证非空
+        if(StringUtil.checkLength(cusname) == false){
+            JOptionPane.showMessageDialog(this, "姓名不能为空");
+            return;
+        }
+        if(StringUtil.checkLength(Tbid) == false){
+            JOptionPane.showMessageDialog(this, "淘宝昵称不能为空");
+            return;
+        }
+        if(StringUtil.checkLength(custel) == false){
+            JOptionPane.showMessageDialog(this, "联系电话不能为空");
+            return;
+        }
+        if(StringUtil.checkLength(cuszip) == false){
+            JOptionPane.showMessageDialog(this, "邮政编码不能为空");
+            return;
+        }
+        if(StringUtil.checkLength(cusaddr) == false){
+            JOptionPane.showMessageDialog(this, "送货地址不能为空");
+            return;
+        }
+       
+        //组合对象
+        Customer c = new Customer(cusid,cusname,Tbid,custel,cuszip,cusaddr);
+        //调用业务类
+        boolean result = cusbiz.update(c);
+        if(result == true){
+            JOptionPane.showMessageDialog(this, "修改成功");
+             List<Customer> list = cusbiz.findAll();
+            //显示list的信息
+            showOnTable(list);
+        }
+        else
+            JOptionPane.showMessageDialog(this, "修改失败");
+        //清孔面板信息
+        clearInput();
+    }//GEN-LAST:event_btnSaveActionPerformed
+
+    //删除按钮
+    private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
+        // 删除商品信息
+        int answer = JOptionPane.showConfirmDialog(this, "你确定要删除吗？");
+        if(answer == JOptionPane.YES_OPTION){
+            //获取proid
+        int proid = Integer.parseInt(this.txtCusid.getText());
+        boolean result = cusbiz.delete(proid);
+        if(result == true){
+            JOptionPane.showMessageDialog(this, "删除成功");
+            List<Customer> list = cusbiz.findAll();
+            //显示list中的信息
+            showOnTable(list);
+        } else{
+            JOptionPane.showMessageDialog(this, "删除失败");
+
+        }
+        clearInput();
+        }
+    }//GEN-LAST:event_btnDeleteActionPerformed
+
+    //取消按钮
+    private void btnCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelActionPerformed
+        // 界面恢复到最初状态
+        clearInput();
+        this.btnSave.setEnabled(false);
+        this.btnDelete.setEnabled(false);
+    }//GEN-LAST:event_btnCancelActionPerformed
+
+    //退出按钮
+    private void btnCloseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCloseActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_btnCloseActionPerformed
+
+    //载入按钮
+    private void btnLoadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoadActionPerformed
+        //查询数据库，将数据显示到表格上
+        List<Customer> list = cusbiz.findAll();
+        //显示list的信息
+        showOnTable(list);
+    }//GEN-LAST:event_btnLoadActionPerformed
+    
+    //将制定的list数据显示到表上
+    public void showOnTable(List<Customer> list){
+        //将制定的list数据显示到表上
+        //1.获取指定表格（tblProduct）模型
+        DefaultTableModel dtm = (DefaultTableModel) this.tblCustomer.getModel();
+        //2.清空表格信息
+        while(dtm.getRowCount() > 0){
+            dtm.removeRow(0);
+        }
+        //3.显示表格
+        for(Customer c : list){
+            Vector vt = new Vector();
+            vt.add(c.getCusid());
+            vt.add(c.getCusname());
+            vt.add(c.getTbid());  //淘宝昵称
+            vt.add(c.getCustel());
+            vt.add(c.getCusemail()); //邮编
+            vt.add(c.getCusaddr());
+            dtm.addRow(vt);
+        }
+    }
+    
+    //清空面板上的数据
+    private void clearInput() {
+        this.txtCusid.setText("");
+        this.txtCusname.setText("");
+        this.txtTbid.setText("");
+        this.txtCustel.setText("");
+        this.txtCuszip.setText(""); //邮编
+        this.txtCusaddr.setText("");
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
-    private javax.swing.JButton jButton7;
+    private javax.swing.JButton btnAdd;
+    private javax.swing.JButton btnCancel;
+    private javax.swing.JButton btnClose;
+    private javax.swing.JButton btnDelete;
+    private javax.swing.JButton btnLoad;
+    private javax.swing.JButton btnSave;
+    private javax.swing.JButton btnSearch;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -229,13 +481,13 @@ public class CustomerFrame extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField jTextField5;
-    private javax.swing.JTextField jTextField6;
-    private javax.swing.JTextField jTextField7;
+    private javax.swing.JTable tblCustomer;
+    private javax.swing.JTextField txtCondition;
+    private javax.swing.JTextField txtCusaddr;
+    private javax.swing.JTextField txtCusid;
+    private javax.swing.JTextField txtCusname;
+    private javax.swing.JTextField txtCustel;
+    private javax.swing.JTextField txtCuszip;
+    private javax.swing.JTextField txtTbid;
     // End of variables declaration//GEN-END:variables
 }

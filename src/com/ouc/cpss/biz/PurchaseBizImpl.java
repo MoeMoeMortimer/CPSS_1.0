@@ -9,7 +9,7 @@ import com.ouc.cpss.dao.BaseDao;
 import com.ouc.cpss.dao.ProductDao;
 import com.ouc.cpss.dao.PurchaseDao;
 import com.ouc.cpss.po.Purchase;
-import com.ouc.cpss.po.ViewPurchase;
+import com.ouc.cpss.vo.ViewPurchase;
 import java.math.BigDecimal;
 import java.sql.Connection;
 import java.sql.SQLException;

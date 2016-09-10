@@ -9,7 +9,7 @@ import com.ouc.cpss.biz.PurchaseBiz;
 import com.ouc.cpss.biz.PurchaseBizImpl;
 import com.ouc.cpss.po.Product;
 import com.ouc.cpss.po.Purchase;
-import com.ouc.cpss.po.ViewPurchase;
+import com.ouc.cpss.vo.ViewPurchase;
 
 import com.ouc.cpss.util.ExportExcelPurchase;
 import java.io.File;
@@ -49,7 +49,6 @@ public class PurInfoFrame extends javax.swing.JInternalFrame {
         jLabel1 = new javax.swing.JLabel();
         txtCondition = new javax.swing.JTextField();
         btnQuery = new javax.swing.JButton();
-        jComboBox1 = new javax.swing.JComboBox();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblPurchase = new javax.swing.JTable();
         btnExportExcel = new javax.swing.JButton();
@@ -69,8 +68,6 @@ public class PurInfoFrame extends javax.swing.JInternalFrame {
                 btnQueryActionPerformed(evt);
             }
         });
-
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "商品名称", "供应商名称" }));
 
         tblPurchase.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -100,9 +97,7 @@ public class PurInfoFrame extends javax.swing.JInternalFrame {
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(dateEnd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(36, 36, 36)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 128, Short.MAX_VALUE)
                 .addComponent(txtCondition, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnQuery)
@@ -120,7 +115,6 @@ public class PurInfoFrame extends javax.swing.JInternalFrame {
                     .addComponent(jLabel1)
                     .addComponent(txtCondition, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnQuery)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(dateEnd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(dateStart, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -182,7 +176,6 @@ public class PurInfoFrame extends javax.swing.JInternalFrame {
     private javax.swing.JButton btnQuery;
     private com.ouc.cpss.util.DateChooserJButton dateEnd;
     private com.ouc.cpss.util.DateChooserJButton dateStart;
-    private javax.swing.JComboBox jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tblPurchase;
