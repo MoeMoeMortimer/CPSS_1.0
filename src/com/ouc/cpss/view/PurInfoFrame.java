@@ -54,6 +54,7 @@ public class PurInfoFrame extends javax.swing.JInternalFrame {
         btnExportExcel = new javax.swing.JButton();
         dateEnd = new com.ouc.cpss.util.DateChooserJButton();
         dateStart = new com.ouc.cpss.util.DateChooserJButton();
+        jButton1 = new javax.swing.JButton();
 
         setClosable(true);
         setIconifiable(true);
@@ -86,6 +87,13 @@ public class PurInfoFrame extends javax.swing.JInternalFrame {
             }
         });
 
+        jButton1.setText("关闭");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -104,8 +112,11 @@ public class PurInfoFrame extends javax.swing.JInternalFrame {
                 .addGap(45, 45, 45))
             .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(btnExportExcel))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnExportExcel)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButton1)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -120,7 +131,9 @@ public class PurInfoFrame extends javax.swing.JInternalFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(btnExportExcel)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnExportExcel)
+                    .addComponent(jButton1))
                 .addContainerGap(36, Short.MAX_VALUE))
         );
 
@@ -170,12 +183,17 @@ public class PurInfoFrame extends javax.swing.JInternalFrame {
 
     }//GEN-LAST:event_btnExportExcelActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        this.dispose();// 先销毁
+    }//GEN-LAST:event_jButton1ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnExportExcel;
     private javax.swing.JButton btnQuery;
     private com.ouc.cpss.util.DateChooserJButton dateEnd;
     private com.ouc.cpss.util.DateChooserJButton dateStart;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tblPurchase;

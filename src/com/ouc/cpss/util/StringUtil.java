@@ -42,7 +42,8 @@ public class StringUtil {
     
     // 4 用户名验证
         public static boolean checkUsname(String s){
-        String regex = "^root[0-9]{6}$";
+        //String regex = "^root[0-9]{6}$";
+        String regex  = "^$";
         if(s.matches(regex)){
             return true;
         }else{

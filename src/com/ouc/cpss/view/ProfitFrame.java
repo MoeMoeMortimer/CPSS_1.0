@@ -86,7 +86,12 @@ public class ProfitFrame extends javax.swing.JInternalFrame {
             }
         });
 
-        jButton3.setText("关闭");
+        jButton3.setText("生成图表");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         cobMonth.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "1", "2", "3", "4" }));
 
@@ -103,7 +108,7 @@ public class ProfitFrame extends javax.swing.JInternalFrame {
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 723, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(43, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(542, Short.MAX_VALUE)
+                .addContainerGap(536, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel1)
@@ -176,6 +181,14 @@ public class ProfitFrame extends javax.swing.JInternalFrame {
         ExportProfitExcel.printSale(list, file); //psalelist是要导出到excel的数据集合，来自有数据库查询
         }
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        String charttitle= "Profit";
+        List<ViewProfit> alllist = pfbiz.findAll();
+        ProfitChartBuilder chart = new ProfitChartBuilder(charttitle,alllist);
+        chart.pack();
+        chart.setVisible(true);
+    }//GEN-LAST:event_jButton3ActionPerformed
 
     public void showOnTable(List<ViewProfit> list){
         //将制定的list数据显示到表上

@@ -163,11 +163,11 @@ public class LoginFrame extends javax.swing.JFrame {
         }
         else{
             if(user.getPswd().equals(password)){   
-                //打开主界面，并将登录对象传递给主界面
-                //先传值
-                //MainFrame.user = user;
-                //MainFrame mf = new MainFrame();
-                //mf.setVisible(true);
+                // 打开主界面，并将登录对象传递给主界面
+                // 先传值
+                MainFrame.user = user;
+                MainFrame mf = new MainFrame();
+                mf.setVisible(true);
                 this.dispose(); //关闭登录界面
             }
             else{

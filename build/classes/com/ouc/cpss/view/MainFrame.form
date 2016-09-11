@@ -178,6 +178,9 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="&#x5546;&#x54c1;&#x9500;&#x552e;Top10"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItem14ActionPerformed"/>
+              </Events>
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="jMenuItem15">
               <Properties>

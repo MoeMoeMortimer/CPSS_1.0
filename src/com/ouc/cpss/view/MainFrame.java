@@ -33,21 +33,21 @@ public class MainFrame extends javax.swing.JFrame {
         LocationUtil.setFullScreen(this);
         this.btnLogin.setEnabled(false);
         //标题栏显示用户登录信息
-//        //this.setTitle(user.getUsname() + "-" + user.getPosition());
-//        //权限
-//        if (user.getPosition().equals("销售员")) {
-//            this.menuBasic.setEnabled(false);
-//            this.menuPurchase.setEnabled(false);
-//            this.menuCount.setEnabled(false);
-//            this.btnCustomer.setEnabled(false);
-//            this.btnEmployee.setEnabled(false);
-//            this.btnProduct.setEnabled(false);
-//            this.btnSupplier.setEnabled(false);
-//        } else if (user.getPosition().equals("基本资料管理员")) {
-//            this.menuSell.setEnabled(false);
-//            this.menuPurchase.setEnabled(false);
-//            this.menuCount.setEnabled(false);
-//        }
+        this.setTitle(user.getUsname() + "-" + user.getPosition());
+        //权限
+        if (user.getPosition().equals("销售员")) {
+            this.menuBasic.setEnabled(false);
+            this.menuPurchase.setEnabled(false);
+            this.menuCount.setEnabled(false);
+            this.btnCustomer.setEnabled(false);
+            this.btnEmployee.setEnabled(false);
+            this.btnProduct.setEnabled(false);
+            this.btnSupplier.setEnabled(false);
+        } else if (user.getPosition().equals("基本资料管理员")) {
+            this.menuSell.setEnabled(false);
+            this.menuPurchase.setEnabled(false);
+            this.menuCount.setEnabled(false);
+        }
 
     }
 
@@ -287,6 +287,11 @@ public class MainFrame extends javax.swing.JFrame {
         menuCount.add(jMenuItem13);
 
         jMenuItem14.setText("商品销售Top10");
+        jMenuItem14.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem14ActionPerformed(evt);
+            }
+        });
         menuCount.add(jMenuItem14);
 
         jMenuItem15.setText("销售员每月销售总额统计");
@@ -472,6 +477,10 @@ public class MainFrame extends javax.swing.JFrame {
     private void jMenuItem16ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem16ActionPerformed
         showFrame(EmpSelProFrame.class);
     }//GEN-LAST:event_jMenuItem16ActionPerformed
+
+    private void jMenuItem14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem14ActionPerformed
+        showFrame(ProTop10Frame.class);
+    }//GEN-LAST:event_jMenuItem14ActionPerformed
 
     public void showFrame(Class clazz) {
         try {

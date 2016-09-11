@@ -31,7 +31,7 @@
               <EmptySpace pref="43" max="32767" attributes="0"/>
           </Group>
           <Group type="102" alignment="1" attributes="0">
-              <EmptySpace pref="542" max="32767" attributes="0"/>
+              <EmptySpace pref="536" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
                       <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
@@ -134,8 +134,11 @@
     </Component>
     <Component class="javax.swing.JButton" name="jButton3">
       <Properties>
-        <Property name="text" type="java.lang.String" value="&#x5173;&#x95ed;"/>
+        <Property name="text" type="java.lang.String" value="&#x751f;&#x6210;&#x56fe;&#x8868;"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton3ActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JComboBox" name="cobMonth">
       <Properties>
