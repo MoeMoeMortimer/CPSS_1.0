@@ -8,6 +8,7 @@ package com.ouc.cpss.view;
 import com.ouc.cpss.biz.*;
 import com.ouc.cpss.po.Employee;
 import com.ouc.cpss.util.ExportEmpProExcel;
+import com.ouc.cpss.util.LocationUtil;
 import com.ouc.cpss.vo.ViewEmp;
 import java.io.File;
 import java.util.ArrayList;
@@ -36,6 +37,7 @@ public class EmpSelProFrame extends javax.swing.JInternalFrame {
     public EmpSelProFrame() {
         initComponents();
         initEmpSelProTable();
+        LocationUtil.setScreenCenter(this);
     }
 
     /**
@@ -47,27 +49,24 @@ public class EmpSelProFrame extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        btnSearch = new javax.swing.JButton();
+        conPicPane1 = new com.ouc.cpss.view.ConPicPane();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblEmp = new javax.swing.JTable();
-        btnChart = new javax.swing.JButton();
-        dateStart = new com.ouc.cpss.util.DateChooserJButton();
         dateEnd = new com.ouc.cpss.util.DateChooserJButton();
-        jLabel1 = new javax.swing.JLabel();
-        btnClose = new javax.swing.JButton();
         ComboCondition = new javax.swing.JComboBox();
+        dateStart = new com.ouc.cpss.util.DateChooserJButton();
+        jLabel1 = new javax.swing.JLabel();
+        btnChart = new javax.swing.JButton();
+        btnSearch = new javax.swing.JButton();
+        btnClose = new javax.swing.JButton();
 
         setClosable(true);
         setIconifiable(true);
         setMaximizable(true);
         setTitle("统计每个销售员的销售商品明细");
+        setPreferredSize(new java.awt.Dimension(809, 507));
 
-        btnSearch.setText("查询");
-        btnSearch.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSearchActionPerformed(evt);
-            }
-        });
+        conPicPane1.setPreferredSize(new java.awt.Dimension(809, 500));
 
         tblEmp.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -79,6 +78,14 @@ public class EmpSelProFrame extends javax.swing.JInternalFrame {
         ));
         jScrollPane1.setViewportView(tblEmp);
 
+        dateEnd.setPreferredSize(new java.awt.Dimension(65, 18));
+
+        ComboCondition.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "全部" }));
+
+        dateStart.setPreferredSize(new java.awt.Dimension(65, 18));
+
+        jLabel1.setText("--");
+
         btnChart.setText("打印报表");
         btnChart.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -86,7 +93,12 @@ public class EmpSelProFrame extends javax.swing.JInternalFrame {
             }
         });
 
-        jLabel1.setText("--");
+        btnSearch.setText("查询");
+        btnSearch.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSearchActionPerformed(evt);
+            }
+        });
 
         btnClose.setText("关闭");
         btnClose.addActionListener(new java.awt.event.ActionListener() {
@@ -95,53 +107,65 @@ public class EmpSelProFrame extends javax.swing.JInternalFrame {
             }
         });
 
-        ComboCondition.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "全部" }));
+        javax.swing.GroupLayout conPicPane1Layout = new javax.swing.GroupLayout(conPicPane1);
+        conPicPane1.setLayout(conPicPane1Layout);
+        conPicPane1Layout.setHorizontalGroup(
+            conPicPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(conPicPane1Layout.createSequentialGroup()
+                .addGroup(conPicPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(conPicPane1Layout.createSequentialGroup()
+                        .addGap(440, 440, 440)
+                        .addGroup(conPicPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(conPicPane1Layout.createSequentialGroup()
+                                .addComponent(dateStart, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel1)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(dateEnd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(37, 37, 37)
+                                .addComponent(ComboCondition, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
+                                .addComponent(btnSearch))
+                            .addGroup(conPicPane1Layout.createSequentialGroup()
+                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addComponent(btnChart)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(btnClose))))
+                    .addGroup(conPicPane1Layout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 730, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(30, Short.MAX_VALUE))
+        );
+        conPicPane1Layout.setVerticalGroup(
+            conPicPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(conPicPane1Layout.createSequentialGroup()
+                .addGap(19, 19, 19)
+                .addGroup(conPicPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnSearch)
+                    .addComponent(ComboCondition, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(dateEnd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1)
+                    .addComponent(dateStart, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 355, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(conPicPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnClose)
+                    .addComponent(btnChart))
+                .addContainerGap(25, Short.MAX_VALUE))
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(367, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(dateStart, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jLabel1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(dateEnd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(ComboCondition, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btnSearch)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(btnChart)
-                        .addGap(63, 63, 63)
-                        .addComponent(btnClose)
-                        .addGap(45, 226, Short.MAX_VALUE))))
             .addGroup(layout.createSequentialGroup()
-                .addGap(33, 33, 33)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 723, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 38, Short.MAX_VALUE))
+                .addComponent(conPicPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 790, Short.MAX_VALUE)
+                .addGap(0, 0, 0))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(30, 30, 30)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnSearch)
-                    .addComponent(dateEnd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1)
-                    .addComponent(dateStart, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(ComboCondition, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 343, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(26, 26, 26)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnChart)
-                    .addComponent(btnClose))
-                .addContainerGap(59, Short.MAX_VALUE))
+            .addComponent(conPicPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 473, Short.MAX_VALUE)
         );
 
         pack();
@@ -226,6 +250,7 @@ public class EmpSelProFrame extends javax.swing.JInternalFrame {
     private javax.swing.JButton btnChart;
     private javax.swing.JButton btnClose;
     private javax.swing.JButton btnSearch;
+    private com.ouc.cpss.view.ConPicPane conPicPane1;
     private com.ouc.cpss.util.DateChooserJButton dateEnd;
     private com.ouc.cpss.util.DateChooserJButton dateStart;
     private javax.swing.JLabel jLabel1;

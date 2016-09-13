@@ -8,6 +8,7 @@ package com.ouc.cpss.view;
 import com.ouc.cpss.biz.EmployeeBiz;
 import com.ouc.cpss.biz.EmployeeBizImpl;
 import com.ouc.cpss.po.Employee;
+import com.ouc.cpss.util.LocationUtil;
 import com.ouc.cpss.util.StringUtil;
 import java.util.List;
 import java.util.Vector;
@@ -15,7 +16,7 @@ import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
- *
+ * 员工管理界面
  * @author su
  */
 public class EmployeeFrame extends javax.swing.JInternalFrame {
@@ -26,6 +27,7 @@ public class EmployeeFrame extends javax.swing.JInternalFrame {
      */
     public EmployeeFrame() {
         initComponents();
+        LocationUtil.setScreenCenter(this);
     }
 
     /**
@@ -37,6 +39,7 @@ public class EmployeeFrame extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        basicPicPane1 = new com.ouc.cpss.view.BasicPicPane();
         txtConditions = new javax.swing.JTextField();
         btnSearch = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -67,6 +70,10 @@ public class EmployeeFrame extends javax.swing.JInternalFrame {
         setClosable(true);
         setIconifiable(true);
         setTitle("员工管理");
+        setPreferredSize(new java.awt.Dimension(809, 500));
+        setRequestFocusEnabled(false);
+
+        basicPicPane1.setPreferredSize(new java.awt.Dimension(809, 500));
 
         btnSearch.setText("搜索");
         btnSearch.addActionListener(new java.awt.event.ActionListener() {
@@ -128,7 +135,7 @@ public class EmployeeFrame extends javax.swing.JInternalFrame {
                                 .addComponent(jLabel4)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(txtEmpage, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 56, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 37, Short.MAX_VALUE)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING))
@@ -157,7 +164,7 @@ public class EmployeeFrame extends javax.swing.JInternalFrame {
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(20, 20, 20)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(jLabel2)
@@ -165,7 +172,7 @@ public class EmployeeFrame extends javax.swing.JInternalFrame {
                     .addComponent(txtEmpid, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtEmpname, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(cobEmpsex, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(35, 35, 35)
+                .addGap(20, 20, 20)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
                     .addComponent(jLabel5)
@@ -173,11 +180,11 @@ public class EmployeeFrame extends javax.swing.JInternalFrame {
                     .addComponent(txtEmpage, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtEmptel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(cobJob, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 17, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
                     .addComponent(txtEmpaddr, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(21, 21, 21))
+                .addGap(20, 20, 20))
         );
 
         btnClose.setText("退出");
@@ -225,48 +232,51 @@ public class EmployeeFrame extends javax.swing.JInternalFrame {
         jLabel8.setForeground(new java.awt.Color(255, 0, 0));
         jLabel8.setText("注意：红色字体处不可修改");
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(txtConditions, javax.swing.GroupLayout.PREFERRED_SIZE, 212, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btnSearch)
-                .addGap(31, 31, 31))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(64, 64, 64)
-                .addComponent(jLabel8)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnLoad)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnAdd)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnDelete)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btnSave)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnCancel)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnClose)
-                .addContainerGap())
+        javax.swing.GroupLayout basicPicPane1Layout = new javax.swing.GroupLayout(basicPicPane1);
+        basicPicPane1.setLayout(basicPicPane1Layout);
+        basicPicPane1Layout.setHorizontalGroup(
+            basicPicPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, basicPicPane1Layout.createSequentialGroup()
+                .addGroup(basicPicPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(basicPicPane1Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 746, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(basicPicPane1Layout.createSequentialGroup()
+                        .addContainerGap(14, Short.MAX_VALUE)
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(basicPicPane1Layout.createSequentialGroup()
+                        .addGap(77, 77, 77)
+                        .addComponent(jLabel8)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnLoad)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnAdd)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnDelete)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnSave)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnCancel)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnClose)))
+                .addGap(30, 30, 30))
+            .addGroup(basicPicPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, basicPicPane1Layout.createSequentialGroup()
+                    .addContainerGap(499, Short.MAX_VALUE)
+                    .addComponent(txtConditions, javax.swing.GroupLayout.PREFERRED_SIZE, 212, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                    .addComponent(btnSearch)
+                    .addGap(31, 31, 31)))
         );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtConditions, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnSearch))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+        basicPicPane1Layout.setVerticalGroup(
+            basicPicPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, basicPicPane1Layout.createSequentialGroup()
+                .addContainerGap(85, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(basicPicPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnClose)
                     .addComponent(btnCancel)
                     .addComponent(btnSave)
@@ -274,7 +284,25 @@ public class EmployeeFrame extends javax.swing.JInternalFrame {
                     .addComponent(btnAdd)
                     .addComponent(btnLoad)
                     .addComponent(jLabel8))
-                .addContainerGap(15, Short.MAX_VALUE))
+                .addGap(19, 19, 19))
+            .addGroup(basicPicPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(basicPicPane1Layout.createSequentialGroup()
+                    .addContainerGap()
+                    .addGroup(basicPicPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(txtConditions, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnSearch))
+                    .addContainerGap(467, Short.MAX_VALUE)))
+        );
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(basicPicPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 793, Short.MAX_VALUE)
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(basicPicPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 470, Short.MAX_VALUE)
         );
 
         pack();
@@ -282,7 +310,7 @@ public class EmployeeFrame extends javax.swing.JInternalFrame {
 
     //搜索按钮
     private void btnSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchActionPerformed
-        // 模糊查询
+        // 根据ename,esex,eage,eaddr,position进行模糊查询
         String condition = this.txtConditions.getText().trim();
         List<Employee> list = empbiz.findByCondition(condition);
             //显示list中的信息
@@ -299,16 +327,15 @@ public class EmployeeFrame extends javax.swing.JInternalFrame {
 
     //新增按钮
     private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
-        // 新增买家
-        //获取买家信息
+        // 新增员工
+        //获取员工信息
         String empname = this.txtEmpname.getText().trim();
         String empsex = (String)this.cobEmpsex.getSelectedItem();
         String age = this.txtEmpage.getText().trim();  
         String emptel = this.txtEmptel.getText().trim(); //联系电话
         String empjob = (String)this.cobJob.getSelectedItem();
         String empaddr= this.txtEmpaddr.getText().trim();
-        //数据格式验证(StringUtil)
-        //1验证非空
+        //验证所获数据是否非空
         if(StringUtil.checkLength(empname) == false){
             JOptionPane.showMessageDialog(this, "姓名不能为空");
             return;
@@ -376,8 +403,7 @@ public class EmployeeFrame extends javax.swing.JInternalFrame {
         String emptel = this.txtEmptel.getText().trim(); //联系电话
         String empjob = (String)this.cobJob.getSelectedItem();
         String empaddr = this.txtEmpaddr.getText().trim();
-        //数据格式验证(StringUtil)
-        //1验证非空
+        //验证所获数据是否非空
         if(StringUtil.checkLength(empname) == false){
             JOptionPane.showMessageDialog(this, "姓名不能为空");
             return;
@@ -435,9 +461,9 @@ public class EmployeeFrame extends javax.swing.JInternalFrame {
         // 删除商品信息
         int answer = JOptionPane.showConfirmDialog(this, "你确定要删除吗？");
         if(answer == JOptionPane.YES_OPTION){
-            //获取proid
-        int proid = Integer.parseInt(this.txtEmpid.getText());
-        boolean result = empbiz.delete(proid);
+            //获取empid
+        int empid = Integer.parseInt(this.txtEmpid.getText());
+        boolean result = empbiz.delete(empid);
         if(result == true){
             JOptionPane.showMessageDialog(this, "删除成功");
             List<Employee> list = empbiz.findAll();
@@ -455,7 +481,7 @@ public class EmployeeFrame extends javax.swing.JInternalFrame {
     //将制定的list数据显示到表上
     public void showOnTable(List<Employee> list){
         //将制定的list数据显示到表上
-        //1.获取指定表格（tblProduct）模型
+        //1.获取指定表格（tblEmployee）模型
         DefaultTableModel dtm = (DefaultTableModel) this.tblEmployee.getModel();
         //2.清空表格信息
         while(dtm.getRowCount() > 0){
@@ -485,6 +511,7 @@ public class EmployeeFrame extends javax.swing.JInternalFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private com.ouc.cpss.view.BasicPicPane basicPicPane1;
     private javax.swing.JButton btnAdd;
     private javax.swing.JButton btnCancel;
     private javax.swing.JButton btnClose;

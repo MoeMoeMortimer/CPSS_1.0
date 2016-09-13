@@ -19,13 +19,16 @@ import javax.swing.table.DefaultTableModel;
  * @author su
  */
 public class SelOutFrame extends javax.swing.JInternalFrame {
+
     // 引入biz
+
     ProductBiz pbiz = new ProductBizImpl();
     CustomerBiz cusbiz = new CustomerBizImpl();
-    SellsBiz selbiz  = new SellsBizImpl();
+    SellsBiz selbiz = new SellsBizImpl();
     EmployeeBiz empbiz = new EmployeeBizImpl();
     // 属性
     int selectRow = -1;
+
     /**
      * Creates new form SelOutFrame
      */
@@ -33,28 +36,29 @@ public class SelOutFrame extends javax.swing.JInternalFrame {
         initComponents();
         // 初始化买家和销售员
         initPurchaseTable();
-        
+        LocationUtil.setScreenCenter(this);
+
     }
+
     // 初始化买家和销售员
-    public void initPurchaseTable(){
+
+    public void initPurchaseTable() {
         // 放组合框的容器
         JComboBox cobsup1 = new JComboBox();
         JComboBox cobsup2 = new JComboBox();
         List<Customer> cuslist = cusbiz.findAll();
         List<Employee> emplist = empbiz.findAll();
-        for(Customer cus: cuslist){
+        for (Customer cus : cuslist) {
             cobsup1.addItem(cus);
         }
-        for(Employee emp: emplist){
+        for (Employee emp : emplist) {
             cobsup2.addItem(emp);
         }
         this.tblSell.getColumnModel().getColumn(3).setCellEditor(new DefaultCellEditor(cobsup1));
         this.tblSell.getColumnModel().getColumn(4).setCellEditor(new DefaultCellEditor(cobsup2));
-        
+
     }
 
-    
-    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -64,6 +68,7 @@ public class SelOutFrame extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        selPicPane1 = new com.ouc.cpss.view.SelPicPane();
         txtCondition = new javax.swing.JTextField();
         btnSearch = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
@@ -95,6 +100,8 @@ public class SelOutFrame extends javax.swing.JInternalFrame {
             }
         });
 
+        selPicPane1.setPreferredSize(new java.awt.Dimension(793, 470));
+
         btnSearch.setText("查询");
         btnSearch.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -117,6 +124,7 @@ public class SelOutFrame extends javax.swing.JInternalFrame {
         });
         jScrollPane2.setViewportView(tblSell);
 
+        jLabel1.setFont(new java.awt.Font("微软雅黑 Light", 1, 14)); // NOI18N
         jLabel1.setText("销售出库");
 
         tblProduct.setModel(new javax.swing.table.DefaultTableModel(
@@ -148,58 +156,81 @@ public class SelOutFrame extends javax.swing.JInternalFrame {
             }
         });
 
+        javax.swing.GroupLayout selPicPane1Layout = new javax.swing.GroupLayout(selPicPane1);
+        selPicPane1.setLayout(selPicPane1Layout);
+        selPicPane1Layout.setHorizontalGroup(
+            selPicPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(selPicPane1Layout.createSequentialGroup()
+                .addContainerGap(499, Short.MAX_VALUE)
+                .addGroup(selPicPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(selPicPane1Layout.createSequentialGroup()
+                        .addComponent(btnSellOut)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnDelete))
+                    .addGroup(selPicPane1Layout.createSequentialGroup()
+                        .addComponent(txtCondition, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnSearch)))
+                .addGap(30, 30, 30))
+            .addGroup(selPicPane1Layout.createSequentialGroup()
+                .addGap(39, 39, 39)
+                .addComponent(jLabel1)
+                .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(selPicPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, selPicPane1Layout.createSequentialGroup()
+                    .addGap(0, 37, Short.MAX_VALUE)
+                    .addGroup(selPicPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 726, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 726, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGap(30, 30, 30)))
+        );
+        selPicPane1Layout.setVerticalGroup(
+            selPicPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, selPicPane1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(selPicPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtCondition, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnSearch))
+                .addGap(190, 190, 190)
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 183, Short.MAX_VALUE)
+                .addGroup(selPicPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnSellOut)
+                    .addComponent(btnDelete))
+                .addGap(21, 21, 21))
+            .addGroup(selPicPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(selPicPane1Layout.createSequentialGroup()
+                    .addGap(39, 39, 39)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(31, 31, 31)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(62, Short.MAX_VALUE)))
+        );
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 794, Short.MAX_VALUE)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jLabel1)
-                .addGap(0, 0, Short.MAX_VALUE))
-            .addComponent(jScrollPane1)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(520, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(txtCondition, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btnSearch))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(btnSellOut)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnDelete)
-                        .addGap(29, 29, 29)))
-                .addContainerGap())
+                .addComponent(selPicPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtCondition, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnSearch))
-                .addGap(6, 6, 6)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnSellOut)
-                    .addComponent(btnDelete))
-                .addContainerGap(25, Short.MAX_VALUE))
+                .addComponent(selPicPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-    
+
     // 窗口上方的模糊查询
     private void btnSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchActionPerformed
         // 模糊查询
         String condition = this.txtCondition.getText();
         List<Product> list = pbiz.findByCondition(condition);
-        showOnTable(list);     
+        showOnTable(list);
     }//GEN-LAST:event_btnSearchActionPerformed
 
     private void tblProductMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblProductMouseClicked
@@ -217,17 +248,17 @@ public class SelOutFrame extends javax.swing.JInternalFrame {
         //添加到采购表格
         addPurchaseTable(vt);
     }//GEN-LAST:event_tblProductMouseClicked
-    
+
     // 选中销售预览表某行
     private void tblSellMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblSellMouseClicked
-        
+
         selectRow = this.tblSell.getSelectedRow();
     }//GEN-LAST:event_tblSellMouseClicked
 
     // 将选中销售预览表的某一行删除
     private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
         // 删除按钮
-        if(selectRow == -1){
+        if (selectRow == -1) {
             JOptionPane.showMessageDialog(this, "请选择要删除的采购信息~");
             return;
         }
@@ -238,36 +269,33 @@ public class SelOutFrame extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnDeleteActionPerformed
 
     /**
-     * 重点  销售出库按钮实现销售出库
-     */ 
+     * 重点 销售出库按钮实现销售出库
+     */
     private void btnSellOutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSellOutActionPerformed
         //获取信息
         DefaultTableModel dtm = (DefaultTableModel) this.tblSell.getModel();
         DefaultTableModel dtm1 = (DefaultTableModel) this.tblProduct.getModel();
-         /**
-          * 记得变化
-          * 行根据表格中的数据行，列根据sql语句中的参数
-          */
+        /**
+         * 记得变化 行根据表格中的数据行，列根据sql语句中的参数
+         */
         //根据具体数值数创建采购数组，用于增加数据库中的采购信息,
         // SellBizImpl对应purchasein中insert语句中？的个数
         Object[][] sells = new Object[dtm.getRowCount()][7];
         //商品库存数组，因为库存会更改
         Object[][] stocks = new Object[dtm.getRowCount()][2];
-        
-        
+
         //遍历表格
-        for(int i=0;i<dtm.getRowCount();i++){
-         
+        for (int i = 0; i < dtm.getRowCount(); i++) {
+
             // 先检验是否输入信息
-            if(this.tblSell.getValueAt(i, 3) == null
+            if (this.tblSell.getValueAt(i, 3) == null
                     || this.tblSell.getValueAt(i, 4) == null
                     || this.tblSell.getValueAt(i, 5) == null
-                    || this.tblSell.getValueAt(i, 6) == null){
-                 JOptionPane.showMessageDialog(this, "第"+ (i+1) +"条销售信息不完整！");
-                 return;
+                    || this.tblSell.getValueAt(i, 6) == null) {
+                JOptionPane.showMessageDialog(this, "第" + (i + 1) + "条销售信息不完整！");
+                return;
             }
-            
-            
+
             // 销售表，按数据库中的数据顺序存入sells数组
             // 0 销售编号
             sells[i][0] = null;
@@ -277,36 +305,36 @@ public class SelOutFrame extends javax.swing.JInternalFrame {
             Employee emp = (Employee) this.tblSell.getValueAt(i, 4);
             sells[i][2] = emp.getEmpid();
             // 3 买家编号
-            Customer cus = (Customer)this.tblSell.getValueAt(i, 3);
+            Customer cus = (Customer) this.tblSell.getValueAt(i, 3);
             sells[i][3] = cus.getCusid();
             // 4 销售日期
             sells[i][4] = new java.util.Date();
             // 5 销售数量（验证）
             String count_s = (String) this.tblSell.getValueAt(i, 5);
             int count = Integer.parseInt(count_s);
-            if(StringUtil.checkDigit(count_s)){
-              sells[i][5] = new Integer(count_s); //销售数量
-            }else{
-               JOptionPane.showMessageDialog(this, "销售数量必须为数字！");
+            if (StringUtil.checkDigit(count_s)) {
+                sells[i][5] = new Integer(count_s); //销售数量
+            } else {
+                JOptionPane.showMessageDialog(this, "销售数量必须为数字！");
                 return;
             }
-            
+
             // 获得商品当前数量与销售数量进行对比
-            for(int j = 0; j<dtm1.getRowCount(); j++){
-                if(this.tblProduct.getValueAt(j, 0).equals(this.tblSell.getValueAt(i, 0))){
+            for (int j = 0; j < dtm1.getRowCount(); j++) {
+                if (this.tblProduct.getValueAt(j, 0).equals(this.tblSell.getValueAt(i, 0))) {
                     Integer nowcount = (Integer) this.tblProduct.getValueAt(j, 5);
-                    if(count > nowcount){
-                         JOptionPane.showMessageDialog(this, "销售数量不得超过商品当前数量！");
-                          return;
-                     }
-                }      
+                    if (count > nowcount) {
+                        JOptionPane.showMessageDialog(this, "销售数量不得超过商品当前数量！");
+                        return;
+                    }
+                }
             }
-            
+
             // 6 销售单个价格（验证）
             String price_s = (String) this.tblSell.getValueAt(i, 6);
-            if(StringUtil.checkDecimal(price_s)){
-               sells[i][6] = new BigDecimal(price_s) ;//销售价格
-            }else{
+            if (StringUtil.checkDecimal(price_s)) {
+                sells[i][6] = new BigDecimal(price_s);//销售价格
+            } else {
                 JOptionPane.showMessageDialog(this, "销售单价必须为数字！");
                 return;
             }
@@ -314,59 +342,59 @@ public class SelOutFrame extends javax.swing.JInternalFrame {
             stocks[i][1] = this.tblSell.getValueAt(i, 0);
             // 数量
             stocks[i][0] = this.tblSell.getValueAt(i, 5);
-           
-            
+
         }
         //调用批量添加
         boolean result = selbiz.sellOut(sells, stocks);
-        if(result == true){
+        if (result == true) {
             JOptionPane.showMessageDialog(this, "销售出库成功");
             //更新商品表
             btnSearchActionPerformed(evt);//调用查询方法
-        }else{
+        } else {
             JOptionPane.showMessageDialog(this, "销售出库失败");
         }
         //清空采购表
-        while(dtm.getRowCount()>0){
+        while (dtm.getRowCount() > 0) {
             dtm.removeRow(0);
         }
 
     }//GEN-LAST:event_btnSellOutActionPerformed
 
     private void formInternalFrameClosed(javax.swing.event.InternalFrameEvent evt) {//GEN-FIRST:event_formInternalFrameClosed
-         FrameUtil.framemap.remove(PurInFrame.class.getName());
+        FrameUtil.framemap.remove(PurInFrame.class.getName());
     }//GEN-LAST:event_formInternalFrameClosed
-   
+
     //  将选中信息写到下表中
-    private void addPurchaseTable(Vector vt){
+    private void addPurchaseTable(Vector vt) {
         boolean flag = false;
         DefaultTableModel dtm = (DefaultTableModel) this.tblSell.getModel();
-        for(int i=0;i<dtm.getRowCount();i++){
-            if(vt.get(0) == tblSell.getValueAt(i, 0)){
+        for (int i = 0; i < dtm.getRowCount(); i++) {
+            if (vt.get(0) == tblSell.getValueAt(i, 0)) {
                 flag = true;
                 break;
             }
         }
-        if(flag == false){
+        if (flag == false) {
             dtm.addRow(vt);
         }
 
     }
-     
+
     /**
      * 将制定的list数据显示到表上
-     * @param list 
-     */ 
+     *
+     * @param list
+     */
     private void showOnTable(List<Product> list) {
         // 1 获取表格模型
-        DefaultTableModel dtm =
-                (DefaultTableModel) this.tblProduct.getModel();
+        DefaultTableModel dtm
+                = (DefaultTableModel) this.tblProduct.getModel();
         // 2 清空表格信息
-        while(dtm.getRowCount()>0){
+        while (dtm.getRowCount() > 0) {
             dtm.removeRow(0);
         }
         // 3 显示数据
-        for(Product p : list){
+        for (Product p : list) {
             Vector vt = new Vector();
             vt.add(p.getProid());
             vt.add(p.getProname());
@@ -375,11 +403,11 @@ public class SelOutFrame extends javax.swing.JInternalFrame {
             vt.add(p.getSafecount());
             vt.add(p.getNowcount());
             vt.add(p.getSugpurchase());
-            dtm.addRow(vt);       
+            dtm.addRow(vt);
         }
     }
 
-    
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnDelete;
     private javax.swing.JButton btnSearch;
@@ -387,6 +415,7 @@ public class SelOutFrame extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private com.ouc.cpss.view.SelPicPane selPicPane1;
     private javax.swing.JTable tblProduct;
     private javax.swing.JTable tblSell;
     private javax.swing.JTextField txtCondition;

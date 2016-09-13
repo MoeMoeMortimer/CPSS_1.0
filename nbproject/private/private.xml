@@ -3,37 +3,29 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/LIUYIYU/Desktop/CPSS_D3_FINAL/src/com/ouc/cpss/view/ProTop10Frame.java</file>
-            <file>file:/C:/Users/LIUYIYU/Desktop/CPSS_D3_FINAL/src/com/ouc/cpss/view/EmpSelProFrame.java</file>
-            <file>file:/C:/Users/LIUYIYU/Desktop/CPSS_D3_FINAL/src/com/ouc/cpss/view/EmpSaleFrame.java</file>
-            <file>file:/C:/Users/LIUYIYU/Desktop/CPSS_D3_FINAL/src/com/ouc/cpss/view/PurReturnInfoFrame.java</file>
-            <file>file:/C:/Users/LIUYIYU/Desktop/CPSS_D3_FINAL/src/com/ouc/cpss/view/LoginFrame.java</file>
-            <file>file:/C:/Users/LIUYIYU/Desktop/CPSS_D3_FINAL/src/com/ouc/cpss/vo/ViewEmpsel.java</file>
-            <file>file:/C:/Users/LIUYIYU/Desktop/CPSS_D3_FINAL/src/com/ouc/cpss/vo/ViewEmp.java</file>
-            <file>file:/C:/Users/LIUYIYU/Desktop/CPSS_D3_FINAL/src/com/ouc/cpss/view/MainDeskPane.java</file>
-            <file>file:/C:/Users/LIUYIYU/Desktop/CPSS_D3_FINAL/src/com/ouc/cpss/view/CusTradeFrame.java</file>
-            <file>file:/C:/Users/LIUYIYU/Desktop/CPSS_D3_FINAL/src/com/ouc/cpss/view/SelOutFrame.java</file>
-            <file>file:/C:/Users/LIUYIYU/Desktop/CPSS_D3_FINAL/src/com/ouc/cpss/view/CustomerFrame.java</file>
-            <file>file:/C:/Users/LIUYIYU/Desktop/CPSS_D3_FINAL/src/com/ouc/cpss/view/SelReturnFrame.java</file>
-            <file>file:/C:/Users/LIUYIYU/Desktop/CPSS_D3_FINAL/src/com/ouc/cpss/view/EmpSaleChartBuilder.java</file>
-            <file>file:/C:/Users/LIUYIYU/Desktop/CPSS_D3_FINAL/src/com/ouc/cpss/view/PurInFrame.java</file>
-            <file>file:/C:/Users/LIUYIYU/Desktop/CPSS_D3_FINAL/src/com/ouc/cpss/view/RegisterFrame.java</file>
-            <file>file:/C:/Users/LIUYIYU/Desktop/CPSS_D3_FINAL/src/com/ouc/cpss/view/SupTradeFrame.java</file>
-            <file>file:/C:/Users/LIUYIYU/Desktop/CPSS_D3_FINAL/src/com/ouc/cpss/view/ProductFrame.java</file>
-            <file>file:/C:/Users/LIUYIYU/Desktop/CPSS_D3_FINAL/src/com/ouc/cpss/view/PicPane.java</file>
-            <file>file:/C:/Users/LIUYIYU/Desktop/CPSS_D3_FINAL/src/com/ouc/cpss/view/SupplierFrame.java</file>
-            <file>file:/C:/Users/LIUYIYU/Desktop/CPSS_D3_FINAL/src/com/ouc/cpss/view/PurReturnFrame.java</file>
-            <file>file:/C:/Users/LIUYIYU/Desktop/CPSS_D3_FINAL/src/com/ouc/cpss/util/StringUtil.java</file>
-            <file>file:/C:/Users/LIUYIYU/Desktop/CPSS_D3_FINAL/src/com/ouc/cpss/view/UpdatePswdFrame.java</file>
-            <file>file:/C:/Users/LIUYIYU/Desktop/CPSS_D3_FINAL/src/com/ouc/cpss/view/MainFrame.java</file>
-            <file>file:/C:/Users/LIUYIYU/Desktop/CPSS_D3_FINAL/src/com/ouc/cpss/view/PurInfoFrame.java</file>
-            <file>file:/C:/Users/LIUYIYU/Desktop/CPSS_D3_FINAL/src/com/ouc/cpss/view/SelReturnInfoFrame.java</file>
-            <file>file:/C:/Users/LIUYIYU/Desktop/CPSS_D3_FINAL/src/com/ouc/cpss/view/ProfitFrame.java</file>
-            <file>file:/C:/Users/LIUYIYU/Desktop/CPSS_D3_FINAL/src/com/ouc/cpss/view/NewPassFrame.java</file>
-            <file>file:/C:/Users/LIUYIYU/Desktop/CPSS_D3_FINAL/src/com/ouc/cpss/view/StorecountFrame.java</file>
-            <file>file:/C:/Users/LIUYIYU/Desktop/CPSS_D3_FINAL/src/com/ouc/cpss/vo/ViewSell.java</file>
-            <file>file:/C:/Users/LIUYIYU/Desktop/CPSS_D3_FINAL/src/com/ouc/cpss/view/EmployeeFrame.java</file>
-            <file>file:/C:/Users/LIUYIYU/Desktop/CPSS_D3_FINAL/src/com/ouc/cpss/view/SelInfoFrame.java</file>
+            <file>file:/C:/Users/LIUYIYU/Desktop/CPSS_FINAL/src/com/ouc/cpss/view/EmpSaleChartBuilder.java</file>
+            <file>file:/C:/Users/LIUYIYU/Desktop/CPSS_FINAL/src/com/ouc/cpss/view/SupTradeChartBuilder.java</file>
+            <file>file:/C:/Users/LIUYIYU/Desktop/CPSS_FINAL/src/com/ouc/cpss/biz/PurchaseBizImpl.java</file>
+            <file>file:/C:/Users/LIUYIYU/Desktop/CPSS_FINAL/src/com/ouc/cpss/biz/ProTop10BizImpl.java</file>
+            <file>file:/C:/Users/LIUYIYU/Desktop/CPSS_FINAL/src/com/ouc/cpss/view/MainFrame.java</file>
+            <file>file:/C:/Users/LIUYIYU/Desktop/CPSS_FINAL/src/com/ouc/cpss/view/ProfitFrame.java</file>
+            <file>file:/C:/Users/LIUYIYU/Desktop/CPSS_FINAL/src/com/ouc/cpss/biz/ProfitBizImpl.java</file>
+            <file>file:/C:/Users/LIUYIYU/Desktop/CPSS_FINAL/src/com/ouc/cpss/view/StorecountFrame.java</file>
+            <file>file:/C:/Users/LIUYIYU/Desktop/CPSS_FINAL/src/com/ouc/cpss/biz/CustomerBizImpl.java</file>
+            <file>file:/C:/Users/LIUYIYU/Desktop/CPSS_FINAL/src/com/ouc/cpss/view/LoginFrame.java</file>
+            <file>file:/C:/Users/LIUYIYU/Desktop/CPSS_FINAL/src/com/ouc/cpss/util/colorTableRender.java</file>
+            <file>file:/C:/Users/LIUYIYU/Desktop/CPSS_FINAL/src/com/ouc/cpss/biz/ProductBizImpl.java</file>
+            <file>file:/C:/Users/LIUYIYU/Desktop/CPSS_FINAL/src/com/ouc/cpss/view/EmpSelProFrame.java</file>
+            <file>file:/C:/Users/LIUYIYU/Desktop/CPSS_FINAL/src/com/ouc/cpss/biz/EmployeeBizImpl.java</file>
+            <file>file:/C:/Users/LIUYIYU/Desktop/CPSS_FINAL/src/com/ouc/cpss/view/EmployeeFrame.java</file>
+            <file>file:/C:/Users/LIUYIYU/Desktop/CPSS_FINAL/src/com/ouc/cpss/view/CustomerFrame.java</file>
+            <file>file:/C:/Users/LIUYIYU/Desktop/CPSS_FINAL/src/com/ouc/cpss/view/EmpSaleFrame.java</file>
+            <file>file:/C:/Users/LIUYIYU/Desktop/CPSS_FINAL/src/com/ouc/cpss/biz/PurReturnBizImpl.java</file>
+            <file>file:/C:/Users/LIUYIYU/Desktop/CPSS_FINAL/src/com/ouc/cpss/view/ChartProBuilder.java</file>
+            <file>file:/C:/Users/LIUYIYU/Desktop/CPSS_FINAL/src/com/ouc/cpss/view/ProfitChartBuilder.java</file>
+            <file>file:/C:/Users/LIUYIYU/Desktop/CPSS_FINAL/src/com/ouc/cpss/biz/PurchaseBiz.java</file>
+            <file>file:/C:/Users/LIUYIYU/Desktop/CPSS_FINAL/src/com/ouc/cpss/view/CusTradeFrame.java</file>
+            <file>file:/C:/Users/LIUYIYU/Desktop/CPSS_FINAL/src/com/ouc/cpss/biz/CusTradeBizImpl.java</file>
         </group>
     </open-files>
 </project-private>

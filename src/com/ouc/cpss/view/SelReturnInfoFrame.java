@@ -9,6 +9,7 @@ import com.ouc.cpss.biz.SelreturnBiz;
 import com.ouc.cpss.biz.SelreturnBizImpl;
 import com.ouc.cpss.vo.ViewSelReturn;
 import com.ouc.cpss.util.ExportExcelSelreturn;
+import com.ouc.cpss.util.LocationUtil;
 import java.io.File;
 import java.math.BigDecimal;
 import java.util.List;
@@ -26,11 +27,13 @@ public class SelReturnInfoFrame extends javax.swing.JInternalFrame {
 
     SelreturnBiz srtbiz = new SelreturnBizImpl();
     ExportExcelSelreturn exportsrt = new ExportExcelSelreturn();
+
     /**
      * Creates new form SelReturnInfoFrame
      */
     public SelReturnInfoFrame() {
         initComponents();
+        LocationUtil.setScreenCenter(this);
     }
 
     /**
@@ -42,6 +45,7 @@ public class SelReturnInfoFrame extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        selPicPane1 = new com.ouc.cpss.view.SelPicPane();
         dateStart = new com.ouc.cpss.util.DateChooserJButton();
         jLabel1 = new javax.swing.JLabel();
         dateEnd = new com.ouc.cpss.util.DateChooserJButton();
@@ -57,7 +61,13 @@ public class SelReturnInfoFrame extends javax.swing.JInternalFrame {
         setResizable(true);
         setTitle("销售退货信息");
 
+        selPicPane1.setPreferredSize(new java.awt.Dimension(793, 470));
+
+        dateStart.setPreferredSize(new java.awt.Dimension(80, 22));
+
         jLabel1.setText("--");
+
+        dateEnd.setPreferredSize(new java.awt.Dimension(80, 22));
 
         btnQuery.setText("查询");
         btnQuery.addActionListener(new java.awt.event.ActionListener() {
@@ -83,46 +93,57 @@ public class SelReturnInfoFrame extends javax.swing.JInternalFrame {
             }
         });
 
+        javax.swing.GroupLayout selPicPane1Layout = new javax.swing.GroupLayout(selPicPane1);
+        selPicPane1.setLayout(selPicPane1Layout);
+        selPicPane1Layout.setHorizontalGroup(
+            selPicPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(selPicPane1Layout.createSequentialGroup()
+                .addContainerGap(29, Short.MAX_VALUE)
+                .addGroup(selPicPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(selPicPane1Layout.createSequentialGroup()
+                        .addComponent(dateStart, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLabel1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(dateEnd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtCondition, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnQuery))
+                    .addComponent(btnExportExcel)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 724, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(40, 40, 40))
+        );
+        selPicPane1Layout.setVerticalGroup(
+            selPicPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(selPicPane1Layout.createSequentialGroup()
+                .addGap(18, 18, 18)
+                .addGroup(selPicPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtCondition, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnQuery)
+                    .addComponent(dateEnd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1)
+                    .addComponent(dateStart, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 350, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
+                .addComponent(btnExportExcel)
+                .addGap(20, 20, 20))
+        );
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(46, 46, 46)
-                .addComponent(dateStart, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(dateEnd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(txtCondition, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btnQuery)
-                .addGap(19, 19, 19))
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 603, Short.MAX_VALUE)
-                .addContainerGap())
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnExportExcel)
-                .addContainerGap())
+                .addComponent(selPicPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(dateStart, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1)
-                    .addComponent(dateEnd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtCondition, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnQuery))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 252, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btnExportExcel)
-                .addContainerGap(14, Short.MAX_VALUE))
+                .addComponent(selPicPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();
@@ -144,28 +165,28 @@ public class SelReturnInfoFrame extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
         JFileChooser savefile = new JFileChooser();//文件选择对话框
         FileFilter filter = new FileNameExtensionFilter("Excel文件(*.xls)", "xls");
-        savefile.addChoosableFileFilter(filter); 
+        savefile.addChoosableFileFilter(filter);
         savefile.setFileFilter(filter); //添加过滤器
         //打开文件选择对话框，showSaveDialog是保存，showOpenDialog是打开
-        int flag = savefile.showSaveDialog(this); 
+        int flag = savefile.showSaveDialog(this);
         File file = null;
         //如果点击了保存按钮
         if (flag == JFileChooser.APPROVE_OPTION) {
-        file = savefile.getSelectedFile();//所选择的文件名（手写或选择）
-        System.out.println("文件名：" + file.getAbsolutePath());
-        String filename = file.getAbsolutePath();
-        //截取文件扩展名（文件名长度后4位）
-        String ftype = filename.substring(filename.length()-4);
-        if(!ftype.equals(".xls")){
-            //如果用户没有填写扩展名，自动添加扩展名.xls
-            file = new File(filename+".xls");
-        }
+            file = savefile.getSelectedFile();//所选择的文件名（手写或选择）
+            System.out.println("文件名：" + file.getAbsolutePath());
+            String filename = file.getAbsolutePath();
+            //截取文件扩展名（文件名长度后4位）
+            String ftype = filename.substring(filename.length() - 4);
+            if (!ftype.equals(".xls")) {
+                //如果用户没有填写扩展名，自动添加扩展名.xls
+                file = new File(filename + ".xls");
+            }
         }
         String condition = this.txtCondition.getText().trim();
         String start = this.dateStart.getText();
         String end = this.dateEnd.getText();
         //2 通过查询业务获得商品集合
-        List<ViewSelReturn> list = srtbiz.findByCondition(start,end,condition);
+        List<ViewSelReturn> list = srtbiz.findByCondition(start, end, condition);
         //集合获取数据，输出到文件：ExportExcel类的printSale方法
         exportsrt.printSelreturn(list, file); //st是要导出到excel的数据集合，来自于数据库查询
     }//GEN-LAST:event_btnExportExcelActionPerformed
@@ -197,6 +218,7 @@ public class SelReturnInfoFrame extends javax.swing.JInternalFrame {
     private com.ouc.cpss.util.DateChooserJButton dateStart;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
+    private com.ouc.cpss.view.SelPicPane selPicPane1;
     private javax.swing.JTable tblReturn;
     private javax.swing.JTextField txtCondition;
     // End of variables declaration//GEN-END:variables

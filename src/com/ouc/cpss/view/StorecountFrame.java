@@ -9,26 +9,36 @@ import com.ouc.cpss.biz.StorecountBiz;
 import com.ouc.cpss.biz.StorecountBizImpl;
 import com.ouc.cpss.vo.ViewStorecount;
 import com.ouc.cpss.util.ExportStorecountExcel;
+import com.ouc.cpss.util.LocationUtil;
+import com.ouc.cpss.util.ColorTableRender;
+import java.awt.Color;
+import java.awt.Component;
 import java.io.File;
 import java.util.List;
 import java.util.Vector;
 import javax.swing.JFileChooser;
+import javax.swing.JTable;
 import javax.swing.filechooser.FileFilter;
 import javax.swing.filechooser.FileNameExtensionFilter;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableCellRenderer;
 
 /**
  *
  * @author su
  */
 public class StorecountFrame extends javax.swing.JInternalFrame {
+
     StorecountBiz stbiz = new StorecountBizImpl();
     static List<ViewStorecount> list;
+
     /**
      * Creates new form StorecountFrame
      */
     public StorecountFrame() {
         initComponents();
+        LocationUtil.setScreenCenter(this);
     }
 
     /**
@@ -40,6 +50,7 @@ public class StorecountFrame extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        conPicPane1 = new com.ouc.cpss.view.ConPicPane();
         jLabel1 = new javax.swing.JLabel();
         cobType = new javax.swing.JComboBox();
         txtCondition = new javax.swing.JTextField();
@@ -51,6 +62,8 @@ public class StorecountFrame extends javax.swing.JInternalFrame {
         setClosable(true);
         setIconifiable(true);
         setTitle("库存查询");
+
+        conPicPane1.setPreferredSize(new java.awt.Dimension(793, 470));
 
         jLabel1.setText("查询条件");
 
@@ -72,6 +85,7 @@ public class StorecountFrame extends javax.swing.JInternalFrame {
             }
         ));
         tblStorecount.setEnabled(false);
+        tblStorecount.setShowHorizontalLines(false);
         jScrollPane1.setViewportView(tblStorecount);
 
         jButton2.setText("导出报表");
@@ -81,40 +95,54 @@ public class StorecountFrame extends javax.swing.JInternalFrame {
             }
         });
 
+        javax.swing.GroupLayout conPicPane1Layout = new javax.swing.GroupLayout(conPicPane1);
+        conPicPane1.setLayout(conPicPane1Layout);
+        conPicPane1Layout.setHorizontalGroup(
+            conPicPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(conPicPane1Layout.createSequentialGroup()
+                .addContainerGap(31, Short.MAX_VALUE)
+                .addGroup(conPicPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(conPicPane1Layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(cobType, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(txtCondition, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jButton1))
+                    .addComponent(jButton2)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 732, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(30, 30, 30))
+        );
+        conPicPane1Layout.setVerticalGroup(
+            conPicPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, conPicPane1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(conPicPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtCondition, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton1)
+                    .addComponent(cobType, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 17, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 367, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jButton2)
+                .addGap(20, 20, 20))
+        );
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(290, 290, 290)
-                .addComponent(jLabel1)
-                .addGap(18, 18, 18)
-                .addComponent(cobType, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(33, 33, 33)
-                .addComponent(txtCondition, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 161, Short.MAX_VALUE)
-                .addComponent(jButton1)
-                .addContainerGap())
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton2)
-                .addGap(24, 24, 24))
+                .addComponent(conPicPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(cobType, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtCondition, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 383, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
-                .addComponent(jButton2)
-                .addContainerGap())
+                .addComponent(conPicPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();
@@ -125,45 +153,49 @@ public class StorecountFrame extends javax.swing.JInternalFrame {
         // 模糊查询
         String condition = this.txtCondition.getText().trim();
         list = stbiz.findByCondition(condition);
-            //显示list中的信息
-            showOnTable(list);
+        //显示list中的信息
+        showOnTable(list);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     //导出报表按钮
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-       
+
         JFileChooser savefile = new JFileChooser();//文件选择对话框
         FileFilter filter = new FileNameExtensionFilter("Excel文件(*.xls)", "xls");
         savefile.addChoosableFileFilter(filter);//添加过滤器
         savefile.setFileFilter(filter);
         //打开文件选择对话框，showSaveDialog是保存，showOpenDialog是打开
-        int flag = savefile.showSaveDialog(this); 
+        int flag = savefile.showSaveDialog(this);
         File file = null;
         //如果点击了保存按钮
         if (flag == JFileChooser.APPROVE_OPTION) {
-        file = savefile.getSelectedFile();//所选择的文件名（手写或选择）
-        //System.out.println("文件名：" + file.getAbsolutePath());
-        String filename = file.getAbsolutePath();
-        //截取文件扩展名（文件名长度后4位）
-        String ftype = filename.substring(filename.length()-4);
-        if(!ftype.equals(".xls")){
-            //如果用户没有填写扩展名，自动添加扩展名.xls
-            file = new File(filename+".xls");
-        }
-        //集合获取数据，输出到文件：ExportExcel类的printSale方法
-        ExportStorecountExcel.printSale(list, file); //psalelist是要导出到excel的数据集合，来自有数据库查询
+            file = savefile.getSelectedFile();//所选择的文件名（手写或选择）
+            //System.out.println("文件名：" + file.getAbsolutePath());
+            String filename = file.getAbsolutePath();
+            //截取文件扩展名（文件名长度后4位）
+            String ftype = filename.substring(filename.length() - 4);
+            if (!ftype.equals(".xls")) {
+                //如果用户没有填写扩展名，自动添加扩展名.xls
+                file = new File(filename + ".xls");
+            }
+            //集合获取数据，输出到文件：ExportExcel类的printSale方法
+            ExportStorecountExcel.printSale(list, file); //psalelist是要导出到excel的数据集合，来自有数据库查询
         }
     }//GEN-LAST:event_jButton2ActionPerformed
-    public void showOnTable(List<ViewStorecount> list){
+
+    public void showOnTable(List<ViewStorecount> list) {
         //将制定的list数据显示到表上
         //1.获取指定表格（tblProduct）模型
         DefaultTableModel dtm = (DefaultTableModel) this.tblStorecount.getModel();
         //2.清空表格信息
-        while(dtm.getRowCount() > 0){
+        while (dtm.getRowCount()
+                > 0) {
             dtm.removeRow(0);
         }
+       
         //3.显示表格
-        for(ViewStorecount vstc : list){
+        for (int i = 0;i < list.size(); i++) {   
+            ViewStorecount vstc = list.get(i);
             Vector vt = new Vector();
             vt.add(vstc.getProid());
             vt.add(vstc.getProname());
@@ -173,13 +205,16 @@ public class StorecountFrame extends javax.swing.JInternalFrame {
             vt.add(vstc.getSugpurchase());
             vt.add(vstc.getLastpurdate());
             vt.add(vstc.getSugsell());
+            
             vt.add(vstc.getLastseldate());
-            dtm.addRow(vt);
+            dtm.addRow(vt);           
         }
+        //  添加颜色
+        ColorTableRender.setBackColor(tblStorecount);
     }
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox cobType;
+    private com.ouc.cpss.view.ConPicPane conPicPane1;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;

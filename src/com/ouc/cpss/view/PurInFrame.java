@@ -13,7 +13,9 @@ import com.ouc.cpss.biz.SupplierBiz;
 import com.ouc.cpss.biz.SupplierBizImpl;
 import com.ouc.cpss.po.Product;
 import com.ouc.cpss.po.Supplier;
+import com.ouc.cpss.util.ColorTableRender;
 import com.ouc.cpss.util.FrameUtil;
+import com.ouc.cpss.util.LocationUtil;
 import com.ouc.cpss.util.StringUtil;
 import java.math.BigDecimal;
 import java.util.List;
@@ -41,6 +43,7 @@ public class PurInFrame extends javax.swing.JInternalFrame {
     public PurInFrame() {
         initComponents();
         initPurchaseTable();
+        LocationUtil.setScreenCenter(this);
     }
 
     /**
@@ -52,6 +55,7 @@ public class PurInFrame extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        purPicPane1 = new com.ouc.cpss.view.PurPicPane();
         txtCondition = new javax.swing.JTextField();
         btnSearch = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -66,6 +70,7 @@ public class PurInFrame extends javax.swing.JInternalFrame {
         setIconifiable(true);
         setMaximizable(true);
         setTitle("采购入库");
+        setPreferredSize(new java.awt.Dimension(809, 510));
         addInternalFrameListener(new javax.swing.event.InternalFrameListener() {
             public void internalFrameActivated(javax.swing.event.InternalFrameEvent evt) {
             }
@@ -83,6 +88,8 @@ public class PurInFrame extends javax.swing.JInternalFrame {
             public void internalFrameOpened(javax.swing.event.InternalFrameEvent evt) {
             }
         });
+
+        purPicPane1.setPreferredSize(new java.awt.Dimension(793, 470));
 
         btnSearch.setText("查询");
         btnSearch.addActionListener(new java.awt.event.ActionListener() {
@@ -121,6 +128,7 @@ public class PurInFrame extends javax.swing.JInternalFrame {
         });
         jScrollPane2.setViewportView(tblPurchase);
 
+        jLabel1.setFont(new java.awt.Font("微软雅黑 Light", 1, 14)); // NOI18N
         jLabel1.setText("加入采购");
 
         btnDelete.setText("删除");
@@ -137,49 +145,58 @@ public class PurInFrame extends javax.swing.JInternalFrame {
             }
         });
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 794, Short.MAX_VALUE)
-            .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
+        javax.swing.GroupLayout purPicPane1Layout = new javax.swing.GroupLayout(purPicPane1);
+        purPicPane1.setLayout(purPicPane1Layout);
+        purPicPane1Layout.setHorizontalGroup(
+            purPicPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, purPicPane1Layout.createSequentialGroup()
+                .addContainerGap(34, Short.MAX_VALUE)
+                .addGroup(purPicPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(purPicPane1Layout.createSequentialGroup()
+                        .addComponent(txtCondition, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnSearch))
+                    .addGroup(purPicPane1Layout.createSequentialGroup()
+                        .addComponent(btnPurIn)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnDelete))
+                    .addGroup(purPicPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                         .addComponent(jLabel1)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(btnPurIn)
-                                .addGap(36, 36, 36)
-                                .addComponent(btnDelete))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(txtCondition, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(btnSearch)))))
-                .addContainerGap())
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 729, Short.MAX_VALUE)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING)))
+                .addGap(30, 30, 30))
         );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtCondition, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnSearch))
+        purPicPane1Layout.setVerticalGroup(
+            purPicPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, purPicPane1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(purPicPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnSearch, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(txtCondition, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel1)
-                .addGap(9, 9, 9)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGap(20, 20, 20)
+                .addGroup(purPicPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnDelete)
                     .addComponent(btnPurIn))
-                .addContainerGap(21, Short.MAX_VALUE))
+                .addGap(15, 15, 15))
+        );
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(purPicPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(purPicPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 470, Short.MAX_VALUE)
+                .addGap(0, 0, 0))
         );
 
         pack();
@@ -270,8 +287,8 @@ public class PurInFrame extends javax.swing.JInternalFrame {
         boolean result = purbiz.purchasein(purchase, stocks);
         if (result == true) {
             JOptionPane.showMessageDialog(this, "采购入库成功");
-            //更新商品表
-            btnSearchActionPerformed(evt);//调用查询方法
+            btnSearchActionPerformed(evt);
+          
         } else {
             JOptionPane.showMessageDialog(this, "采购入库失败");
         }
@@ -323,7 +340,6 @@ public class PurInFrame extends javax.swing.JInternalFrame {
             vt.add(p.getNowcount());
             dtm.addRow(vt);
         }
-
     }
 
     public void initPurchaseTable() {
@@ -342,6 +358,7 @@ public class PurInFrame extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private com.ouc.cpss.view.PurPicPane purPicPane1;
     private javax.swing.JTable tblProduct;
     private javax.swing.JTable tblPurchase;
     private javax.swing.JTextField txtCondition;

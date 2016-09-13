@@ -44,6 +44,6 @@ public interface PurchaseBiz {
 
 
     //采购退货（单个商品退货）
-    public boolean purchasereturn(int purid, int proid, int supid, int prtcount, BigDecimal prtprice, BigDecimal prttotal,Date prtdate);
+    public boolean purchasereturn(int purid, int proid, int supid, int prtcount, BigDecimal prtprice,Date prtdate);
 
 }

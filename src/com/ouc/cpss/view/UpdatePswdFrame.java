@@ -8,6 +8,7 @@ package com.ouc.cpss.view;
 import com.ouc.cpss.biz.UserBiz;
 import com.ouc.cpss.biz.UserBizImpl;
 import com.ouc.cpss.po.User;
+import com.ouc.cpss.util.LocationUtil;
 import com.ouc.cpss.util.StringUtil;
 import javax.swing.JOptionPane;
 
@@ -16,13 +17,17 @@ import javax.swing.JOptionPane;
  * @author 晨晨
  */
 public class UpdatePswdFrame extends javax.swing.JFrame {
+
     //引入biz
-    UserBiz ubiz = new UserBizImpl(); 
+
+    UserBiz ubiz = new UserBizImpl();
+
     /**
      * Creates new form UpdatePswdFrame
      */
     public UpdatePswdFrame() {
         initComponents();
+        LocationUtil.setScreenCenter(this);
     }
 
     /**
@@ -34,6 +39,7 @@ public class UpdatePswdFrame extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        registerPicPane1 = new com.ouc.cpss.view.RegisterPicPane();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -76,71 +82,76 @@ public class UpdatePswdFrame extends javax.swing.JFrame {
 
         jLabel6.setText("（两次密码需一致）");
 
+        javax.swing.GroupLayout registerPicPane1Layout = new javax.swing.GroupLayout(registerPicPane1);
+        registerPicPane1.setLayout(registerPicPane1Layout);
+        registerPicPane1Layout.setHorizontalGroup(
+            registerPicPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(registerPicPane1Layout.createSequentialGroup()
+                .addGap(25, 25, 25)
+                .addGroup(registerPicPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(registerPicPane1Layout.createSequentialGroup()
+                        .addGroup(registerPicPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel3)
+                            .addComponent(jLabel2)
+                            .addComponent(jLabel1))
+                        .addGap(30, 30, 30))
+                    .addGroup(registerPicPane1Layout.createSequentialGroup()
+                        .addComponent(jLabel4)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
+                .addGroup(registerPicPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel6)
+                    .addComponent(txtUsname, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtOldPswd, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtNewPswd1, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel5)
+                    .addComponent(txtNewPswd2, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(84, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, registerPicPane1Layout.createSequentialGroup()
+                .addGap(59, 59, 59)
+                .addComponent(btnConfirm)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnCancel)
+                .addGap(69, 69, 69))
+        );
+        registerPicPane1Layout.setVerticalGroup(
+            registerPicPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, registerPicPane1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(registerPicPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtUsname, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1))
+                .addGap(46, 46, 46)
+                .addGroup(registerPicPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(txtOldPswd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(48, 48, 48)
+                .addGroup(registerPicPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtNewPswd1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel3))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel5)
+                .addGap(26, 26, 26)
+                .addGroup(registerPicPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtNewPswd2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel4))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel6)
+                .addGap(29, 29, 29)
+                .addGroup(registerPicPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnConfirm)
+                    .addComponent(btnCancel))
+                .addGap(45, 45, 45))
+        );
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(39, 39, 39)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1)
-                            .addComponent(jLabel2))
-                        .addGap(55, 55, 55)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtUsname, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtOldPswd, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel3)
-                            .addComponent(jLabel4))
-                        .addGap(31, 31, 31)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel5)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(txtNewPswd2, javax.swing.GroupLayout.DEFAULT_SIZE, 188, Short.MAX_VALUE)
-                                .addComponent(txtNewPswd1)))))
-                .addGap(0, 70, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(60, 60, 60)
-                .addComponent(btnConfirm)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnCancel)
-                .addGap(112, 112, 112))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel6)
-                .addGap(149, 149, 149))
+            .addComponent(registerPicPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(28, 28, 28)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(txtUsname, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(27, 27, 27)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(txtOldPswd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(34, 34, 34)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(txtNewPswd1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel5)
-                .addGap(11, 11, 11)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(txtNewPswd2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
-                .addComponent(jLabel6)
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnConfirm)
-                    .addComponent(btnCancel))
-                .addGap(23, 23, 23))
+            .addComponent(registerPicPane1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -148,14 +159,14 @@ public class UpdatePswdFrame extends javax.swing.JFrame {
 
     private void btnCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelActionPerformed
         // 取消/退出
-        this.dispose();               
+        this.dispose();
     }//GEN-LAST:event_btnCancelActionPerformed
     private void clearInput() {
-       this.txtUsname.setText("");
-       this.txtOldPswd.setText("");
-       this.txtNewPswd1.setText("");
-       this.txtNewPswd2.setText("");
-    } 
+        this.txtUsname.setText("");
+        this.txtOldPswd.setText("");
+        this.txtNewPswd1.setText("");
+        this.txtNewPswd2.setText("");
+    }
     private void btnConfirmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConfirmActionPerformed
 
         // 修改新密码
@@ -167,32 +178,31 @@ public class UpdatePswdFrame extends javax.swing.JFrame {
         char[] newpswd2 = this.txtNewPswd2.getPassword();
         String password2 = new String(newpswd2);//将字符型数组转成字符串
         User user = ubiz.findByUsname(usname);
-        if(user == null){
+        if (user == null) {
             JOptionPane.showMessageDialog(this, "用户名不存在！");
             //清空面板信息
             clearInput();
-            return;              
+            return;
         }
-        if(!user.getPswd().equals(password)){
+        if (!user.getPswd().equals(password)) {
             JOptionPane.showMessageDialog(this, "旧密码不正确！");
             //清空面板信息
-            clearInput();            
+            clearInput();
             return;
         }
         //密码验证
-        if(StringUtil.checkLength(password1) == false){
+        if (StringUtil.checkLength(password1) == false) {
             JOptionPane.showMessageDialog(this, "新密码不能为空！");
             return;
         }
-        if(StringUtil.checkPassword(password1) == false){
+        if (StringUtil.checkPassword(password1) == false) {
             JOptionPane.showMessageDialog(this, "新密码格式不正确！");
             return;
-        }        
-        if(!password1.equals(password2)){
+        }
+        if (!password1.equals(password2)) {
             JOptionPane.showMessageDialog(this, "两次输入的新密码不一致！");
             return;
-        }
-        else{
+        } else {
             user.setPswd(password1);
             boolean result = ubiz.update(user);
             JOptionPane.showMessageDialog(this, "密码修改成功！");
@@ -247,6 +257,7 @@ public class UpdatePswdFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private com.ouc.cpss.view.RegisterPicPane registerPicPane1;
     private javax.swing.JPasswordField txtNewPswd1;
     private javax.swing.JPasswordField txtNewPswd2;
     private javax.swing.JPasswordField txtOldPswd;

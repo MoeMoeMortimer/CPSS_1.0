@@ -24,9 +24,11 @@ import javax.swing.table.DefaultTableModel;
  * @author su
  */
 public class ProTop10Frame extends javax.swing.JInternalFrame {
+
     static List<ViewPro> list = new ArrayList<ViewPro>();
-    ProTop10Biz  vbiz = new ProTop10BizImpl();
+    ProTop10Biz vbiz = new ProTop10BizImpl();
     static int choice = -1;
+
     /**
      * Creates new form ProTop10Frame
      */
@@ -34,7 +36,8 @@ public class ProTop10Frame extends javax.swing.JInternalFrame {
         initComponents();
         this.btnChart.setEnabled(false);
         this.btnShowPic.setEnabled(false);
-        
+        LocationUtil.setScreenCenter(this);
+
     }
 
     /**
@@ -46,6 +49,7 @@ public class ProTop10Frame extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        conPicPane1 = new com.ouc.cpss.view.ConPicPane();
         jLabel1 = new javax.swing.JLabel();
         btnByPrice = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -63,6 +67,8 @@ public class ProTop10Frame extends javax.swing.JInternalFrame {
         setMaximizable(true);
         setTitle("商品销售TOP10");
         setToolTipText("");
+
+        conPicPane1.setPreferredSize(new java.awt.Dimension(809, 500));
 
         jLabel1.setText("--");
 
@@ -97,6 +103,11 @@ public class ProTop10Frame extends javax.swing.JInternalFrame {
             }
         });
 
+        dateStart.setPreferredSize(new java.awt.Dimension(80, 22));
+
+        dateEnd.setMinimumSize(new java.awt.Dimension(65, 18));
+        dateEnd.setPreferredSize(new java.awt.Dimension(80, 22));
+
         btnByCount.setText("按销售总数排序查询TOP10");
         btnByCount.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -111,53 +122,68 @@ public class ProTop10Frame extends javax.swing.JInternalFrame {
             }
         });
 
+        javax.swing.GroupLayout conPicPane1Layout = new javax.swing.GroupLayout(conPicPane1);
+        conPicPane1.setLayout(conPicPane1Layout);
+        conPicPane1Layout.setHorizontalGroup(
+            conPicPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(conPicPane1Layout.createSequentialGroup()
+                .addGap(30, 30, 30)
+                .addGroup(conPicPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(conPicPane1Layout.createSequentialGroup()
+                        .addComponent(btnChart)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnShowPic)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnClose))
+                    .addGroup(conPicPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(conPicPane1Layout.createSequentialGroup()
+                            .addComponent(dateStart, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(jLabel1)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addComponent(dateEnd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(txtCondition, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(18, 18, 18)
+                            .addComponent(btnByCount)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addComponent(btnByPrice))
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 739, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(30, 30, 30))
+        );
+        conPicPane1Layout.setVerticalGroup(
+            conPicPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, conPicPane1Layout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addGroup(conPicPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnByPrice)
+                    .addComponent(btnByCount)
+                    .addComponent(txtCondition, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(dateEnd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(dateStart, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1))
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 338, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(conPicPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnChart)
+                    .addComponent(btnShowPic)
+                    .addComponent(btnClose))
+                .addContainerGap(19, Short.MAX_VALUE))
+        );
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(24, 24, 24)
-                .addComponent(dateStart, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(dateEnd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtCondition, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btnByCount)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnByPrice)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnChart)
-                .addGap(39, 39, 39)
-                .addComponent(btnShowPic)
-                .addGap(40, 40, 40)
-                .addComponent(btnClose)
-                .addGap(28, 28, 28))
+            .addComponent(conPicPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 799, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(20, 20, 20)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(btnByPrice)
-                    .addComponent(dateStart, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(dateEnd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtCondition, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnByCount))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 355, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 23, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnChart)
-                    .addComponent(btnClose)
-                    .addComponent(btnShowPic))
-                .addGap(22, 22, 22))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(conPicPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 459, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0))
         );
 
         pack();
@@ -171,15 +197,15 @@ public class ProTop10Frame extends javax.swing.JInternalFrame {
         String end = this.dateEnd.getText();
 
         //2 通过查询业务获得商品集合
-        list = vbiz.findByCondition(start,end,condition);
-        for(int i = 0; i < list.size() -1 ;i++){
+        list = vbiz.findByCondition(start, end, condition);
+        for (int i = 0; i < list.size() - 1; i++) {
             int k = i;
-            for(int j = i+1; j < list.size() ;j ++){
-                if(list.get(k).getTotalselcount() <  list.get(j).getTotalselcount()){
+            for (int j = i + 1; j < list.size(); j++) {
+                if (list.get(k).getTotalselcount() < list.get(j).getTotalselcount()) {
                     k = j;
                 }
             }
-            if(k != i){
+            if (k != i) {
                 ViewPro v1 = list.get(k);
                 ViewPro v2 = list.get(i);
                 list.set(k, v2);
@@ -200,15 +226,15 @@ public class ProTop10Frame extends javax.swing.JInternalFrame {
         String end = this.dateEnd.getText();
 
         //2 通过查询业务获得商品集合
-        list = vbiz.findByCondition(start,end,condition);
-        for(int i = 0; i < list.size() -1 ;i++){
+        list = vbiz.findByCondition(start, end, condition);
+        for (int i = 0; i < list.size() - 1; i++) {
             int k = i;
-            for(int j = i+1; j < list.size() ;j ++){
-                if(list.get(k).getTotalselmoney().compareTo(list.get(j).getTotalselmoney()) == -1){
+            for (int j = i + 1; j < list.size(); j++) {
+                if (list.get(k).getTotalselmoney().compareTo(list.get(j).getTotalselmoney()) == -1) {
                     k = j;
                 }
             }
-            if(k != i){
+            if (k != i) {
                 ViewPro v1 = list.get(k);
                 ViewPro v2 = list.get(i);
                 list.set(k, v2);
@@ -224,22 +250,22 @@ public class ProTop10Frame extends javax.swing.JInternalFrame {
     private void btnChartActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnChartActionPerformed
         JFileChooser savefile = new JFileChooser();//文件选择对话框
         FileFilter filter = new FileNameExtensionFilter("Excel文件(*.xls)", "xls");
-        savefile.addChoosableFileFilter(filter); 
+        savefile.addChoosableFileFilter(filter);
         savefile.setFileFilter(filter); //添加过滤器
         //打开文件选择对话框，showSaveDialog是保存，showOpenDialog是打开
-        int flag = savefile.showSaveDialog(this); 
+        int flag = savefile.showSaveDialog(this);
         File file = null;
         //如果点击了保存按钮
         if (flag == JFileChooser.APPROVE_OPTION) {
-        file = savefile.getSelectedFile();//所选择的文件名（手写或选择）
-        System.out.println("文件名：" + file.getAbsolutePath());
-        String filename = file.getAbsolutePath();
-        //截取文件扩展名（文件名长度后4位）
-        String ftype = filename.substring(filename.length()-4);
-        if(!ftype.equals(".xls")){
-            //如果用户没有填写扩展名，自动添加扩展名.xls
-            file = new File(filename+".xls");
-        }
+            file = savefile.getSelectedFile();//所选择的文件名（手写或选择）
+            System.out.println("文件名：" + file.getAbsolutePath());
+            String filename = file.getAbsolutePath();
+            //截取文件扩展名（文件名长度后4位）
+            String ftype = filename.substring(filename.length() - 4);
+            if (!ftype.equals(".xls")) {
+                //如果用户没有填写扩展名，自动添加扩展名.xls
+                file = new File(filename + ".xls");
+            }
         }
         //集合获取数据，输出到文件：ExportExcel类的printSale方法
         ExportProExcel.printSale(list, file); //list是要导出到excel的数据集合，来自于数据库查询
@@ -251,25 +277,25 @@ public class ProTop10Frame extends javax.swing.JInternalFrame {
 
     // 显示图表
     private void btnShowPicActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnShowPicActionPerformed
-        String charttitle= "商品销售统计";
-        if(choice == 1){
-            charttitle= "商品销售统计 -- 销售总数量TOP10";
-        }else{
-            charttitle= "商品销售统计 -- 销售总金额TOP10";
+        String charttitle = "商品销售统计";
+        if (choice == 1) {
+            charttitle = "商品销售统计 -- 销售总数量TOP10";
+        } else {
+            charttitle = "商品销售统计 -- 销售总金额TOP10";
         }
-        String[] ordername = {"第1名","第2名","第3名","第4名","第5名",
-        "第6名","第7名","第8名","第9名","第10名",};
+        String[] ordername = {"第1名", "第2名", "第3名", "第4名", "第5名",
+            "第6名", "第7名", "第8名", "第9名", "第10名",};
         // 显示
-        
-        ChartProBuilder chart = new ChartProBuilder(charttitle,list,choice); //psalelist为生成图表的数据集合
-        LocationUtil.setParentCenter(this,chart);
+
+        ChartProBuilder chart = new ChartProBuilder(charttitle, list, choice); //psalelist为生成图表的数据集合
+        LocationUtil.setParentCenter(this, chart);
         chart.pack();
         chart.setVisible(true);
-        
+
     }//GEN-LAST:event_btnShowPicActionPerformed
 
     private void showOnPurchaseTable(List<ViewPro> list) {
-         // 1. 获取表格(tblProduct)模型
+        // 1. 获取表格(tblProduct)模型
         DefaultTableModel dtm = (DefaultTableModel) this.tblPro.getModel();
         // 2. 清空表格信息
         while (dtm.getRowCount() > 0) {
@@ -286,7 +312,7 @@ public class ProTop10Frame extends javax.swing.JInternalFrame {
             vt.add(v.getTotalpurmoney());
             vt.add(v.getTotalselcount());
             vt.add(v.getTotalselmoney());
-            
+
             dtm.addRow(vt);
         }
 
@@ -298,6 +324,7 @@ public class ProTop10Frame extends javax.swing.JInternalFrame {
     private javax.swing.JButton btnChart;
     private javax.swing.JButton btnClose;
     private javax.swing.JButton btnShowPic;
+    private com.ouc.cpss.view.ConPicPane conPicPane1;
     private com.ouc.cpss.util.DateChooserJButton dateEnd;
     private com.ouc.cpss.util.DateChooserJButton dateStart;
     private javax.swing.JLabel jLabel1;

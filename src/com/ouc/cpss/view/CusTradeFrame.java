@@ -9,6 +9,7 @@ import com.ouc.cpss.vo.ViewCusTrade;
 import com.ouc.cpss.biz.CusTradeBiz;
 import com.ouc.cpss.biz.CusTradeBizImpl;
 import com.ouc.cpss.util.ExportCusTradeExcel;
+import com.ouc.cpss.util.LocationUtil;
 import java.io.File;
 import java.util.List;
 import java.util.Vector;
@@ -29,6 +30,7 @@ public class CusTradeFrame extends javax.swing.JInternalFrame {
      */
     public CusTradeFrame() {
         initComponents();
+        LocationUtil.setScreenCenter(this);
     }
 
     /**
@@ -40,6 +42,7 @@ public class CusTradeFrame extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        conPicPane1 = new com.ouc.cpss.view.ConPicPane();
         jLabel1 = new javax.swing.JLabel();
         btnSearch = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -55,6 +58,7 @@ public class CusTradeFrame extends javax.swing.JInternalFrame {
         setMaximizable(true);
         setResizable(true);
         setTitle("买家交易记录");
+        setPreferredSize(new java.awt.Dimension(809, 500));
 
         jLabel1.setText("--");
 
@@ -82,49 +86,66 @@ public class CusTradeFrame extends javax.swing.JInternalFrame {
             }
         });
 
+        dateStart.setPreferredSize(new java.awt.Dimension(80, 22));
+
+        dateEnd.setPreferredSize(new java.awt.Dimension(80, 22));
+        dateEnd.setRequestFocusEnabled(false);
+        dateEnd.setRolloverEnabled(false);
+
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "买家姓名", "淘宝昵称" }));
+
+        javax.swing.GroupLayout conPicPane1Layout = new javax.swing.GroupLayout(conPicPane1);
+        conPicPane1.setLayout(conPicPane1Layout);
+        conPicPane1Layout.setHorizontalGroup(
+            conPicPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(conPicPane1Layout.createSequentialGroup()
+                .addGap(22, 22, 22)
+                .addGroup(conPicPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(btnExportExel)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 750, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, conPicPane1Layout.createSequentialGroup()
+                .addGap(194, 194, 194)
+                .addComponent(dateStart, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(dateEnd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(25, 25, 25)
+                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(txtCondition, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(btnSearch)
+                .addGap(25, 25, 25))
+        );
+        conPicPane1Layout.setVerticalGroup(
+            conPicPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(conPicPane1Layout.createSequentialGroup()
+                .addGap(12, 12, 12)
+                .addGroup(conPicPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtCondition, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnSearch)
+                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(dateEnd, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel1)
+                    .addComponent(dateStart, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 377, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btnExportExel)
+                .addContainerGap(18, Short.MAX_VALUE))
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(214, 214, 214)
-                .addComponent(dateStart, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(dateEnd, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(28, 28, 28)
-                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(txtCondition, javax.swing.GroupLayout.DEFAULT_SIZE, 172, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnSearch)
-                .addContainerGap())
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnExportExel)
-                .addGap(24, 24, 24))
+            .addComponent(conPicPane1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel1)
-                        .addComponent(btnSearch)
-                        .addComponent(txtCondition, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(dateEnd, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(dateStart, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 25, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 341, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(37, 37, 37)
-                .addComponent(btnExportExel)
-                .addGap(39, 39, 39))
+            .addComponent(conPicPane1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -132,8 +153,7 @@ public class CusTradeFrame extends javax.swing.JInternalFrame {
 
     //查询按钮
     private void btnSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchActionPerformed
-        // 根据时间段或名称查询
-        //按条件查询采购单
+        //根据时间段、买家姓名、淘宝昵称查询
         //1获取条件
         String start = this.dateStart.getText();
         String end = this.dateEnd.getText();
@@ -156,7 +176,6 @@ public class CusTradeFrame extends javax.swing.JInternalFrame {
         //如果点击了保存按钮
         if (flag == JFileChooser.APPROVE_OPTION) {
         file = savefile.getSelectedFile();//所选择的文件名（手写或选择）
-        //System.out.println("文件名：" + file.getAbsolutePath());
         String filename = file.getAbsolutePath();
         //截取文件扩展名（文件名长度后4位）
         String ftype = filename.substring(filename.length()-4);
@@ -171,7 +190,7 @@ public class CusTradeFrame extends javax.swing.JInternalFrame {
     
     public void showOnTable(List<ViewCusTrade> list){
         //将制定的list数据显示到表上
-        //1.获取指定表格（tblProduct）模型
+        //1.获取指定表格（tblCusTrade）模型
         DefaultTableModel dtm = (DefaultTableModel) this.tblCusTrade.getModel();
         //2.清空表格信息
         while(dtm.getRowCount() > 0){
@@ -191,6 +210,7 @@ public class CusTradeFrame extends javax.swing.JInternalFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnExportExel;
     private javax.swing.JButton btnSearch;
+    private com.ouc.cpss.view.ConPicPane conPicPane1;
     private com.ouc.cpss.util.DateChooserJButton dateEnd;
     private com.ouc.cpss.util.DateChooserJButton dateStart;
     private javax.swing.JComboBox jComboBox1;

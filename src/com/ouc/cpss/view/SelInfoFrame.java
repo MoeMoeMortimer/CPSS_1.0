@@ -7,6 +7,7 @@ package com.ouc.cpss.view;
 
 import com.ouc.cpss.biz.*;
 import com.ouc.cpss.util.ExportSelInfoExcel;
+import com.ouc.cpss.util.LocationUtil;
 import com.ouc.cpss.vo.ViewSell;
 import java.io.File;
 import java.util.ArrayList;
@@ -17,19 +18,21 @@ import javax.swing.filechooser.FileFilter;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.table.DefaultTableModel;
 
-
 /**
  *
  * @author su
  */
 public class SelInfoFrame extends javax.swing.JInternalFrame {
+
     static List<ViewSell> list = new ArrayList<ViewSell>();
-    SellsBiz  vbiz = new SellsBizImpl();
+    SellsBiz vbiz = new SellsBizImpl();
+
     /**
      * Creates new form SelInfoFrame
      */
     public SelInfoFrame() {
         initComponents();
+        LocationUtil.setScreenCenter(this);
     }
 
     /**
@@ -41,6 +44,7 @@ public class SelInfoFrame extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        selPicPane1 = new com.ouc.cpss.view.SelPicPane();
         jLabel1 = new javax.swing.JLabel();
         txtCondition = new javax.swing.JTextField();
         btnSearch = new javax.swing.JButton();
@@ -54,6 +58,8 @@ public class SelInfoFrame extends javax.swing.JInternalFrame {
         setClosable(true);
         setMaximizable(true);
         setTitle("销售信息");
+
+        selPicPane1.setPreferredSize(new java.awt.Dimension(793, 470));
 
         jLabel1.setText("--");
 
@@ -84,6 +90,10 @@ public class SelInfoFrame extends javax.swing.JInternalFrame {
             }
         });
 
+        dateEnd.setPreferredSize(new java.awt.Dimension(80, 22));
+
+        dateStart.setPreferredSize(new java.awt.Dimension(80, 22));
+
         btnClose.setText("关闭");
         btnClose.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -91,49 +101,62 @@ public class SelInfoFrame extends javax.swing.JInternalFrame {
             }
         });
 
+        javax.swing.GroupLayout selPicPane1Layout = new javax.swing.GroupLayout(selPicPane1);
+        selPicPane1.setLayout(selPicPane1Layout);
+        selPicPane1Layout.setHorizontalGroup(
+            selPicPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, selPicPane1Layout.createSequentialGroup()
+                .addContainerGap(32, Short.MAX_VALUE)
+                .addGroup(selPicPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(selPicPane1Layout.createSequentialGroup()
+                        .addComponent(btnChart)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnClose))
+                    .addGroup(selPicPane1Layout.createSequentialGroup()
+                        .addComponent(dateStart, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(dateEnd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(txtCondition, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnSearch))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 731, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(30, 30, 30))
+        );
+        selPicPane1Layout.setVerticalGroup(
+            selPicPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, selPicPane1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(selPicPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnSearch)
+                    .addComponent(txtCondition, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(dateEnd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1)
+                    .addComponent(dateStart, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 371, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 13, Short.MAX_VALUE)
+                .addGroup(selPicPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnChart)
+                    .addComponent(btnClose))
+                .addGap(20, 20, 20))
+        );
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(172, 172, 172)
-                        .addComponent(dateStart, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jLabel1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 10, Short.MAX_VALUE)
-                        .addComponent(dateEnd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(102, 102, 102)
-                        .addComponent(txtCondition, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(26, 26, 26)
-                        .addComponent(btnSearch))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnChart)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnClose)
-                        .addGap(19, 19, 19)))
-                .addContainerGap())
+                .addComponent(selPicPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtCondition, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnSearch)
-                    .addComponent(jLabel1)
-                    .addComponent(dateEnd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(dateStart, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(30, 30, 30)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 351, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 37, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnChart)
-                    .addComponent(btnClose))
-                .addGap(27, 27, 27))
+                .addComponent(selPicPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();
@@ -146,7 +169,7 @@ public class SelInfoFrame extends javax.swing.JInternalFrame {
         String end = this.dateEnd.getText();
 
         //2 通过查询业务获得商品集合
-        list = vbiz.findByCondition(start,end,condition);
+        list = vbiz.findByCondition(start, end, condition);
         //3 显示在表格
         showOnPurchaseTable(list);
 
@@ -156,22 +179,22 @@ public class SelInfoFrame extends javax.swing.JInternalFrame {
     private void btnChartActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnChartActionPerformed
         JFileChooser savefile = new JFileChooser();//文件选择对话框
         FileFilter filter = new FileNameExtensionFilter("Excel文件(*.xls)", "xls");
-        savefile.addChoosableFileFilter(filter); 
+        savefile.addChoosableFileFilter(filter);
         savefile.setFileFilter(filter); //添加过滤器
         //打开文件选择对话框，showSaveDialog是保存，showOpenDialog是打开
-        int flag = savefile.showSaveDialog(this); 
+        int flag = savefile.showSaveDialog(this);
         File file = null;
         //如果点击了保存按钮
         if (flag == JFileChooser.APPROVE_OPTION) {
-        file = savefile.getSelectedFile();//所选择的文件名（手写或选择）
-        System.out.println("文件名：" + file.getAbsolutePath());
-        String filename = file.getAbsolutePath();
-        //截取文件扩展名（文件名长度后4位）
-        String ftype = filename.substring(filename.length()-4);
-        if(!ftype.equals(".xls")){
-            //如果用户没有填写扩展名，自动添加扩展名.xls
-            file = new File(filename+".xls");
-        }
+            file = savefile.getSelectedFile();//所选择的文件名（手写或选择）
+            System.out.println("文件名：" + file.getAbsolutePath());
+            String filename = file.getAbsolutePath();
+            //截取文件扩展名（文件名长度后4位）
+            String ftype = filename.substring(filename.length() - 4);
+            if (!ftype.equals(".xls")) {
+                //如果用户没有填写扩展名，自动添加扩展名.xls
+                file = new File(filename + ".xls");
+            }
         }
         //集合获取数据，输出到文件：ExportExcel类的printSale方法
         ExportSelInfoExcel.printSale(list, file); //list是要导出到excel的数据集合，来自于数据库查询
@@ -181,9 +204,8 @@ public class SelInfoFrame extends javax.swing.JInternalFrame {
         this.dispose();// 先销毁
     }//GEN-LAST:event_btnCloseActionPerformed
 
-    
     private void showOnPurchaseTable(List<ViewSell> list) {
-         // 1. 获取表格(tblProduct)模型
+        // 1. 获取表格(tblProduct)模型
         DefaultTableModel dtm = (DefaultTableModel) this.tblSell.getModel();
         // 2. 清空表格信息
         while (dtm.getRowCount() > 0) {
@@ -201,7 +223,7 @@ public class SelInfoFrame extends javax.swing.JInternalFrame {
             vt.add(v.getEname());
             vt.add(v.getCusname());
             vt.add(v.getSeldate());
-            
+
             dtm.addRow(vt);
         }
 
@@ -215,6 +237,7 @@ public class SelInfoFrame extends javax.swing.JInternalFrame {
     private com.ouc.cpss.util.DateChooserJButton dateStart;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
+    private com.ouc.cpss.view.SelPicPane selPicPane1;
     private javax.swing.JTable tblSell;
     private javax.swing.JTextField txtCondition;
     // End of variables declaration//GEN-END:variables

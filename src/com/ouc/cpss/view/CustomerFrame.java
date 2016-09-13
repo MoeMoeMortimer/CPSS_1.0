@@ -9,6 +9,7 @@ package com.ouc.cpss.view;
 import com.ouc.cpss.biz.CustomerBiz;
 import com.ouc.cpss.biz.CustomerBizImpl;
 import com.ouc.cpss.po.Customer;
+import com.ouc.cpss.util.LocationUtil;
 import com.ouc.cpss.util.StringUtil;
 import java.math.BigDecimal;
 import java.util.List;
@@ -17,7 +18,7 @@ import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
- *
+ * 客户管理界面
  * @author su
  */
 public class CustomerFrame extends javax.swing.JInternalFrame {
@@ -31,6 +32,8 @@ public class CustomerFrame extends javax.swing.JInternalFrame {
         //初始化保存按钮
         this.btnSave.setEnabled(false);
         this.btnDelete.setEnabled(false);
+        //显示在中间
+        LocationUtil.setScreenCenter(this);
     }
 
     /**
@@ -42,6 +45,7 @@ public class CustomerFrame extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        basicPicPane1 = new com.ouc.cpss.view.BasicPicPane();
         txtCondition = new javax.swing.JTextField();
         btnSearch = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -59,18 +63,20 @@ public class CustomerFrame extends javax.swing.JInternalFrame {
         txtCustel = new javax.swing.JTextField();
         txtCuszip = new javax.swing.JTextField();
         txtCusaddr = new javax.swing.JTextField();
-        btnClose = new javax.swing.JButton();
-        btnCancel = new javax.swing.JButton();
-        btnSave = new javax.swing.JButton();
-        btnDelete = new javax.swing.JButton();
-        btnAdd = new javax.swing.JButton();
-        btnLoad = new javax.swing.JButton();
         jLabel7 = new javax.swing.JLabel();
+        btnLoad = new javax.swing.JButton();
+        btnAdd = new javax.swing.JButton();
+        btnDelete = new javax.swing.JButton();
+        btnSave = new javax.swing.JButton();
+        btnCancel = new javax.swing.JButton();
+        btnClose = new javax.swing.JButton();
 
         setClosable(true);
         setIconifiable(true);
         setMaximizable(true);
         setTitle("买家管理");
+
+        basicPicPane1.setPreferredSize(new java.awt.Dimension(809, 500));
 
         btnSearch.setText("搜索");
         btnSearch.addActionListener(new java.awt.event.ActionListener() {
@@ -136,13 +142,12 @@ public class CustomerFrame extends javax.swing.JInternalFrame {
                                 .addGap(36, 36, 36)
                                 .addComponent(jLabel6)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(txtTbid, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 0, Short.MAX_VALUE))
+                                .addComponent(txtTbid, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel3)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtCusaddr)))
-                .addContainerGap())
+                        .addComponent(txtCusaddr, javax.swing.GroupLayout.PREFERRED_SIZE, 667, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(0, 13, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -155,44 +160,26 @@ public class CustomerFrame extends javax.swing.JInternalFrame {
                     .addComponent(txtCusid, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtCusname, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtTbid, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(28, 28, 28)
+                .addGap(30, 30, 30)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(jLabel5)
                     .addComponent(txtCustel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtCuszip, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(txtCusaddr, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(20, 20, 20))
+                .addGap(30, 30, 30))
         );
 
-        btnClose.setText("退出");
-        btnClose.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCloseActionPerformed(evt);
-            }
-        });
+        jLabel7.setForeground(new java.awt.Color(255, 0, 0));
+        jLabel7.setText("注意：红色字体处不可修改");
 
-        btnCancel.setText("取消");
-        btnCancel.addActionListener(new java.awt.event.ActionListener() {
+        btnLoad.setText("载入");
+        btnLoad.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCancelActionPerformed(evt);
-            }
-        });
-
-        btnSave.setText("修改/保存");
-        btnSave.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSaveActionPerformed(evt);
-            }
-        });
-
-        btnDelete.setText("删除");
-        btnDelete.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnDeleteActionPerformed(evt);
+                btnLoadActionPerformed(evt);
             }
         });
 
@@ -203,66 +190,102 @@ public class CustomerFrame extends javax.swing.JInternalFrame {
             }
         });
 
-        btnLoad.setText("载入");
-        btnLoad.addActionListener(new java.awt.event.ActionListener() {
+        btnDelete.setText("删除");
+        btnDelete.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnLoadActionPerformed(evt);
+                btnDeleteActionPerformed(evt);
             }
         });
 
-        jLabel7.setForeground(new java.awt.Color(255, 0, 0));
-        jLabel7.setText("注意：红色字体处不可修改");
+        btnSave.setText("修改/保存");
+        btnSave.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSaveActionPerformed(evt);
+            }
+        });
+
+        btnCancel.setText("取消");
+        btnCancel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCancelActionPerformed(evt);
+            }
+        });
+
+        btnClose.setText("退出");
+        btnClose.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCloseActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout basicPicPane1Layout = new javax.swing.GroupLayout(basicPicPane1);
+        basicPicPane1.setLayout(basicPicPane1Layout);
+        basicPicPane1Layout.setHorizontalGroup(
+            basicPicPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, basicPicPane1Layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(txtCondition, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(btnSearch)
+                .addGap(34, 34, 34))
+            .addGroup(basicPicPane1Layout.createSequentialGroup()
+                .addGroup(basicPicPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(basicPicPane1Layout.createSequentialGroup()
+                        .addGap(46, 46, 46)
+                        .addComponent(jLabel7)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnLoad)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnAdd)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnDelete)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnSave)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnCancel)
+                        .addGap(27, 27, 27)
+                        .addComponent(btnClose))
+                    .addGroup(basicPicPane1Layout.createSequentialGroup()
+                        .addContainerGap(33, Short.MAX_VALUE)
+                        .addGroup(basicPicPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                .addContainerGap(34, Short.MAX_VALUE))
+        );
+        basicPicPane1Layout.setVerticalGroup(
+            basicPicPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(basicPicPane1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(basicPicPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnSearch)
+                    .addComponent(txtCondition, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 14, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(basicPicPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnLoad)
+                    .addComponent(btnAdd)
+                    .addComponent(btnDelete)
+                    .addComponent(btnSave)
+                    .addComponent(btnCancel)
+                    .addComponent(btnClose)
+                    .addComponent(jLabel7))
+                .addGap(18, 18, 18))
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(txtCondition, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(30, 30, 30)
-                .addComponent(btnSearch)
-                .addGap(29, 29, 29))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(49, 49, 49)
-                .addComponent(jLabel7)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnLoad)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btnAdd)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btnDelete)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btnSave)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btnCancel)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btnClose)
-                .addContainerGap())
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(basicPicPane1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtCondition, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnSearch))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnClose)
-                    .addComponent(btnCancel)
-                    .addComponent(btnSave)
-                    .addComponent(btnDelete)
-                    .addComponent(btnAdd)
-                    .addComponent(btnLoad)
-                    .addComponent(jLabel7))
-                .addContainerGap(23, Short.MAX_VALUE))
+            .addComponent(basicPicPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 523, Short.MAX_VALUE)
         );
 
         pack();
@@ -270,7 +293,8 @@ public class CustomerFrame extends javax.swing.JInternalFrame {
 
     //模糊查询
     private void btnSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchActionPerformed
-       // 模糊查询
+
+        //根据cusname,tbid,cusemail,cusaddr进行模糊查询
         String condition = this.txtCondition.getText().trim();
         List<Customer> list = cusbiz.findByCondition(condition);
             //显示list中的信息
@@ -285,8 +309,7 @@ public class CustomerFrame extends javax.swing.JInternalFrame {
         String custel = this.txtCustel.getText().trim(); //联系电话
         String cuszip = this.txtCuszip.getText().trim();///邮政编码
         String cusaddr= this.txtCusaddr.getText().trim();
-        //数据格式验证(StringUtil)
-        //1验证非空
+        //验证所获数据是否非空
         if(StringUtil.checkLength(cusname) == false){
             JOptionPane.showMessageDialog(this, "姓名不能为空");
             return;
@@ -343,8 +366,7 @@ public class CustomerFrame extends javax.swing.JInternalFrame {
 
     //修改/保存按钮
     private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
-        // 修改商品
-        // 新增商品
+        // 修改买家信息
         //获取买家信息
         int cusid = Integer.parseInt(this.txtCusid.getText().trim());
         String cusname = this.txtCusname.getText().trim();
@@ -352,7 +374,7 @@ public class CustomerFrame extends javax.swing.JInternalFrame {
         String custel = this.txtCustel.getText().trim(); //联系电话
         String cuszip = this.txtCuszip.getText().trim();///邮政编码
         String cusaddr= this.txtCusaddr.getText().trim();
-        //1验证非空
+        //验证所获数据是否非空
         if(StringUtil.checkLength(cusname) == false){
             JOptionPane.showMessageDialog(this, "姓名不能为空");
             return;
@@ -392,12 +414,12 @@ public class CustomerFrame extends javax.swing.JInternalFrame {
 
     //删除按钮
     private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
-        // 删除商品信息
+        // 删除买家信息
         int answer = JOptionPane.showConfirmDialog(this, "你确定要删除吗？");
         if(answer == JOptionPane.YES_OPTION){
-            //获取proid
-        int proid = Integer.parseInt(this.txtCusid.getText());
-        boolean result = cusbiz.delete(proid);
+        //获取cusid
+        int cusid = Integer.parseInt(this.txtCusid.getText());
+        boolean result = cusbiz.delete(cusid);
         if(result == true){
             JOptionPane.showMessageDialog(this, "删除成功");
             List<Customer> list = cusbiz.findAll();
@@ -465,6 +487,7 @@ public class CustomerFrame extends javax.swing.JInternalFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private com.ouc.cpss.view.BasicPicPane basicPicPane1;
     private javax.swing.JButton btnAdd;
     private javax.swing.JButton btnCancel;
     private javax.swing.JButton btnClose;

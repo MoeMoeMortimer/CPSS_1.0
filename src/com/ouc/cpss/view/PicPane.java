@@ -25,7 +25,7 @@ public class PicPane extends javax.swing.JPanel {
     public PicPane() {
         initComponents();
         //设置面板的背景图片，注意图片路径
-        this.setImgURL(this.getClass().getResource("/com/ouc/cpss/img/back.gif"));
+        this.setImgURL(this.getClass().getResource("/com/ouc/cpss/img/mainback.jpg"));
     }
 
     // Variables declaration - do not modify                     

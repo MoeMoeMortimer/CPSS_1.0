@@ -9,6 +9,7 @@ import com.ouc.cpss.biz.ProfitBiz;
 import com.ouc.cpss.biz.ProfitBizImpl;
 import com.ouc.cpss.vo.ViewProfit;
 import com.ouc.cpss.util.ExportProfitExcel;
+import com.ouc.cpss.util.LocationUtil;
 import java.io.File;
 import java.util.List;
 import java.util.Vector;
@@ -22,13 +23,16 @@ import javax.swing.table.DefaultTableModel;
  * @author Administrator
  */
 public class ProfitFrame extends javax.swing.JInternalFrame {
+
     ProfitBiz pfbiz = new ProfitBizImpl();
     List<ViewProfit> list;
+
     /**
      * Creates new form EmpSelProFrame
      */
     public ProfitFrame() {
         initComponents();
+        LocationUtil.setScreenCenter(this);
     }
 
     /**
@@ -40,6 +44,7 @@ public class ProfitFrame extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        conPicPane1 = new com.ouc.cpss.view.ConPicPane();
         jButton1 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblProfit = new javax.swing.JTable();
@@ -53,6 +58,9 @@ public class ProfitFrame extends javax.swing.JInternalFrame {
         setIconifiable(true);
         setMaximizable(true);
         setTitle("统计每月总利润");
+        setPreferredSize(new java.awt.Dimension(809, 500));
+
+        conPicPane1.setPreferredSize(new java.awt.Dimension(809, 500));
 
         jButton1.setText("查询");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -99,47 +107,55 @@ public class ProfitFrame extends javax.swing.JInternalFrame {
 
         jLabel2.setText("季度");
 
+        javax.swing.GroupLayout conPicPane1Layout = new javax.swing.GroupLayout(conPicPane1);
+        conPicPane1.setLayout(conPicPane1Layout);
+        conPicPane1Layout.setHorizontalGroup(
+            conPicPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(conPicPane1Layout.createSequentialGroup()
+                .addContainerGap(30, Short.MAX_VALUE)
+                .addGroup(conPicPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(conPicPane1Layout.createSequentialGroup()
+                        .addComponent(jButton2)
+                        .addGap(31, 31, 31)
+                        .addComponent(jButton3))
+                    .addGroup(conPicPane1Layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(cobMonth, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLabel2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jButton1))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 733, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(30, 30, 30))
+        );
+        conPicPane1Layout.setVerticalGroup(
+            conPicPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(conPicPane1Layout.createSequentialGroup()
+                .addGap(13, 13, 13)
+                .addGroup(conPicPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton1)
+                    .addComponent(jLabel2)
+                    .addComponent(cobMonth, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 364, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(conPicPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton3)
+                    .addComponent(jButton2))
+                .addContainerGap(19, Short.MAX_VALUE))
+        );
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(28, 28, 28)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 723, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(43, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(536, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(cobMonth, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton1))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jButton2)
-                        .addGap(41, 41, 41)
-                        .addComponent(jButton3)))
-                .addGap(55, 55, 55))
+            .addComponent(conPicPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 793, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(30, 30, 30)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(cobMonth, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1)
-                    .addComponent(jLabel2))
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 343, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton2)
-                    .addComponent(jButton3))
-                .addContainerGap(51, Short.MAX_VALUE))
+            .addComponent(conPicPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 470, Short.MAX_VALUE)
         );
 
         pack();
@@ -164,43 +180,43 @@ public class ProfitFrame extends javax.swing.JInternalFrame {
         savefile.addChoosableFileFilter(filter);//添加过滤器
         savefile.setFileFilter(filter);
         //打开文件选择对话框，showSaveDialog是保存，showOpenDialog是打开
-        int flag = savefile.showSaveDialog(this); 
+        int flag = savefile.showSaveDialog(this);
         File file = null;
         //如果点击了保存按钮
         if (flag == JFileChooser.APPROVE_OPTION) {
-        file = savefile.getSelectedFile();//所选择的文件名（手写或选择）
-        //System.out.println("文件名：" + file.getAbsolutePath());
-        String filename = file.getAbsolutePath();
-        //截取文件扩展名（文件名长度后4位）
-        String ftype = filename.substring(filename.length()-4);
-        if(!ftype.equals(".xls")){
-            //如果用户没有填写扩展名，自动添加扩展名.xls
-            file = new File(filename+".xls");
-        }
-        //集合获取数据，输出到文件：ExportExcel类的printSale方法
-        ExportProfitExcel.printSale(list, file); //psalelist是要导出到excel的数据集合，来自有数据库查询
+            file = savefile.getSelectedFile();//所选择的文件名（手写或选择）
+            //System.out.println("文件名：" + file.getAbsolutePath());
+            String filename = file.getAbsolutePath();
+            //截取文件扩展名（文件名长度后4位）
+            String ftype = filename.substring(filename.length() - 4);
+            if (!ftype.equals(".xls")) {
+                //如果用户没有填写扩展名，自动添加扩展名.xls
+                file = new File(filename + ".xls");
+            }
+            //集合获取数据，输出到文件：ExportExcel类的printSale方法
+            ExportProfitExcel.printSale(list, file); //psalelist是要导出到excel的数据集合，来自有数据库查询
         }
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        String charttitle= "Profit";
+        String charttitle = "Profit";
         List<ViewProfit> alllist = pfbiz.findAll();
-        ProfitChartBuilder chart = new ProfitChartBuilder(charttitle,alllist);
+        ProfitChartBuilder chart = new ProfitChartBuilder(charttitle, alllist);
         chart.pack();
         chart.setVisible(true);
     }//GEN-LAST:event_jButton3ActionPerformed
 
-    public void showOnTable(List<ViewProfit> list){
+    public void showOnTable(List<ViewProfit> list) {
         //将制定的list数据显示到表上
         //1.获取指定表格（tblProduct）模型
         DefaultTableModel dtm = (DefaultTableModel) this.tblProfit.getModel();
         //2.清空表格信息
-        while(dtm.getRowCount() > 0){
+        while (dtm.getRowCount() > 0) {
             dtm.removeRow(0);
         }
         //3.显示表格
-        int i =1;
-        for(ViewProfit vstc : list){
+        int i = 1;
+        for (ViewProfit vstc : list) {
             Vector vt = new Vector();
             vt.add(vstc.getTotalprofit());
             vt.add(vstc.getThemonth());
@@ -210,6 +226,7 @@ public class ProfitFrame extends javax.swing.JInternalFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox cobMonth;
+    private com.ouc.cpss.view.ConPicPane conPicPane1;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;

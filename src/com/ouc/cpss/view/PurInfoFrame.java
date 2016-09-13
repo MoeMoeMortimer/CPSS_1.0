@@ -12,6 +12,7 @@ import com.ouc.cpss.po.Purchase;
 import com.ouc.cpss.vo.ViewPurchase;
 
 import com.ouc.cpss.util.ExportExcelPurchase;
+import com.ouc.cpss.util.LocationUtil;
 import java.io.File;
 import java.math.BigDecimal;
 import java.util.List;
@@ -26,15 +27,17 @@ import javax.swing.table.DefaultTableModel;
  * @author su
  */
 public class PurInfoFrame extends javax.swing.JInternalFrame {
-    
+
     PurchaseBiz pbiz = new PurchaseBizImpl();
     ExportExcelPurchase exportpur = new ExportExcelPurchase();
+
     /**
      * Creates new form PurInfo
      */
-    
+
     public PurInfoFrame() {
         initComponents();
+        LocationUtil.setScreenCenter(this);
     }
 
     /**
@@ -46,6 +49,7 @@ public class PurInfoFrame extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        purPicPane1 = new com.ouc.cpss.view.PurPicPane();
         jLabel1 = new javax.swing.JLabel();
         txtCondition = new javax.swing.JTextField();
         btnQuery = new javax.swing.JButton();
@@ -60,6 +64,8 @@ public class PurInfoFrame extends javax.swing.JInternalFrame {
         setIconifiable(true);
         setMaximizable(true);
         setTitle("采购信息");
+
+        purPicPane1.setPreferredSize(new java.awt.Dimension(793, 470));
 
         jLabel1.setText("--");
 
@@ -87,6 +93,10 @@ public class PurInfoFrame extends javax.swing.JInternalFrame {
             }
         });
 
+        dateEnd.setPreferredSize(new java.awt.Dimension(80, 22));
+
+        dateStart.setPreferredSize(new java.awt.Dimension(80, 22));
+
         jButton1.setText("关闭");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -94,47 +104,67 @@ public class PurInfoFrame extends javax.swing.JInternalFrame {
             }
         });
 
+        javax.swing.GroupLayout purPicPane1Layout = new javax.swing.GroupLayout(purPicPane1);
+        purPicPane1.setLayout(purPicPane1Layout);
+        purPicPane1Layout.setHorizontalGroup(
+            purPicPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(purPicPane1Layout.createSequentialGroup()
+                .addContainerGap(31, Short.MAX_VALUE)
+                .addGroup(purPicPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(purPicPane1Layout.createSequentialGroup()
+                        .addComponent(dateStart, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(dateEnd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(54, 54, 54)
+                        .addComponent(txtCondition, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnQuery))
+                    .addComponent(btnExportExcel)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 732, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(30, 30, 30))
+            .addGroup(purPicPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(purPicPane1Layout.createSequentialGroup()
+                    .addContainerGap(726, Short.MAX_VALUE)
+                    .addComponent(jButton1)
+                    .addContainerGap()))
+        );
+        purPicPane1Layout.setVerticalGroup(
+            purPicPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, purPicPane1Layout.createSequentialGroup()
+                .addGap(26, 26, 26)
+                .addGroup(purPicPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtCondition, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnQuery)
+                    .addComponent(dateEnd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1)
+                    .addComponent(dateStart, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 329, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(btnExportExcel)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(purPicPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(purPicPane1Layout.createSequentialGroup()
+                    .addGap(553, 553, 553)
+                    .addComponent(jButton1)
+                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+        );
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(143, 143, 143)
-                .addComponent(dateStart, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(dateEnd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 128, Short.MAX_VALUE)
-                .addComponent(txtCondition, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnQuery)
-                .addGap(45, 45, 45))
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnExportExcel)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton1)
-                .addContainerGap())
+                .addComponent(purPicPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(txtCondition, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnQuery)
-                    .addComponent(dateEnd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(dateStart, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnExportExcel)
-                    .addComponent(jButton1))
-                .addContainerGap(36, Short.MAX_VALUE))
+                .addComponent(purPicPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();
@@ -147,7 +177,7 @@ public class PurInfoFrame extends javax.swing.JInternalFrame {
         String end = this.dateEnd.getText();
 
         //2 通过查询业务获得商品集合
-        List<ViewPurchase> list = pbiz.findByCondition(start,end,condition);
+        List<ViewPurchase> list = pbiz.findByCondition(start, end, condition);
         //3 显示在表格
         showOnPurchaseTable(list);
     }//GEN-LAST:event_btnQueryActionPerformed
@@ -156,28 +186,28 @@ public class PurInfoFrame extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
         JFileChooser savefile = new JFileChooser();//文件选择对话框
         FileFilter filter = new FileNameExtensionFilter("Excel文件(*.xls)", "xls");
-        savefile.addChoosableFileFilter(filter); 
+        savefile.addChoosableFileFilter(filter);
         savefile.setFileFilter(filter); //添加过滤器
         //打开文件选择对话框，showSaveDialog是保存，showOpenDialog是打开
-        int flag = savefile.showSaveDialog(this); 
+        int flag = savefile.showSaveDialog(this);
         File file = null;
         //如果点击了保存按钮
         if (flag == JFileChooser.APPROVE_OPTION) {
-        file = savefile.getSelectedFile();//所选择的文件名（手写或选择）
-        System.out.println("文件名：" + file.getAbsolutePath());
-        String filename = file.getAbsolutePath();
-        //截取文件扩展名（文件名长度后4位）
-        String ftype = filename.substring(filename.length()-4);
-        if(!ftype.equals(".xls")){
-            //如果用户没有填写扩展名，自动添加扩展名.xls
-            file = new File(filename+".xls");
-        }
+            file = savefile.getSelectedFile();//所选择的文件名（手写或选择）
+            System.out.println("文件名：" + file.getAbsolutePath());
+            String filename = file.getAbsolutePath();
+            //截取文件扩展名（文件名长度后4位）
+            String ftype = filename.substring(filename.length() - 4);
+            if (!ftype.equals(".xls")) {
+                //如果用户没有填写扩展名，自动添加扩展名.xls
+                file = new File(filename + ".xls");
+            }
         }
         String condition = this.txtCondition.getText().trim();
         String start = this.dateStart.getText();
         String end = this.dateEnd.getText();
         //2 通过查询业务获得商品集合
-        List<ViewPurchase> list = pbiz.findByCondition(start,end,condition);
+        List<ViewPurchase> list = pbiz.findByCondition(start, end, condition);
         //集合获取数据，输出到文件：ExportExcel类的printSale方法
         exportpur.printPurchase(list, file); //st是要导出到excel的数据集合，来自于数据库查询
 
@@ -196,6 +226,7 @@ public class PurInfoFrame extends javax.swing.JInternalFrame {
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
+    private com.ouc.cpss.view.PurPicPane purPicPane1;
     private javax.swing.JTable tblPurchase;
     private javax.swing.JTextField txtCondition;
     // End of variables declaration//GEN-END:variables
@@ -218,7 +249,7 @@ public class PurInfoFrame extends javax.swing.JInternalFrame {
             vt.add(p.getPurcount());
             vt.add(p.getPurprice().multiply(new BigDecimal(p.getPurcount())));
             vt.add(p.getPurdate());
-            
+
             dtm.addRow(vt);
         }
     }

@@ -101,17 +101,17 @@ public class PurchaseBizImpl implements PurchaseBiz {
     public List<ViewPurchase> findByCondition(String start, String end, String conditions) {
         String sql = "select * from view_purchase where purdate between '" + start + "' and '" + end + "'";
         if (conditions != null && conditions.length() > 0) {
-            sql += " and concat(proname,supname) like '%" + conditions + "%'";
+            sql += " and concat(proname,type,supname) like '%" + conditions + "%'";
         }
         return purdao.query(sql, ViewPurchase.class);
     }
 
     @Override
-    public boolean purchasereturn(int proid, int purid, int supid, int prtcount, BigDecimal prtprice, BigDecimal prttotal, Date prtdate) {
+    public boolean purchasereturn(int proid, int purid, int supid, int prtcount, BigDecimal prtprice, Date prtdate) {
         boolean result = true;
         //修改采购表的退货数量和退货时间
-        String sql1 = "insert into purreturn values(null,?,?,?,?,?,?,?)";
-        Object[] params1 = {purid, proid, supid, prtcount, prtprice, prttotal, prtdate};
+        String sql1 = "insert into purreturn values(null,?,?,?,?,?,?)";
+        Object[] params1 = {purid, proid, supid, prtcount, prtprice, prtdate};
         String sql2 = "update product set nowcount = nowcount-? where proid=?";
         Object[] params2 = {prtcount, proid};
         String sql3 = "update purchase set purcount = purcount-? where purid = ?";

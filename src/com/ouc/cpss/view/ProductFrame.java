@@ -8,6 +8,7 @@ package com.ouc.cpss.view;
 import com.ouc.cpss.biz.ProductBiz;
 import com.ouc.cpss.biz.ProductBizImpl;
 import com.ouc.cpss.po.Product;
+import com.ouc.cpss.util.LocationUtil;
 import com.ouc.cpss.util.StringUtil;
 import java.math.BigDecimal;
 import java.util.List;
@@ -20,8 +21,11 @@ import javax.swing.table.DefaultTableModel;
  * @author su
  */
 public class ProductFrame extends javax.swing.JInternalFrame {
+
     // 引入biz
+
     ProductBiz pbiz = new ProductBizImpl();
+
     /**
      * Creates new form PruductFrame
      */
@@ -30,6 +34,7 @@ public class ProductFrame extends javax.swing.JInternalFrame {
         // 初始化保存按钮
         this.btnSave.setEnabled(false);
         this.btnDelete.setEnabled(false);
+        LocationUtil.setScreenCenter(this);
     }
 
     /**
@@ -41,6 +46,7 @@ public class ProductFrame extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        basicPicPane1 = new com.ouc.cpss.view.BasicPicPane();
         txtCondition = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -74,6 +80,8 @@ public class ProductFrame extends javax.swing.JInternalFrame {
         setIconifiable(true);
         setMaximizable(true);
         setTitle("商品管理");
+
+        basicPicPane1.setPreferredSize(new java.awt.Dimension(809, 500));
 
         jButton1.setText("搜索");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -140,7 +148,7 @@ public class ProductFrame extends javax.swing.JInternalFrame {
                         .addComponent(jLabel1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(txtProid, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(0, 25, Short.MAX_VALUE)
+                .addGap(0, 4, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel4)
@@ -185,7 +193,7 @@ public class ProductFrame extends javax.swing.JInternalFrame {
                     .addComponent(txtType, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel7)
                     .addComponent(txtSugpurchase, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 60, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(txtColor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -243,55 +251,77 @@ public class ProductFrame extends javax.swing.JInternalFrame {
         jLabel9.setForeground(new java.awt.Color(255, 0, 0));
         jLabel9.setText("注意：红色字体处不可修改");
 
+        javax.swing.GroupLayout basicPicPane1Layout = new javax.swing.GroupLayout(basicPicPane1);
+        basicPicPane1.setLayout(basicPicPane1Layout);
+        basicPicPane1Layout.setHorizontalGroup(
+            basicPicPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(basicPicPane1Layout.createSequentialGroup()
+                .addGroup(basicPicPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addGroup(basicPicPane1Layout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(txtCondition, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jButton1))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, basicPicPane1Layout.createSequentialGroup()
+                        .addGap(30, 30, 30)
+                        .addGroup(basicPicPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(basicPicPane1Layout.createSequentialGroup()
+                                .addComponent(jLabel9)
+                                .addGap(151, 151, 151)
+                                .addComponent(btnLoad)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(btnAdd)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(btnDelete)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(btnSave)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(btnCancle)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(btnExit)))))
+                .addGap(30, 30, 30))
+            .addGroup(basicPicPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, basicPicPane1Layout.createSequentialGroup()
+                    .addContainerGap(34, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 720, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(34, 34, 34)))
+        );
+        basicPicPane1Layout.setVerticalGroup(
+            basicPicPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, basicPicPane1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(basicPicPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtCondition, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton1))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 241, Short.MAX_VALUE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(basicPicPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnLoad)
+                    .addComponent(btnAdd)
+                    .addComponent(btnDelete)
+                    .addComponent(btnSave)
+                    .addComponent(btnCancle)
+                    .addComponent(btnExit)
+                    .addComponent(jLabel9))
+                .addGap(20, 20, 20))
+            .addGroup(basicPicPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(basicPicPane1Layout.createSequentialGroup()
+                    .addGap(39, 39, 39)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(230, Short.MAX_VALUE)))
+        );
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(txtCondition, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton1)
-                .addContainerGap())
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(28, 28, 28)
-                .addComponent(jLabel9)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnLoad)
-                .addGap(18, 18, 18)
-                .addComponent(btnAdd)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btnDelete)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnSave)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnCancle)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btnExit)
-                .addGap(8, 8, 8))
+            .addComponent(basicPicPane1, 788, 788, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtCondition, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(26, 26, 26)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnCancle)
-                    .addComponent(btnSave)
-                    .addComponent(btnDelete)
-                    .addComponent(btnAdd)
-                    .addComponent(btnLoad)
-                    .addComponent(btnExit)
-                    .addComponent(jLabel9))
-                .addContainerGap(39, Short.MAX_VALUE))
+            .addComponent(basicPicPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 470, Short.MAX_VALUE)
         );
 
         pack();
@@ -301,7 +331,7 @@ public class ProductFrame extends javax.swing.JInternalFrame {
     private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
          // 新增添加事件
         // 1 获取添加信息
-       
+
         String proname = this.txtProname.getText().trim();
         String type = this.txtType.getText().trim();
         String color = this.txtColor.getText().trim();
@@ -309,77 +339,77 @@ public class ProductFrame extends javax.swing.JInternalFrame {
         String safecount_s = this.txtSafecount.getText().trim();
         String sugpurchase_s = this.txtSugpurchase.getText().trim();
         String sugsell_s = this.txtSugsell.getText().trim();
-        
+
         // 数据格式验证(使用StringUtil)
         // 1 验证非空
-        if(StringUtil.checkLength(proname) == false){
+        if (StringUtil.checkLength(proname) == false) {
             JOptionPane.showMessageDialog(this, "商品名称不能为空");
             return;
         }
-        if(StringUtil.checkLength(type) == false){
+        if (StringUtil.checkLength(type) == false) {
             JOptionPane.showMessageDialog(this, "商品类型不能为空");
             return;
         }
-        if(StringUtil.checkLength(color) == false){
+        if (StringUtil.checkLength(color) == false) {
             JOptionPane.showMessageDialog(this, "商品颜色不能为空");
             return;
         }
-        if(StringUtil.checkLength(safecount_s) == false){
+        if (StringUtil.checkLength(safecount_s) == false) {
             JOptionPane.showMessageDialog(this, "安全存量不能为空");
             return;
         }
-        if(StringUtil.checkLength(nowcount_s) == false){
+        if (StringUtil.checkLength(nowcount_s) == false) {
             JOptionPane.showMessageDialog(this, "当前存量不能为空");
             return;
         }
-        if(StringUtil.checkLength(sugpurchase_s) == false){
+        if (StringUtil.checkLength(sugpurchase_s) == false) {
             JOptionPane.showMessageDialog(this, "建议购买价不能为空");
             return;
         }
-        if(StringUtil.checkLength(sugsell_s) == false){
+        if (StringUtil.checkLength(sugsell_s) == false) {
             JOptionPane.showMessageDialog(this, "建议销售价不能为空");
             return;
         }
-        
+
         // 2 数据格式验证
-        if(StringUtil.checkDecimal(safecount_s) == false){
+        if (StringUtil.checkDecimal(safecount_s) == false) {
             JOptionPane.showMessageDialog(this, "安全存量须为数字格式");
             return;
         }
-        if(StringUtil.checkDecimal(nowcount_s) == false){
+        if (StringUtil.checkDecimal(nowcount_s) == false) {
             JOptionPane.showMessageDialog(this, "当前存量须为数字格式");
             return;
         }
-        if(StringUtil.checkDecimal(sugpurchase_s) == false){
+        if (StringUtil.checkDecimal(sugpurchase_s) == false) {
             JOptionPane.showMessageDialog(this, "建议购买价须为数字格式");
             return;
         }
-        if(StringUtil.checkDecimal(sugsell_s) == false){
+        if (StringUtil.checkDecimal(sugsell_s) == false) {
             JOptionPane.showMessageDialog(this, "建议销售价须为数字格式");
             return;
         }
-        Integer nowcount=  new Integer(nowcount_s);
-        
-        Integer safecount=  new Integer(safecount_s);
-        BigDecimal sugpurchase=  new BigDecimal(sugpurchase_s);
-        BigDecimal sugsell=  new BigDecimal(sugsell_s);
-        
+        Integer nowcount = new Integer(nowcount_s);
+
+        Integer safecount = new Integer(safecount_s);
+        BigDecimal sugpurchase = new BigDecimal(sugpurchase_s);
+        BigDecimal sugsell = new BigDecimal(sugsell_s);
+
         // 组合对象
-        Product p = new Product( null,  proname,  type,  color,  safecount,  nowcount, 
-                 sugpurchase, sugsell);
+        Product p = new Product(null, proname, type, color, safecount, nowcount,
+                sugpurchase, sugsell);
         JOptionPane.showMessageDialog(this, p);
         // 调用业务
         boolean result = pbiz.add(p);
-        if(result == true){
+        if (result == true) {
             JOptionPane.showMessageDialog(this, "添加成功");
             List<Product> list = pbiz.findAll();
             //显示list中的信息
             showOnTable(list);
-            
-        }else{
+
+        } else {
             JOptionPane.showMessageDialog(this, "添加失败");
         }
-        
+
         // 清空面板信息
         clearInput();
     }//GEN-LAST:event_btnAddActionPerformed
@@ -396,14 +426,14 @@ public class ProductFrame extends javax.swing.JInternalFrame {
         int row = this.tblProduct.getSelectedRow();
         // 根据row获取每列的值
         // 每行下标从0开始
-        this.txtProid.setText(this.tblProduct.getValueAt(row, 0)+"");
-        this.txtProname.setText(this.tblProduct.getValueAt(row, 1)+"");
-        this.txtType.setText(this.tblProduct.getValueAt(row, 2)+"");
-        this.txtColor.setText(this.tblProduct.getValueAt(row, 3)+"");
-        this.txtSafecount.setText(this.tblProduct.getValueAt(row, 4)+"");
-        this.txtCount.setText(this.tblProduct.getValueAt(row, 5)+"");
-        this.txtSugpurchase.setText(this.tblProduct.getValueAt(row, 6)+"");
-        this.txtSugsell.setText(this.tblProduct.getValueAt(row, 7)+"");
+        this.txtProid.setText(this.tblProduct.getValueAt(row, 0) + "");
+        this.txtProname.setText(this.tblProduct.getValueAt(row, 1) + "");
+        this.txtType.setText(this.tblProduct.getValueAt(row, 2) + "");
+        this.txtColor.setText(this.tblProduct.getValueAt(row, 3) + "");
+        this.txtSafecount.setText(this.tblProduct.getValueAt(row, 4) + "");
+        this.txtCount.setText(this.tblProduct.getValueAt(row, 5) + "");
+        this.txtSugpurchase.setText(this.tblProduct.getValueAt(row, 6) + "");
+        this.txtSugsell.setText(this.tblProduct.getValueAt(row, 7) + "");
         // 保存和删除按钮可用
         this.btnSave.setEnabled(true);
         this.btnDelete.setEnabled(true);
@@ -417,105 +447,104 @@ public class ProductFrame extends javax.swing.JInternalFrame {
         String type = this.txtType.getText().trim();
         String color = this.txtColor.getText().trim();
         String safecount_s = this.txtSafecount.getText().trim();
-         String nowcount_s = this.txtCount.getText().trim();
+        String nowcount_s = this.txtCount.getText().trim();
         String sugpurchase_s = this.txtSugpurchase.getText().trim();
         String sugsell_s = this.txtSugsell.getText().trim();
-        
-       // 数据格式验证(使用StringUtil)
+
+        // 数据格式验证(使用StringUtil)
         // 1 验证非空
-        if(StringUtil.checkLength(proname) == false){
+        if (StringUtil.checkLength(proname) == false) {
             JOptionPane.showMessageDialog(this, "商品名称不能为空");
             return;
         }
-        
-        if(StringUtil.checkLength(type) == false){
+
+        if (StringUtil.checkLength(type) == false) {
             JOptionPane.showMessageDialog(this, "商品类型不能为空");
             return;
         }
-        if(StringUtil.checkLength(color) == false){
+        if (StringUtil.checkLength(color) == false) {
             JOptionPane.showMessageDialog(this, "商品颜色不能为空");
             return;
         }
-        if(StringUtil.checkLength(safecount_s) == false){
+        if (StringUtil.checkLength(safecount_s) == false) {
             JOptionPane.showMessageDialog(this, "安全存量不能为空");
             return;
         }
-        if(StringUtil.checkLength(nowcount_s) == false){
+        if (StringUtil.checkLength(nowcount_s) == false) {
             JOptionPane.showMessageDialog(this, "当前存量不能为空");
             return;
         }
-        if(StringUtil.checkLength(sugpurchase_s) == false){
+        if (StringUtil.checkLength(sugpurchase_s) == false) {
             JOptionPane.showMessageDialog(this, "建议购买价不能为空");
             return;
         }
-        if(StringUtil.checkLength(sugsell_s) == false){
+        if (StringUtil.checkLength(sugsell_s) == false) {
             JOptionPane.showMessageDialog(this, "建议销售价不能为空");
             return;
         }
-        
+
         // 2 数据格式验证
-        if(StringUtil.checkDecimal(safecount_s) == false){
+        if (StringUtil.checkDecimal(safecount_s) == false) {
             JOptionPane.showMessageDialog(this, "安全存量须为数字格式");
             return;
         }
-         if(StringUtil.checkDecimal(nowcount_s) == false){
+        if (StringUtil.checkDecimal(nowcount_s) == false) {
             JOptionPane.showMessageDialog(this, "当前存量须为数字格式");
             return;
         }
-        if(StringUtil.checkDecimal(sugpurchase_s) == false){
+        if (StringUtil.checkDecimal(sugpurchase_s) == false) {
             JOptionPane.showMessageDialog(this, "建议购买价须为数字格式");
             return;
         }
-        if(StringUtil.checkDecimal(sugsell_s) == false){
+        if (StringUtil.checkDecimal(sugsell_s) == false) {
             JOptionPane.showMessageDialog(this, "建议销售价须为数字格式");
             return;
         }
         Integer nowcount = new Integer(nowcount_s);
-        Integer safecount=  new Integer(safecount_s);
-        BigDecimal sugpurchase=  new BigDecimal(sugpurchase_s);
-        BigDecimal sugsell=  new BigDecimal(sugsell_s);
-        
+        Integer safecount = new Integer(safecount_s);
+        BigDecimal sugpurchase = new BigDecimal(sugpurchase_s);
+        BigDecimal sugsell = new BigDecimal(sugsell_s);
+
         // 组合对象
-        Product p = new Product( proid,  proname,  type,  color,  safecount,  nowcount, 
-                 sugpurchase, sugsell);
-        
-        
+        Product p = new Product(proid, proname, type, color, safecount, nowcount,
+                sugpurchase, sugsell);
+
         // 调用业务
         boolean result = pbiz.update(p);
-        if(result == true){
+        if (result == true) {
             JOptionPane.showMessageDialog(this, "修改成功");
             List<Product> list = pbiz.findAll();
             //显示list中的信息
             showOnTable(list);
-            
-        }else{
+
+        } else {
             JOptionPane.showMessageDialog(this, "修改失败");
         }
-        
+
         // 清空面板信息
         clearInput();
     }//GEN-LAST:event_btnSaveActionPerformed
 
     private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
-        int answer =  JOptionPane.showConfirmDialog(this, "您确定要删除信息么");
-        if(answer == JOptionPane.YES_OPTION){
-                   
+        int answer = JOptionPane.showConfirmDialog(this, "您确定要删除信息么");
+        if (answer == JOptionPane.YES_OPTION) {
+
          // 删除商品信息
-        // 1 获取删除商品编号
-        int proid = Integer.parseInt(this.txtProid.getText());
-        // 调用业务
-        boolean result = pbiz.delete(proid);
-        if(result == true){
-            JOptionPane.showMessageDialog(this, "删除成功");
-            List<Product> list = pbiz.findAll();
-            //显示list中的信息
-            showOnTable(list);
-            
-        }else{
-            JOptionPane.showMessageDialog(this, "删除失败");
-        }
-        // 清空面板信息
-        clearInput();
+            // 1 获取删除商品编号
+            int proid = Integer.parseInt(this.txtProid.getText());
+            // 调用业务
+            boolean result = pbiz.delete(proid);
+            if (result == true) {
+                JOptionPane.showMessageDialog(this, "删除成功");
+                List<Product> list = pbiz.findAll();
+                //显示list中的信息
+                showOnTable(list);
+
+            } else {
+                JOptionPane.showMessageDialog(this, "删除失败");
+            }
+            // 清空面板信息
+            clearInput();
         }
     }//GEN-LAST:event_btnDeleteActionPerformed
 
@@ -537,21 +566,22 @@ public class ProductFrame extends javax.swing.JInternalFrame {
         List<Product> list = pbiz.findByCondition(condition);
         showOnTable(list);
     }//GEN-LAST:event_jButton1ActionPerformed
-     
+
     /**
      * 将制定的list数据显示到表上
-     * @param list 
-     */ 
+     *
+     * @param list
+     */
     private void showOnTable(List<Product> list) {
         // 1 获取表格模型
-        DefaultTableModel dtm =
-                (DefaultTableModel) this.tblProduct.getModel();
+        DefaultTableModel dtm
+                = (DefaultTableModel) this.tblProduct.getModel();
         // 2 清空表格信息
-        while(dtm.getRowCount()>0){
+        while (dtm.getRowCount() > 0) {
             dtm.removeRow(0);
         }
         // 3 显示数据
-        for(Product p : list){
+        for (Product p : list) {
             Vector vt = new Vector();
             vt.add(p.getProid());
             vt.add(p.getProname());
@@ -561,12 +591,12 @@ public class ProductFrame extends javax.swing.JInternalFrame {
             vt.add(p.getNowcount());
             vt.add(p.getSugpurchase());
             vt.add(p.getSugsell());
-            dtm.addRow(vt);       
+            dtm.addRow(vt);
         }
     }
-    
+
     // 清空面板信息
-    public void clearInput(){
+    public void clearInput() {
         this.txtProid.setText("");
         this.txtProname.setText("");
         this.txtType.setText("");
@@ -575,13 +605,12 @@ public class ProductFrame extends javax.swing.JInternalFrame {
         this.txtSugsell.setText("");
         this.txtSafecount.setText("");
         this.txtCount.setText("");
-        
+
     }
-   
-    
-    
-    
+
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private com.ouc.cpss.view.BasicPicPane basicPicPane1;
     private javax.swing.JButton btnAdd;
     private javax.swing.JButton btnCancle;
     private javax.swing.JButton btnDelete;
